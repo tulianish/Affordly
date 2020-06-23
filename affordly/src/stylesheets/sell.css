@@ -1,0 +1,63 @@
+.fields {
+    border: 2px solid black;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    padding: 2.5%;
+    /* float: left; */
+}
+
+.col {
+    position: relative;
+    width: 100%;
+    /* padding-right: 15px;
+    padding-left: 15px; */
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 3.5%;
+}
+
+.tncbutton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.tncbutton > div {
+    margin: 2%;
+}
+
+.mandatory {
+    color: red;
+}
+
+#bioBox{
+    font-size: smaller;
+    font-variant: all-small-caps;
+}
+
+#read-only {
+    text-align: center;
+    margin-top: 2%;
+}
+.form_lab {
+    float: left;
+}
+
+.text-muted {
+    text-align: left;
+}
+
+.heading {
+    text-align: center;
+}
+
+.my_container {
+    text-align: left;
+}

@@ -1,0 +1,24 @@
+/* .nav-bar{
+    background-color: black;
+    height: 120px;
+    line-height: 2.5;;
+    font-weight: bolder;
+    font-size: larger;
+} */
+
+.awe {
+    background-color: white;
+    color: blanchedalmond;
+    height: 120px;
+    line-height: 2.5;;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.linkB {
+    color: white;
+}
+
+.navbar .navbar-nav a {
+    color: red;
+  }
