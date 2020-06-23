@@ -71,16 +71,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/43099659/resize-h500-w500%5Ecompr-r85/1052/105291484/Product+Miltonvale+Outdoor+Square+Pillow+Cover+%2528Set+of+2%2529.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 1</Card.Title>
+                  <Card.Title>Cushions</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/0">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -90,16 +90,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/08872942/resize-h500-w500%5Ecompr-r85/5238/52389965/Product+Kater+29%2522+Table+Lamp.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 2</Card.Title>
+                  <Card.Title>Lamp</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/1">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -109,16 +109,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/06914522/resize-h500-w500%5Ecompr-r85/7080/70801423/Product+Byler+10+-+Light+Sputnik+Sphere+Chandelier.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 3</Card.Title>
+                  <Card.Title>Fan</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/2">
+                Details
+              </a>
             </div>
           </div>
 
@@ -130,16 +130,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/51216393/resize-h500-w500%5Ecompr-r85/5446/54463800/Product+Chelsea+Gray+Area+Rug.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 4</Card.Title>
+                  <Card.Title>Mat</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/3">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -149,16 +149,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/98087601/resize-h500-w500%5Ecompr-r85/1000/100057854/Product+Devito+Cross+Legs+Coffee+Table.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 5</Card.Title>
+                  <Card.Title>Table</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/4">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -168,16 +168,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/98302936/resize-h310-w310%5Ecompr-r85/9717/97170047/28%2522+Counter+Depth+French+Door+15+cu.+ft.+Refrigerator.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 6</Card.Title>
+                  <Card.Title>Fridge</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/5">
+                Details
+              </a>
             </div>
           </div>
 
@@ -189,16 +189,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/33053223/resize-h800%5Ecompr-r85/1013/101378543/Wydmire+25.5%2522+Armchair.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 7</Card.Title>
+                  <Card.Title>Chair</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/6">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -208,16 +208,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/55972120/resize-h500-w500%5Ecompr-r85/8648/86489828/Product+Knutsen+Chevron+Semi-Sheer+Grommet+Single+Curtain+Panel.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 8</Card.Title>
+                  <Card.Title>Curtains</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/7">
+                Details
+              </a>
             </div>
 
             <div className="col-md-4 crd">
@@ -227,16 +227,16 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/66402025/resize-h500-w500%5Ecompr-r85/9191/91916729/Product+Pecora+32%2522+Table+Lamp.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Item 9</Card.Title>
+                  <Card.Title>Lamp</Card.Title>
                   <Card.Text>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <Button className="buy_button" variant="primary">
-                Buy Now
-              </Button>
+              <a class="btn btn-primary buy_button" href="posting/8">
+                Details
+              </a>
             </div>
           </div>
         </div>

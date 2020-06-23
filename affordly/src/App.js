@@ -8,6 +8,7 @@ import AboutUs from "./pages/aboutus";
 import Login from "./pages/login";
 import Careers from "./pages/Careers";
 import Payment from "./pages/Payment";
+import Posting from "./pages/Posting";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,8 +21,13 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/sell" component={Sell} />
           <Route path="/about" component={AboutUs} />
-          <Route path = "/careers" component={Careers} />
-          <Route path = "/payment" component={Payment} />
+          <Route path="/careers" component={Careers} />
+          <Route path="/payment" component={Payment} />
+          <Route
+            path="/posting/:id"
+            exact
+            render={(props) => <Posting {...props} />}
+          />
         </Switch>
       </Router>
     </div>

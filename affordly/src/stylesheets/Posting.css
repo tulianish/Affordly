@@ -1,0 +1,26 @@
+.map {
+  display: block;
+  margin-top: 5%;
+}
+
+.desc {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.imageStyleLike {
+  width: 30%;
+}
+
+.imageStyle {
+  width: 40%;
+}
+
+.imag {
+  width: 1%;
+  height: 1%;
+}
+
+.posting-container {
+  width: 100%;
+}
