@@ -24,7 +24,6 @@ class Header extends React.Component {
               <Nav.Link href="/login">Log In</Nav.Link>
               <Nav.Link href="/signup">Sign Up</Nav.Link>
               <Nav.Link href="/sell">Sell</Nav.Link>
-              <Nav.Link href="/about">About Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

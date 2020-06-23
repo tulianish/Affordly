@@ -1,0 +1,25 @@
+.loginBox
+{
+	border: 1px solid #CCC;
+	padding:3vh;
+	height:auto;
+	max-width: 100% !important;
+    overflow: hidden !important;
+    border: 2px solid black;
+    border-radius: 0.2em;
+    box-shadow: 5px 10px 18px #888888;
+    margin-bottom: 3vh;
+}
+
+.customBox
+{
+	border: 2px solid black;
+    border-radius: 0.2em;
+    box-shadow: 5px 10px 18px #888888;
+    margin-top: 2%;
+}
+
+.submitButton
+{
+	margin-top: 4%;
+}

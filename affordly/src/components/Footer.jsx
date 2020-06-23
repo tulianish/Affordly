@@ -91,7 +91,7 @@ class Footer extends Component {
                 <a href="#!">Raise a Support Ticket</a>
               </p>
               <p>
-                <a href="#!">About</a>
+                <a href="/about">About Us</a>
               </p>
               <p>
                 <a href="#!">Privacy Policies</a>
@@ -100,7 +100,7 @@ class Footer extends Component {
                 <a href="#!">Terms &amp; Conditions</a>
               </p>
               <p>
-                <a href="#!">Career</a>
+                <a href="/careers">Career</a>
               </p>
             </section>
             <section className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
