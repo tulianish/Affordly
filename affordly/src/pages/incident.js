@@ -2,7 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import "bootstrap/dist/css/bootstrap.min.css"
-import Foot from './foot';
+import Footer from '../components/Footer';
 import Header from './navbar';
 import "./index.css"
 import { Row, Col, Grid } from 'react-bootstrap';
@@ -169,7 +169,7 @@ handleSubmit = (event) => {
           </div>
         </div>
         </div>
-        <Foot />
+        <Footer />
 
       </>
 
