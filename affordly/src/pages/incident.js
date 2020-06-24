@@ -3,8 +3,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Footer from '../components/Footer';
-import Header from './navbar';
-import "./index.css"
+import Header from '../components/navbar';
+import "../stylesheets/incident.css"
 import { Row, Col, Grid } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/Form'
