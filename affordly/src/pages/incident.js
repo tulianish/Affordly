@@ -27,7 +27,7 @@ class RaiseASupportTicket extends React.Component {
     }
   validateForm = (errors) => {
     let valid = true;
-    if (this.state.email === "" || this.state.password === "" || this.state.confirm === "" || this.state.contact_number === "") return false;
+    if (this.state.email === "" || || this.state.contact_number === "") return false;
     Object.values(errors).forEach(
         (val) => val.length > 0 && (valid = false)
     );
