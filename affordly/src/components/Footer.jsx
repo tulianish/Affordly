@@ -88,7 +88,7 @@ class Footer extends Component {
                 style={{ width: 60 + "px" }}
               />
               <p>
-                <a href="#!">Raise a Support Ticket</a>
+                <a href="/incident">Raise a Support Ticket</a>
               </p>
               <p>
                 <a href="/about">About Us</a>
