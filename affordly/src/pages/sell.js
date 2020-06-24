@@ -112,7 +112,7 @@ class Sell extends React.Component {
         <div className="container my_container">
           <div className="jumbotron box_layout">
             <h2 className="heading"> Sell an Item </h2>
-            <p className="heading"> Please post an add here and relax.</p>
+            <p className="heading"> Please post an ad here and relax.</p>
 
             <div class="fields">
               <Form

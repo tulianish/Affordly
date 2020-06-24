@@ -84,7 +84,7 @@ handleSubmit = (event) => {
         <div className="jumbotron box_layout">
           
 
-          <h2 className = "heading"> Raise A Support Ticker </h2>
+          <h2 className = "heading"> Raise A Support Ticket </h2>
           <p className = "heading"> Your voice is important to us.</p>
 
           <div className="fields">
