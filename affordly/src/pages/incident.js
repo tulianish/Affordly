@@ -27,7 +27,7 @@ class RaiseASupportTicket extends React.Component {
     }
   validateForm = (errors) => {
     let valid = true;
-    if (this.state.email === "" || || this.state.contact_number === "") return false;
+    if (this.state.email === "" || this.state.contact_number === "") return false;
     Object.values(errors).forEach(
         (val) => val.length > 0 && (valid = false)
     );
@@ -36,7 +36,7 @@ class RaiseASupportTicket extends React.Component {
 handleSubmit = (event) => {
   event.preventDefault();
   if (this.validateForm(this.state.error)) {
-      alert('User Has Been Registered Successfully...');
+      alert('Your ticket has been raised successfully');
       this.form.reset();
   } else {
       alert('Invalid Details Entered...')
