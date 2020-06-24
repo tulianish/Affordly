@@ -93,3 +93,23 @@ Deployed using [Heroku](https://heroku.com/) at [Afford.ly](https://assignment2-
 
 ## References
 
+
+[1] "Kijiji - Buy, Sell & Save with Canada's #1 Local Classifieds", Kijiji.ca, 2020. [Online]. Available: https://www.kijiji.ca/. [Accessed: 22- Jun- 2020].
+[2] "Wayfair.ca - Online Home Store for Furniture, Decor, Outdoors & More", Wayfair.ca, 2020. [Online]. Available: https://www.wayfair.ca/. [Accessed: 22- Jun- 2020].
+[3] "Used.ca | Used.ca Locals Buy & Sell Here", Used.ca, 2020. [Online]. Available: https://www.used.ca/. [Accessed: 22- Jun- 2020].
+[4] "Legto", Letgo.com, 2020. [Online]. Available: https://www.letgo.com/en-us. [Accessed: 22- Jun- 2020].
+[5] "Cloud Application Platform | Heroku", Heroku.com, 2020. [Online]. Available: https://www.heroku.com. [Accessed: 23- Jun- 2020].
+[6] "draw.io - Diagrams for Everyone, Everywhere - draw.io", draw.io, 2020. [Online]. Available: https://drawio-app.com/ . [Accessed: 23- Jun- 2020].
+[7] g. GlooMaps, "GlooMaps - Visual Sitemap Tool", Gloomaps.com, 2020. [Online]. Available: https://www.gloomaps.com . [Accessed: 23- Jun- 2020].
+[8] "MockFlow - Wireframe Tools, Prototyping Tools, UI Mockups, UX Suite, Remote designing", Mockflow.com, 2020. [Online]. Available: https://www.mockflow.com. [Accessed: 23- May- 2020].
+[9] "Lorem Ipsum - All the facts - Lipsum generator", Lipsum.com, 2020. [Online]. Available: https://www.lipsum.com . [Accessed: 23- Jun- 2020].
+[10] Cacoo.com. 2020. Online Diagram And Flowchart Software | Cacoo. [online] Available at: https://cacoo.com/ [Accessed 22 June 2020].
+[11] Dal.brightspace.com. 2020. “A1_Tuli_Anish”, submitted to Brightspace on 23rd May. [online] Available at : https://dal.brightspace.com/d2l/common/viewFile.d2lfile/Database/MjIzNjQ5OQ/A1_Tuli_Anish.pdf?ou=124056 [Accessed 22 June 2020].
+[12] Dal.brightspace.com. 2020. “A2_Tuli_Anish”, submitted to Brightspace on 15th June. [online] Available at : https://dal.brightspace.com/d2l/common/viewFile.d2lfile/Database/MjI3NjM5OA/A2_Tuli_Anish.txt?ou=124056 [Accessed 22 June 2020].
+[13] “Assignment 1 - Piyush Piyush”, submitted to Brightspace on 23rd May. [online] Available at: https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72099&grpid=0&isprv=0&bp=0&ou=124056 [Accessed 22 June 2020].
+[14] “Assignment 2 - Piyush Piyush”, submitted to Brightspace on 15th June. [online] Available at https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72100&grpid=0&isprv=0&bp=0&ou=124056 [Accessed 22 June 2020].
+[15] Dal.brightspace.com. 2020. “Assignment 1 - Sarabjeet Singh”, submitted to Brightspace on 23rd May. [online] Available at : https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72099&grpid=0&isprv=0&bp=0&ou=124056  [Accessed 22 June 2020].
+[16] Dal.brightspace.com. 2020. “Assignment 2 - Sarabjeet Singh”, submitted to Brightspace on 15th June. [online] Available at : https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72100&grpid=0&isprv=0&bp=0&ou=124056  [Accessed 22 June 2020].
+[17] Dal.brightspace.com. 2020.”Assignment 1 - Tejasvi Vig”. [online] Available at: <https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72099&grpid=0&isprv=0&bp=0&ou=124056>  [Accessed 24 June 2020].
+[18] Dal.brightspace.com. 2020. “Assignment 2 - Tejasvi Vig”. [online] Available at: <https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72100&grpid=0&isprv=0&bp=0&ou=124056>  [Accessed 24 June 2020].
+[19] Dal.brightspace.com. 2020. “Assignment 1 - Guneet Singh Dhillon”, submitted to Brightspace . [online] Available at: <https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=72099&grpid=0&isprv=0&bp=0&ou=124056 >  [Accessed 24 June 2020].
