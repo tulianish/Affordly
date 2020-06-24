@@ -1,64 +1,58 @@
-.resumeBox
-{
-	border: 1px solid #CCC;
-	padding:3vh;
-	height:auto;
-	max-width: 100% !important;
-    overflow: hidden !important;
+.resumeBox {
+  border: 1px solid #ccc;
+  padding: 3vh;
+  height: auto;
+  /* max-width: 100% !important; */
+  overflow: hidden !important;
 
-    border: 2px solid black;
-    border-radius: 0.4em;
-    box-shadow: 5px 10px 18px #888888;
-    margin-bottom: 3vh;
+  border: 2px solid black;
+  border-radius: 0.4em;
+  box-shadow: 5px 10px 18px #888888;
+  margin-bottom: 3vh;
 }
 
-.inputBox
-{
-	border: 1px solid #CCC;
-	padding:3vh;
-	height:auto;
-	max-width: 100% !important;
-    overflow: hidden !important;
+.inputBox {
+  border: 1px solid #ccc;
+  padding: 3vh;
+  height: auto;
+  /* max-width: 100% !important; */
+  overflow: hidden !important;
 
-    border: 2px solid white;
-        border-radius: 0.2em;
-        box-shadow: 5px 10px 18px #888888;
-    margin-bottom: 3vh;
+  border: 2px solid white;
+  border-radius: 0.2em;
+  box-shadow: 5px 10px 18px #888888;
+  margin-bottom: 3vh;
 }
 
-.SubmitBox
-{
-	margin-top: 2%;
-	text-align: center;
+.customSize {
+  margin-top: 2%;
+  border: 2px solid black;
+  border-radius: 0.4em;
+  box-shadow: 5px 10px 18px #888888;
+  margin-bottom: 3vh;
+  padding: 3vh;
+}
+
+.SubmitBox {
+  margin-top: 2%;
+  text-align: center;
 }
 
 .random_text {
-    text-align: justify;
+  text-align: justify;
 }
 
-
-p{
-    padding-right: 1.5%;
-    padding-left: 1.5%;
+p {
+  padding-right: 1.5%;
+  padding-left: 1.5%;
 }
 
-h1
-{
-    text-align: center;
-    font-weight: bold;
+h1 {
+  text-align: center;
+  font-weight: bold;
 }
 
-
-.ceo_name
-{
-    text-align: center;
-    font-weight: bold;
-}
-
-.customSize
-{
-	margin-top: 2%;
-        border: 2px solid black;
-        border-radius: 0.4em;
-        box-shadow: 5px 10px 18px #888888;
+.ceo_name {
+  text-align: center;
+  font-weight: bold;
 }

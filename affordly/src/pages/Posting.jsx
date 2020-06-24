@@ -194,7 +194,7 @@ class Posting extends Component {
             </section>
           </section>
           {/* Pagination */}
-          <section className="row justify-content-center">
+          {/* <section className="row justify-content-center">
             <nav aria-label="Page navigation example">
               <ul className="pagination">
                 {this.props.match.params.id === "0" ? (
@@ -320,7 +320,7 @@ class Posting extends Component {
                 )}
               </ul>
             </nav>
-          </section>
+          </section> */}
         </section>
         <Footer />
       </>

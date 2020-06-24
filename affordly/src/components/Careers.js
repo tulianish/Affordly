@@ -8,109 +8,111 @@ https://getbootstrap.com/docs/4.0/components/forms/
 ==============================================================*/
 
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import '../stylesheets/Careers.css';
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import 'font-awesome/css/font-awesome.min.css';
+import "bootstrap/dist/css/bootstrap.css";
+import "../stylesheets/Careers.css";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import "font-awesome/css/font-awesome.min.css";
 
-class Careers extends React.Component
-{
-  render()
-  {
-    return(
+class Careers extends React.Component {
+  render() {
+    return (
       <>
-
-<div className="container">
-            <div className="jumbotron box_layout customSize">
-              <h1> Careers </h1>
-              <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <br />
-              <p className = "ceo_name"> -Michael Hubbard (Hiring Manager) </p>
-            </div>
-            </div>
-
-
-      <div className = "container">
-      <div className="resumeBox">
-      <div className="jumbotron box_layout inputBox">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Job Title</th>
-              <th scope="col">Job Requirments</th>
-              <th scope="col">Office</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Software Developer</td>
-              <td>Knowledge of React, JavaScript, Python, REST</td>
-              <td>Halifax, NS</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>UX Designer</td>
-              <td>Prototyping tools and experience in design</td>
-              <td>Syndey, NS</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>QA Testing</td>
-              <td>Test plan and edge case solving abilities</td>
-              <td>Syndey, NS</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="container">
+          <div className="jumbotron box_layout customSize">
+            <h1> Careers </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <br />
+            <p className="ceo_name"> -Michael Hubbard (Hiring Manager) </p>
+          </div>
         </div>
 
+        <div className="container">
+          <div className="jumbotron box_layout customSize">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Job Title</th>
+                  <th scope="col">Job Requirments</th>
+                  <th scope="col">Office</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Software Developer</td>
+                  <td>Knowledge of React, JavaScript, Python, REST</td>
+                  <td>Halifax, NS</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>UX Designer</td>
+                  <td>Prototyping tools and experience in design</td>
+                  <td>Syndey, NS</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>QA Testing</td>
+                  <td>Test plan and edge case solving abilities</td>
+                  <td>Syndey, NS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-<div className="inputBox">
-<Form>
-<Form.Group controlId="exampleForm.SelectCustom">
-    <Form.Label>Application for Position #</Form.Label>
-    <Form.Control as="select" custom>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-    </Form.Control>
-  </Form.Group>
-<Form.Row>
-    <Col>
-      <Form.Control placeholder="First name" required/>
-    </Col>
-    <Col>
-      <Form.Control placeholder="Last name" required/>
-    </Col>
-  </Form.Row>
- 
-    <div class="file-field">
-      <div class="btn btn-outline-white waves-effect btn-sm SubmitBox">
-        <span>Resume : </span>
-        <input type="file" accept="application/pdf" required/>
-      </div>
-    </div>
-    <div class="SubmitBox">
-     <Form.Group controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="I agree to the terms and conditions" required/>
-  </Form.Group>
-    <Button variant="primary" type="submit">
-    Submit
-  </Button>
-  </div>
-</Form>
-  
-  </div>
-</div>
+          <div className="customSize">
+            <Form>
+              <Form.Group controlId="exampleForm.SelectCustom">
+                <Form.Label>Application for Position #</Form.Label>
+                <Form.Control as="select" custom>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Row>
+                <Col>
+                  <Form.Control placeholder="First name" required />
+                </Col>
+                <Col>
+                  <Form.Control placeholder="Last name" required />
+                </Col>
+              </Form.Row>
+
+              <div class="file-field">
+                <div class="btn btn-outline-white waves-effect btn-sm SubmitBox">
+                  <span>Resume : </span>
+                  <input type="file" accept="application/pdf" required />
+                </div>
+              </div>
+              <div class="SubmitBox">
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    label="I agree to the terms and conditions"
+                    required
+                  />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          </div>
+          {/* </div> */}
         </div>
       </>
-    )
+    );
   }
 }
 

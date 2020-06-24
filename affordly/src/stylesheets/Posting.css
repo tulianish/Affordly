@@ -1,9 +1,12 @@
 .map {
+  text-align: center;
   display: block;
   margin-top: 5%;
+  overflow: hidden;
 }
 
 .desc {
+  text-align: center;
   margin-top: 5%;
   margin-bottom: 5%;
 }

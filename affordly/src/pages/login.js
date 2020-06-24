@@ -5,9 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../components/Footer";
 import Header from "../components/navbar";
 import "../stylesheets/login.css";
-import { Row, Col, Grid } from "react-bootstrap";
-import InputGroup from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/Form";
+import { Col } from "react-bootstrap";
 
 // this code for the validation is referred from https://dev.to/oluwadareseyi/build-dynamic-forms-and-perform-validation-using-react-hooks-with-no-external-package-3i5
 

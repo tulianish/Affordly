@@ -1,13 +1,8 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../components/Footer";
 import Header from "../components/navbar";
 import "../stylesheets/signup.css";
-import { Row, Col, Grid } from "react-bootstrap";
-import InputGroup from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/Form";
 import "../stylesheets/aboutus.css";
 
 // const emailCheck = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
