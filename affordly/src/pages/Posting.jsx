@@ -158,6 +158,13 @@ class Posting extends Component {
                     >
                       <i className="fa fa-share-alt">Share</i>{" "}
                     </button>
+                    <a
+                      href="/payment"
+                      className="btn btn-outline-primary float-left"
+                      style={{ marginLeft: "5px" }}
+                    >
+                      <i className="fa fa-shopping-cart">Buy</i>{" "}
+                    </a>
                   </section>
                   <section className="col-md-6">
                     <button className="btn btn-outline-success btn-md float-right">

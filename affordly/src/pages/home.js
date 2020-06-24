@@ -33,21 +33,21 @@ class Home extends React.Component {
               <Carousel.Item>
                 <img className="d-block w-100" src={a} alt="First slide" />
                 <Carousel.Caption>
-                  <h3>Trust Afford.ly</h3>
+                  <h2>Trendings</h2>
                   <p>Sell items on just a click.</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img className="d-block w-100" src={b} alt="Second slide" />
                 <Carousel.Caption>
-                  <h3>Customer Satisfaction</h3>
+                  <h2>Trendings</h2>
                   <p>Buy items as you need.</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
                 <img className="d-block w-100" src={c} alt="Third slide" />
                 <Carousel.Caption>
-                  <h3>Affordable Items</h3>
+                  <h2>Trendings</h2>
                   <p>Items in your reach.</p>
                 </Carousel.Caption>
               </Carousel.Item>
