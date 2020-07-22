@@ -22,7 +22,6 @@ import Footer from "../components/Footer";
 import Header from "../components/navbar";
 import "../stylesheets/incident.css";
 import { Col } from "react-bootstrap";
-import InputGroup from "react-bootstrap/Form";
 import axios from "axios";
 
 // user is only allowed to add valid email which is email@email.com
@@ -47,15 +46,50 @@ class RaiseASupportTicket extends React.Component {
         query: "",
         mode: "",
       },
+
+      errors: false,
+      empty: false,
+      success: false,
     };
   }
+
+  // form validation checks
   validateForm = (errors) => {
-    let valid = true;
-    if (this.state.email === "" || this.state.query === "") return false;
-    Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
-    return valid;
+    // let valid = true;
+    if (
+      this.state.email === "" ||
+      this.state.query === "" ||
+      this.state.name === "" ||
+      this.state.mode === "" ||
+      this.state.severity === ""
+    ) {
+      this.setState({
+        empty: true,
+      });
+      return false;
+    } else if (
+      // error filling the form
+      errors.name.length > 0 ||
+      errors.email.length > 0 ||
+      errors.query.length > 0
+    ) {
+      this.setState({
+        errors: true,
+        empty: false,
+        success: false,
+      });
+      return false;
+    } else {
+      this.setState({
+        success: true,
+        errors: false,
+        empty: false,
+      });
+      return true;
+    }
   };
 
+  // on form submission
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
@@ -95,11 +129,10 @@ class RaiseASupportTicket extends React.Component {
         contact_number: "0",
         mode: "",
       });
-    } else {
-      alert("Invalid Details Entered...");
     }
   };
 
+  // check for fields change to provide front-end validations
   handleOnChange = (element) => {
     element.preventDefault();
     const name = element.target.name;
@@ -151,14 +184,49 @@ class RaiseASupportTicket extends React.Component {
     this.setState({
       error,
       [name]: value,
+      success: false,
+      empty: false,
+      errors: false,
     });
   };
 
+  // main rendering of components
   render() {
     const { error } = this.state;
+    const errors = this.state.errors;
+    const success = this.state.success;
+    const empty = this.state.empty;
     return (
-      <>
+      <section>
         <Header />
+
+        {/* section to display the success and failure message on submission */}
+        <section className="container">
+          {empty ? (
+            <section className="alert alert-danger" role="alert">
+              Mandatory fields are missing. Please check the fields constraint
+              and fill the form again.
+            </section>
+          ) : null}
+          {errors ? (
+            <section class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
+              Error submitting form. Please check the fields constraint and fill
+              the form again.
+            </section>
+          ) : null}
+
+          {success ? (
+            <section class="alert alert-success" role="alert">
+              Ticket has been successfully registered. Please check your email
+              for reference.
+            </section>
+          ) : null}
+        </section>
+
+        {/* Form Starts from here */}
         <section className="container my_container">
           <section className="jumbotron box_layout">
             <h2 className="heading"> Raise A Support Ticket </h2>
@@ -306,7 +374,7 @@ class RaiseASupportTicket extends React.Component {
           </section>
         </section>
         <Footer />
-      </>
+      </section>
     );
   }
 }
