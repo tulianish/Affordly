@@ -1,3 +1,6 @@
+/* Contributed by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
