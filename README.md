@@ -45,7 +45,7 @@ React would start serving at `http://localhost:3000/`
 
 ## Deployment
 
-Deployed using [Heroku](https://heroku.com/) at [Afford.ly](https://assignment2-anish-tuli.herokuapp.com).
+Deployed using [Heroku](https://heroku.com/) at [Afford.ly](https://the-affordly.herokuapp.com).
 
 ## Built With
 
