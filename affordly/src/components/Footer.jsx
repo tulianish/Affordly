@@ -65,16 +65,16 @@ class Footer extends Component {
                 afford and enjoy at the same time.
               </p>
 
-              <form class="input-group">
+              <form className="input-group">
                 <input
                   type="text"
-                  class="form-control form-control-sm"
+                  className="form-control form-control-sm"
                   placeholder="Your email"
                   aria-label="Your email"
                   aria-describedby="basic-addon2"
                 />
-                <div class="input-group-append">
-                  <button class="btn btn-sm btn-dark my-0" type="button">
+                <div className="input-group-append">
+                  <button className="btn btn-sm btn-dark my-0" type="button">
                     Subscribe
                   </button>
                 </div>

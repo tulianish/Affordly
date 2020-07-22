@@ -1,3 +1,19 @@
+/**
+ * Ownership details
+ *
+ * Name : Sarabjeet Singh
+ * Banner ID : B00847541
+ * Contact : sarabjeet.singh@dal.ca
+ *
+ *
+ * Feature Covered:
+ *
+ * This file is a front-end for "Raise a Support Ticket" feature where user can raise a support query
+ * and the support team will look into it as per the ticket severity.
+ *
+ * The file is sending request to backend server to send an email to user and storing the ticket details in database.
+ */
+
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -7,50 +23,101 @@ import Header from "../components/navbar";
 import "../stylesheets/incident.css";
 import { Col } from "react-bootstrap";
 import InputGroup from "react-bootstrap/Form";
+import axios from "axios";
 
-// this code for the validation is referred from https://dev.to/oluwadareseyi/build-dynamic-forms-and-perform-validation-using-react-hooks-with-no-external-package-3i5
+// user is only allowed to add valid email which is email@email.com
+// where "email" can be upper / lower case and numeric only and "com can only be alphabet".
+var emailCheck = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
-const emailCheck = RegExp(
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-);
 class RaiseASupportTicket extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       email: "",
+      severity: "",
+      query: "",
       contact_number: "",
+      mode: "",
 
       error: {
+        name: "",
         email: "",
         contact_number: "",
+        query: "",
+        mode: "",
       },
     };
   }
   validateForm = (errors) => {
     let valid = true;
-    if (this.state.email === "" || this.state.contact_number === "")
-      return false;
+    if (this.state.email === "" || this.state.query === "") return false;
     Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
     return valid;
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
-      alert("Your ticket has been raised successfully");
+      const emailInfo = {
+        name: this.state.name,
+        email: this.state.email,
+        severity: this.state.severity,
+        query: this.state.query,
+        mode: this.state.mode,
+        contact_number: this.state.contact_number,
+      };
+      // alert("Your ticket has been raised successfully");
+      axios
+        .post("http://localhost:3000/support/sendSupportTicket", emailInfo)
+        .then((res) => {
+          if (res.data.status === "success") {
+            alert("An email has been sent");
+          } else if (res.data.status === "fail") {
+            alert("Failed to send the mail");
+          }
+        });
+      axios
+        .post("http://localhost:3000/support/createTicket", emailInfo)
+        .then((res) => {
+          if (res.data.success) {
+            console.log("Entry has been added");
+          } else {
+            console.log(res.data.Message);
+          }
+        });
       this.form.reset();
+      this.setState({
+        name: "",
+        email: "",
+        severity: "",
+        query: "",
+        contact_number: "0",
+        mode: "",
+      });
     } else {
       alert("Invalid Details Entered...");
     }
   };
+
   handleOnChange = (element) => {
     element.preventDefault();
     const name = element.target.name;
     const value = element.target.value;
-    console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
+      case "name":
+        if (document.getElementsByClassName("name").value === "") {
+          error.name = "";
+          break;
+        }
+        error.name =
+          value.length < 3
+            ? "First Name must be at least 3 characters long..."
+            : "";
+        break;
       case "email":
-        if (document.getElementById("mail").value === "") {
+        if (document.getElementsByClassName("mail").value === "") {
           error.email = "";
           break;
         }
@@ -58,13 +125,24 @@ class RaiseASupportTicket extends React.Component {
         break;
 
       case "contact_number":
-        if (document.getElementById("contact_number").value === "") {
+        if (document.getElementsByClassName("contact_number").value === "") {
           error.contact_number = "";
           break;
         }
         error.contact_number =
           value.length < 10
-            ? "Contact number should be at least 10 digits long..."
+            ? "Contact number must be at least 10 digits long..."
+            : "";
+        break;
+
+      case "query":
+        if (document.getElementsByClassName("query").value === "") {
+          error.query = "";
+          break;
+        }
+        error.query =
+          value.length < 15
+            ? "Query must be at least 15 characters long..."
             : "";
         break;
       default:
@@ -81,15 +159,16 @@ class RaiseASupportTicket extends React.Component {
     return (
       <>
         <Header />
-        <div className="container my_container">
-          <div className="jumbotron box_layout">
+        <section className="container my_container">
+          <section className="jumbotron box_layout">
             <h2 className="heading"> Raise A Support Ticket </h2>
             <p className="heading"> Your voice is important to us.</p>
 
-            <div className="fields">
+            <section className="fields">
               <Form
                 onSubmit={this.handleSubmit}
                 ref={(form) => (this.form = form)}
+                method="POST"
               >
                 <Form.Row>
                   <Form.Group as={Col} controlId="formGridFirstName">
@@ -97,11 +176,18 @@ class RaiseASupportTicket extends React.Component {
                       First Name <span className="mandatory">*</span>{" "}
                     </Form.Label>
                     <Form.Control
-                      name="firstName"
+                      className="name"
+                      name="name"
                       type="text"
+                      pattern="[A-Za-z\\s]*"
                       placeholder="Enter your first name"
+                      value={this.state.name}
+                      onChange={this.handleOnChange}
                       required
                     />
+                    {error.name.length > 0 && (
+                      <span className=" spn">{error.name}</span>
+                    )}
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridLastName">
@@ -121,10 +207,11 @@ class RaiseASupportTicket extends React.Component {
                       E-mail Address <span className="mandatory">*</span>{" "}
                     </Form.Label>
                     <Form.Control
-                      id="mail"
+                      className="mail"
                       name="email"
                       type="email"
-                      placeholder="Enter your email address"
+                      placeholder=" Enter your email address, preferably registered one."
+                      value={this.state.email}
                       required
                       onChange={this.handleOnChange}
                     />
@@ -134,23 +221,15 @@ class RaiseASupportTicket extends React.Component {
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridContact">
-                    <Form.Label className="form_lab">
-                      {" "}
-                      Contact Number <span className="mandatory">*</span>{" "}
-                    </Form.Label>
-                    <InputGroup className="mb-3" type="number">
-                      {/* { <InputGroup.Prepend> 
-                      <InputGroup.Text>+1</InputGroup.Text>
-                    </InputGroup.Prepend> } */}
-                      <Form.Control
-                        type="number"
-                        name="contact_number"
-                        id="contact_number"
-                        placeholder="Enter your mobile phone number"
-                        required
-                        onChange={this.handleOnChange}
-                      />
-                    </InputGroup>
+                    <Form.Label className="form_lab">Contact Number</Form.Label>
+                    <Form.Control
+                      type="number"
+                      name="contact_number"
+                      className="contact_number"
+                      placeholder="Enter your mobile phone number"
+                      value={this.state.contact_number}
+                      onChange={this.handleOnChange}
+                    />
                     {error.contact_number.length > 0 && (
                       <span className=" spn">{error.contact_number}</span>
                     )}
@@ -163,22 +242,38 @@ class RaiseASupportTicket extends React.Component {
                       Preferred Mode of Contact{" "}
                       <span className="mandatory">*</span>{" "}
                     </Form.Label>
-                    <Form.Control as="select" defaultValue="Choose..." required>
-                      <option>Choose...</option>
-                      <option>Email</option>
-                      <option>Phone</option>
+                    <Form.Control
+                      className="mode"
+                      name="mode"
+                      as="select"
+                      defaultValue="Choose..."
+                      onChange={this.handleOnChange}
+                      required
+                    >
+                      <option value="">Select...</option>
+                      <option value="mail">Email</option>
+                      <option value="phone">Phone</option>
                     </Form.Control>
+                    {error.mode.length > 0 && (
+                      <span className=" spn">{error.mode}</span>
+                    )}
                   </Form.Group>
 
                   <Form.Group as={Col} controlId="formGridCountry">
                     <Form.Label className="form_lab">
                       Severity <span className="mandatory">*</span>{" "}
                     </Form.Label>
-                    <Form.Control as="select" defaultValue="Choose..." required>
-                      <option>Choose...</option>
-                      <option>Low</option>
-                      <option>Medium</option>
-                      <option>High</option>
+                    <Form.Control
+                      name="severity"
+                      as="select"
+                      defaultValue="Select..."
+                      onChange={this.handleOnChange}
+                      required
+                    >
+                      <option value="">Choose...</option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
@@ -188,21 +283,28 @@ class RaiseASupportTicket extends React.Component {
                     Query <span className="mandatory">*</span>{" "}
                   </Form.Label>
                   <Form.Control
+                    className="query"
+                    name="query"
                     as="textarea"
                     rows="3"
                     placeholder="We would love to hear your voice!"
+                    onChange={this.handleOnChange}
+                    required
                   />
+                  {error.query.length > 0 && (
+                    <span className=" spn">{error.query}</span>
+                  )}
                 </Form.Group>
 
-                <div className="tncbutton">
+                <section className="tncbutton">
                   <Button variant="primary" type="submit">
                     SUBMIT
                   </Button>
-                </div>
+                </section>
               </Form>
-            </div>
-          </div>
-        </div>
+            </section>
+          </section>
+        </section>
         <Footer />
       </>
     );
