@@ -1,7 +1,7 @@
-Assignment 2 - Afford.ly
+Afford.ly
 ======================
 
-[Afford.ly](https://assignment2-anish-tuli.herokuapp.com) is an online web platform for classification of local reselling advertisements. It offers you to create ads for all categories like furniture, cars, electronics etc. We aim to bring together a portal that encourages reusing of resources, turning old waste into gold. The solution was designed keeping in mind the effects of waste on our planet.
+[Afford.ly](https://the-affordly.herokuapp.com) is an online web platform for classification of local reselling advertisements. It offers you to create ads for all categories like furniture, cars, electronics etc. We aim to bring together a portal that encourages reusing of resources, turning old waste into gold. The solution was designed keeping in mind the effects of waste on our planet.
 
 ## Welcome to Afford.ly
 
