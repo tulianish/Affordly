@@ -209,8 +209,8 @@ class RaiseASupportTicket extends React.Component {
             </section>
           ) : null}
           {errors ? (
-            <section class="alert alert-danger" role="alert">
-              <button type="button" class="close" data-dismiss="alert">
+            <section className="alert alert-danger" role="alert">
+              <button type="button" className="close" data-dismiss="alert">
                 &times;
               </button>
               Error submitting form. Please check the fields constraint and fill
@@ -219,7 +219,7 @@ class RaiseASupportTicket extends React.Component {
           ) : null}
 
           {success ? (
-            <section class="alert alert-success" role="alert">
+            <section className="alert alert-success" role="alert">
               Ticket has been successfully registered. Please check your email
               for reference.
             </section>
