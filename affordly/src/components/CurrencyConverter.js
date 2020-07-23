@@ -1,5 +1,24 @@
-import React from 'react'
+/*
 
+Contribution : Tejasvi Vig
+ 
+Name : Tejasvi Vig
+Banner ID : B008337057
+Email id : tj252001@dal.ca
+
+Feature Name: Currency Converter
+
+Feature Details: 
+
+This file contains the front end code for the implementation of currency converter provided to the user. 
+The method callAPI defined in the code hits the api https://api.exchangeratesapi.io/latest 
+to fetch the exchange rates for different currencies and then getConvertedCurrency function converts the amount from CAD
+to the desired currency and the final result is displayed to the user
+
+*/
+
+
+import React from 'react'
 
 class CurrencyConverter extends React.Component {
     constructor() {
