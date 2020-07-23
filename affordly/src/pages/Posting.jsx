@@ -129,7 +129,8 @@ class Posting extends Component {
                 {/* caption and description of the product*/}
                 <section className="caption">
                   <h4 className="float-right" style={{ color: "green" }}>
-                    ${this.state.cards[this.props.match.params.id].price}.00
+                    {/* ${this.state.cards[this.props.match.params.id].price}.00 */}
+                  "$55.00"
                   </h4>
                   <h4 className="float-left" style={{ color: "navy" }}>
                     {/* {this.state.cards[this.props.match.params.id].title} */}

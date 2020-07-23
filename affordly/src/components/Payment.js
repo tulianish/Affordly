@@ -1,4 +1,3 @@
-// Created by Anish Tuli, B00843522 (anish.tuli@dal.ca)
 // Modified by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
 
 
@@ -19,14 +18,18 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../stylesheets/Payment.css";
 import "font-awesome/css/font-awesome.min.css";
+import axios from "axios";
 
 class Payment extends React.Component {
   constructor(props) {
     super(props);
     this.checkValidations = this.checkValidations.bind(this);
     this.state = {
-      cardname: null,
-      cardnum: null,
+      cardname: "",
+      cardnum: "",
+      month: "",
+      year: "",
+      cvv: "",
       errors: {
         cardname: "",
         cardnum: "",
@@ -79,12 +82,20 @@ class Payment extends React.Component {
     console.log(this.state.errors);
     event.preventDefault();
     if (this.checkValidations(this.state.errors)) {
+      const form_data ={
+        cardname: this.state.cardname,
+        cardnum: this.state.cardnum,
+        month: this.state.month,
+        year: this.state.year,
+        cvv: this.state.cvv
+      }
+      axios.post("http://localhost:3000/payment/", form_data);
       alert("Payment Sucessful");
       this.form.reset();
     } else {
       alert("Payment failed");
     }
-  };
+  }; 
 
   render() {
     const errors = this.state.errors;
@@ -93,17 +104,19 @@ class Payment extends React.Component {
         <div class="container">
           <div class="jumbotron jumbotron-fluid customBox text-center">
             <div class="container">
-              <h1 class="display-4">Payment Gateway</h1>
+              <h2>Payment Gateway</h2>
+              <p> A secure way to transfer your money </p>
             </div>
           </div>
 
           <form
+
             className="loginBox"
             ref={(form) => (this.form = form)}
             onSubmit={this.reactToSubmit}
           >
             <div className="form-group">
-              <label for="cardname">Card Holder's Name</label>
+              <label for="cardname">Card Holder's Name <span className="mandatory">*</span> </label>
               <input
                 type="text"
                 class="form-control"
@@ -120,7 +133,7 @@ class Payment extends React.Component {
               )}
             </div>
             <div className="form-group">
-              <label for="cardnum">Card Number</label>
+              <label for="cardnum">Card Number <span className="mandatory">*</span> </label>
               <input
                 type="number"
                 class="form-control"
@@ -138,30 +151,52 @@ class Payment extends React.Component {
             </div>
             <div className="form-group">
               <div className="form-group">
-                <label for="cardexp">Card Expiry</label>
-                <select class="input-block-level">
-                  <option>January</option>
-                  <option>...</option>
-                  <option>December</option>
+                <label for="cardexp">Card Expiry <span className="mandatory">*</span> </label>
+                <select class="input-block-level" name= "month" id = "month_block" onChange={this.reactToChange} required>
+                  
+                  <option value="" >Select a Month</option>
+                  <option value="jan">January</option>
+                  <option value="feb">February</option>
+                  <option value="march">March</option>
+                  <option value="april">April</option>
+                  <option value="may">May</option>
+                  <option value="june">June</option>
+                  <option value="july">July</option>
+                  <option value="august">August</option>
+                  <option value="sept">September</option>
+                  <option value="oct">October</option>
+                  <option value="nov">November</option>
+                  <option value="dec">December</option>
+
                 </select>
-                <select class="input-block-level">
-                  <option>2019</option>
-                  <option>...</option>
-                  <option>2020</option>
+                <select class="input-block-level" name="year" id = "year_block" onChange={this.reactToChange} required>
+                  <option value= "" >Select an Year</option>
+                  <option value= "2030">2030</option>
+                  <option value= "2029">2029</option>
+                  <option value= "2028">2028</option>
+                  <option value= "2027">2027</option>
+                  <option value= "2026">2026</option>
+                  <option value= "2025">2025</option>
+                  <option value= "2024">2024</option>
+                  <option value= "2023">2023</option>
+                  <option value= "2022">2022</option>
+                  <option value= "2021">2021</option>
                 </select>
-                <small id="cardexphelp" className="form-text text-muted">
+                {/* <small id="cardexphelp" className="form-text text-muted">
                   Expiry date as on your card
-                </small>
+                </small> */}
               </div>
             </div>
+
             <div class="form-group">
-              <label for="cvv">CVV</label>
+              <label for="cvv">CVV <span className="mandatory">*</span> </label>
               <input
                 type="password"
                 className="form-control"
                 id="passwordField"
                 name="cvv"
-                maxlength="3"
+                maxLength="3"
+                onChange={this.reactToChange}
                 required
               />
               <small id="cvvhelp" className="form-text text-muted">
