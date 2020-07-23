@@ -6,7 +6,7 @@ class CurrencyConverter extends React.Component {
       super();
       
       this.state = {
-        baseCurrency:'GBP',
+        baseCurrency:'CAD',
         convertToCurrency:'USD',
         baseAmount: 100,
         rates: [],
@@ -25,7 +25,7 @@ class CurrencyConverter extends React.Component {
     }
     
     changeBaseCurrency(e) {
-      this.setState({ baseCurrency: e.target.value});
+      this.setState({ baseCurrency: 'CAD '});
       console.log(e.target.value)
       this.callAPI('CAD')
       
@@ -75,11 +75,7 @@ class CurrencyConverter extends React.Component {
         <div className="form-container">
           <form className='ui mini form'>
           
-          <h3>Convert from: {baseCurrency}</h3>
-            <select  value={baseCurrency} onChange={this.changeBaseCurrency}>
-              {currencyChoice}
-              <option>{baseCurrency}</option>
-            </select>
+          
           
             <h3>Convert to: {convertToCurrency}</h3>
             <select value={convertToCurrency} onChange={this.changeConvertToCurrency}>
@@ -93,7 +89,7 @@ class CurrencyConverter extends React.Component {
                     onChange={this.changeBaseAmount}>
             </input>                             
          </form>                       
-         <h2 id='result-text'>{baseAmount} {baseCurrency} is equal to {result} {convertToCurrency}</h2>
+         <h2 id='result-text'>{baseAmount} CAD is equal to {result} {convertToCurrency}</h2>
        </div>
       );
     }
