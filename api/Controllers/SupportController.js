@@ -25,9 +25,11 @@ var transporter = nodemailer.createTransport({
   },
 });
 
+let id = uuidv4();
+
 const incidentController = {
+  // mail sending function
   sendMail(req, res) {
-    const id = uuidv4();
     var mailOptions = {
       from: "affordly123@gmail.com",
       to: req.body.email,
@@ -55,7 +57,7 @@ Support Team, Affordly`,
 
   generateTicket(req, res) {
     const ticket = {
-      uuid: uuidv4(),
+      uuid: id,
       username: req.body.name,
       email: req.body.email,
       mode_of_contact: req.body.mode,
