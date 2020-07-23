@@ -25,16 +25,17 @@ class Careers extends React.Component {
           <div className="jumbotron box_layout customSize">
             <h1> Careers </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              We at Afford.ly are on a mission to solve the global waste problem by bringing a platform
+              that promotes reusing and reselling among our local community. We are dedicated to provide
+              a seamless experience for our users on a budget or tight timelines to find new home for their
+              used items. If you are interested in building an extraordinary product with an dedicated team.
             </p>
             <br />
-            <p className="ceo_name"> -Michael Hubbard (Hiring Manager) </p>
+            <p>
+              We look forward to have you onboard and value the time and effort you take to apply.
+            </p>
+            <br/>
+            <p className="ceo_name"> -Afford.ly Team</p>
           </div>
         </div>
 
