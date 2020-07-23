@@ -7,6 +7,12 @@ const postRoute = require('./api/routes/postRoute');
 // Serve the static files
 app.use(express.static(__dirname + "/affordly/build/"));
 
+//CORS and body-parser
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//Post route definition
 app.use('/api',postRoute);
 
 app.get("/*", (req, res) => {
