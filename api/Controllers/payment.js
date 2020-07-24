@@ -25,14 +25,12 @@ const paymentController = {
             year = (data[0].year);
             cvv = (data[0].cvv);
 
-
             //matching if the card details entered by the user is valid or not.
             if (req.body.cardname == cardname && req.body.cardnum == cardnum && req.body.month == month && req.body.year == year && req.body.cvv == cvv) {
 
-
                 var doc = new PDFDocument(); //started generating pdf containing payee information.
                 doc.pipe(fs.createWriteStream("./public/document/" + unique_id + ".pdf"));
-                doc.fontSize(14).text("You have successfully purchased this item", 200, 90);
+                doc.fontSize(14).text("Your payment is confirmed!", 200, 90);
 
                 doc //printing text on pdf
                     .text("Payment Reference Number: " + unique_id, 130, 120)
@@ -41,10 +39,12 @@ const paymentController = {
                 doc
                     .fontSize(9)
                     .font("Helvetica-Bold")
-                    .text("Buyer Name: " + cardname, 220, 240)
-                    .text("Buyer Email: " + "piyush46749@gmail.com", 220, 260)
-                    .text("Price: $" + "55", 220, 320)
-                    .text("Item Location:" + "1333 South Park St., Halifax, NS", 220, 340);
+                    .text("Buyer's Name: " + cardname, 220, 240)
+                    .text("Buyer's Email: " + "piyush46749@gmail.com", 220, 260)
+                    .text("Card Number: " + "**** **** **** 4567", 220, 280)
+                    .text("Expiry: " + "04 / 2024", 220, 300)
+                    .text("Price: $" + "55.00", 220, 320)
+                    .text("Item Location:" + "1333 South Park St., Halifax, NS (B3J 2K9)", 220, 340);
 
                 //adding images to the pdf (logo and confirmed images)
                 doc.image(__dirname + "/../../public/images/confirmed.png", 210, 150, { width: 170, height: 70 });
@@ -55,8 +55,8 @@ const paymentController = {
                 const mailOptions = {
                     from: "payment-confirmation@affordly.com",
                     to: "piyush46749@gmail.com",
-                    subject: "Your payment on Afford-ly is confirmed",
-                    text: "Please find attached payment confirmation file",
+                    subject: "Afford-ly Payment Confirmation - " + unique_id,
+                    text: "Greetings" + cardname + ", \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Please find attached payment confirmation file.",
                     html: "",
                     attachments: [
                         {
