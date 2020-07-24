@@ -12,6 +12,8 @@
  * and the support team will look into it as per the ticket severity.
  *
  * The file is sending request to backend server to send an email to user and storing the ticket details in database.
+ *
+ * Attribution : the logic behind code validation is referred from https://www.educative.io/edpresso/react-form-validation
  */
 
 import React from "react";
@@ -103,7 +105,10 @@ class RaiseASupportTicket extends React.Component {
       };
       // alert("Your ticket has been raised successfully");
       axios
-        .post("http://localhost:3000/support/sendSupportTicket", emailInfo)
+        .post(
+          "https://the-affordly.herokuapp.com/support/sendSupportTicket",
+          emailInfo
+        )
         .then((res) => {
           if (res.data.status === "success") {
             alert("An email has been sent");
@@ -112,14 +117,11 @@ class RaiseASupportTicket extends React.Component {
           }
         });
       axios
-        .post("http://localhost:3000/support/createTicket", emailInfo)
-        .then((res) => {
-          if (res.data.success) {
-            console.log("Entry has been added");
-          } else {
-            console.log(res.data.Message);
-          }
-        });
+        .post(
+          "https://the-affordly.herokuapp.com/support/createTicket",
+          emailInfo
+        )
+        .then((res) => res);
       this.form.reset();
       this.setState({
         name: "",
