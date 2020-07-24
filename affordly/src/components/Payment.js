@@ -89,9 +89,17 @@ class Payment extends React.Component {
         year: this.state.year,
         cvv: this.state.cvv
       }
-      axios.post("http://localhost:3000/payment/", form_data);
-      alert("Payment Sucessful");
+      axios
+      .post("http://localhost:3000/payment/", form_data)
+      .then((res) => {
+        if (res.data.code === 200 ) {
+          alert("Payment Successful - Payment Confirmation Email Sent");
+        } else if (res.data.code === 400 ) {
+          alert("Payment Failed - Invalid Card Details Entered");
+        }
+      });
       this.form.reset();
+
     } else {
       alert("Payment failed");
     }
