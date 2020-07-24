@@ -16,8 +16,19 @@ const paymentController = {
     payment(req, res) {
         let unique_id = uuidv1();
 
-        Payment.find({}, function (err, data) {
+        fetch("http://127.0.0.1:5001/api/current_user", {
+            method:"get",
+          headers:{
+            'Content-Type':'application/json',
+            'x-auth-token': token
+          }
+          })
+          .then(res => res.json())
+          .then((result) => {
+            console.warn("result", result);
+          })
 
+        Payment.find({}, function (err, data) {
             cardname = (data[0].cardname);
             cardnum = (data[0].cardnum);
             month = (data[0].month);
@@ -25,7 +36,7 @@ const paymentController = {
             cvv = (data[0].cvv);
 
             if (req.body.cardname == cardname && req.body.cardnum == cardnum && req.body.month == month && req.body.year == year && req.body.cvv == cvv) {
-                console.log("Happy")
+                
 
                 var doc = new PDFDocument();
                 doc.pipe(fs.createWriteStream("./public/document/" + unique_id + ".pdf"));
