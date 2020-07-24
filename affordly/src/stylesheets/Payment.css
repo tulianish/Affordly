@@ -1,9 +1,6 @@
 /* Modified by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
+/* This files contains the styling of payment page. */
 
-
-/* h1 {
-    font-weight: bolder;
-} */
 
 .loginBox
 {
@@ -52,11 +49,3 @@ h2 {
 .error {
     color: red;
 }
-
-/* #year_block {
-    float: left;
-}
-
-#month_block {
-    float: left;
-} */

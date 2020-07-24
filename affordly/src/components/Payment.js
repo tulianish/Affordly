@@ -45,7 +45,7 @@ class Payment extends React.Component {
     Object.values(errors).forEach(
       (value) => value.length > 0 && (valid = false)
     );
-    console.log(valid);
+    // console.log(valid);
     return valid;
   };
 
@@ -79,10 +79,10 @@ class Payment extends React.Component {
   };
 
   reactToSubmit = (event) => {
-    console.log(this.state.errors);
+    // console.log(this.state.errors);
     event.preventDefault();
     if (this.checkValidations(this.state.errors)) {
-      const form_data ={
+      const form_data = {
         cardname: this.state.cardname,
         cardnum: this.state.cardnum,
         month: this.state.month,
@@ -90,20 +90,20 @@ class Payment extends React.Component {
         cvv: this.state.cvv
       }
       axios
-      .post("http://localhost:3000/payment/", form_data)
-      .then((res) => {
-        if (res.data.code === 200 ) {
-          alert("Payment Successful - Payment Confirmation Email Sent");
-        } else if (res.data.code === 400 ) {
-          alert("Payment Failed - Invalid Card Details Entered");
-        }
-      });
+        .post("http://localhost:3000/payment/", form_data)
+        .then((res) => {
+          if (res.data.code === 200) {
+            alert("Payment Successful - Payment Confirmation Email Sent");
+          } else if (res.data.code === 400) {
+            alert("Payment Failed - Invalid Card Details Entered");
+          }
+        });
       this.form.reset();
 
     } else {
       alert("Payment failed");
     }
-  }; 
+  };
 
   render() {
     const errors = this.state.errors;
@@ -160,8 +160,8 @@ class Payment extends React.Component {
             <div className="form-group">
               <div className="form-group">
                 <label for="cardexp">Card Expiry <span className="mandatory">*</span> </label>
-                <select class="input-block-level" name= "month" id = "month_block" onChange={this.reactToChange} required>
-                  
+                <select class="input-block-level" name="month" id="month_block" onChange={this.reactToChange} required>
+
                   <option value="" >Select a Month</option>
                   <option value="jan">January</option>
                   <option value="feb">February</option>
@@ -177,18 +177,18 @@ class Payment extends React.Component {
                   <option value="dec">December</option>
 
                 </select>
-                <select class="input-block-level" name="year" id = "year_block" onChange={this.reactToChange} required>
-                  <option value= "" >Select an Year</option>
-                  <option value= "2030">2030</option>
-                  <option value= "2029">2029</option>
-                  <option value= "2028">2028</option>
-                  <option value= "2027">2027</option>
-                  <option value= "2026">2026</option>
-                  <option value= "2025">2025</option>
-                  <option value= "2024">2024</option>
-                  <option value= "2023">2023</option>
-                  <option value= "2022">2022</option>
-                  <option value= "2021">2021</option>
+                <select class="input-block-level" name="year" id="year_block" onChange={this.reactToChange} required>
+                  <option value="" >Select an Year</option>
+                  <option value="2030">2030</option>
+                  <option value="2029">2029</option>
+                  <option value="2028">2028</option>
+                  <option value="2027">2027</option>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
                 </select>
                 {/* <small id="cardexphelp" className="form-text text-muted">
                   Expiry date as on your card
