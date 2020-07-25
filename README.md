@@ -1,5 +1,5 @@
 Afford.ly
-======================
+=====================
 
 [Afford.ly](https://the-affordly.herokuapp.com) is an online web platform for classification of local reselling advertisements. It offers you to create ads for all categories like furniture, cars, electronics etc. We aim to bring together a portal that encourages reusing of resources, turning old waste into gold. The solution was designed keeping in mind the effects of waste on our planet.
 

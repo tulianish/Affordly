@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Map from "../components/Map";
 import "../stylesheets/Posting.css";
 import "font-awesome/css/font-awesome.min.css";
+import CurrencyConverter from '../components/CurrencyConverter'
 
 class Posting extends Component {
   constructor(props) {
@@ -138,11 +139,8 @@ class Posting extends Component {
                   </h4>
                   <hr />
                   <section style={{ marginTop: "8%" }}>
-                    <p>{this.state.cards[0].desc}</p>
-                    <p>
-                      <em> Submitted by Dalhousie </em>
-                    </p>
-                  </section>
+                    <CurrencyConverter />
+                    </section>
                 </section>
               </section>
 
@@ -190,6 +188,7 @@ class Posting extends Component {
                       beautiful...
                     </p>
                   </section>
+                  
                 </section>
               </section>
             </section>
