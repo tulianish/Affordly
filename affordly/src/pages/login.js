@@ -49,7 +49,7 @@ class Login extends React.Component {
   
   async login() {
     console.warn("Form formData", this.state);
-    fetch("http://the-affordly.herokuapp.com/api/login", {
+    fetch("https://the-affordly.herokuapp.com/api/login", {
       method:"post",
       body:JSON.stringify(this.state),
     headers:{
@@ -87,7 +87,7 @@ class Login extends React.Component {
     if(string !== null){
       const token = JSON.parse(string).token;
       console.warn("pushing ", token);
-      fetch("the-affordly.herokuapp.com/api/current_user", {
+      fetch("https://the-affordly.herokuapp.com/api/current_user", {
         method:"post",
         body:JSON.stringify(this.state),
       headers:{

@@ -42,7 +42,7 @@ class Signup extends React.Component {
   register(event) {
     event.preventDefault();
     console.warn("Form formData", this.state);
-    fetch("http://the-affordly.herokuapp.com/api/user", {
+    fetch("https://the-affordly.herokuapp.com/api/user", {
       method:"post",
       body:JSON.stringify(this.state),
     headers:{
