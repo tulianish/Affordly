@@ -90,7 +90,7 @@ class Payment extends React.Component {
         cvv: this.state.cvv
       }
       axios
-        .post("http://localhost:3000/payment/", form_data)
+        .post("https://the-affordly.herokuapp.com/payment/", form_data)
         .then((res) => {
           if (res.data.code === 200) {
             alert("Payment Successful - Payment Confirmation Email Sent");
