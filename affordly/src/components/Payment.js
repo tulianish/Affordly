@@ -109,9 +109,9 @@ class Payment extends React.Component {
     const errors = this.state.errors;
     return (
       <>
-        <div class="container">
-          <div class="jumbotron jumbotron-fluid customBox text-center">
-            <div class="container">
+        <div className="container">
+          <div className="jumbotron jumbotron-fluid customBox text-center">
+            <div className="container">
               <h2>Payment Gateway</h2>
               <p> A secure way to transfer your money </p>
             </div>
