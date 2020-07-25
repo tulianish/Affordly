@@ -7,5 +7,5 @@ mongoose.connect('mongodb+srv://affordly:affordly123@cluster0.lzi2l.mongodb.net/
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    Post: require('../models/postModel'),
+    Post: require('../Models/postModel'),
 };

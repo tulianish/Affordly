@@ -7,7 +7,7 @@
 const express = require('express');
 const router = express.Router();
 
-const postController = require('../controllers/postController');
+const postController = require('../Controllers/postController');
 
 router.get('/',getAllPosts);    //Route to fetch all posts in the database
 router.get('/post',getPostbyId);    //Route to get a particular post by its id
