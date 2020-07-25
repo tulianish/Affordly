@@ -6,6 +6,7 @@ const auth = require('../middleware/auth');
 
 router.post('/', auth, async (req,res) => {
     try {
+        console.warn("inside current ")
         const user = await User.findOne({ email: req.user.email }).select('-password');
         return res.json(user);
     } catch (error) {
