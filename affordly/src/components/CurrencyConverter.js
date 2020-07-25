@@ -72,9 +72,11 @@ class CurrencyConverter extends React.Component {
     }
     
     changeBaseAmount(e) {
+    if(e.target.value >= 0) {
      this.setState({
        baseAmount: e.target.value
      });
+    }
     }
     
     getConvertedCurrency(baseAmount,convertToCurrency,rates) {
