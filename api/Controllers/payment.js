@@ -6,7 +6,7 @@
 
 var express = require("express");
 var router = express.Router();
-const { v1: uuidv1 } = require('uuid');
+const { v1: uuidv4 } = require('uuid');
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
@@ -16,7 +16,7 @@ const Payment = require("../Models/payment");
 
 const paymentController = {
     payment(req, res) {
-        let unique_id = uuidv1(); //generating a unique ID for storing the unique pdf name and unique payment consirmation reference number.
+        let unique_id = uuidv4(); //generating a unique ID for storing the unique pdf name and unique payment consirmation reference number.
 
         Payment.find({}, function (err, data) { //extracting valid card details from the database
             cardname = (data[0].cardname);

@@ -6,7 +6,7 @@ const path = require("path");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const supportRoutes = require("./API/Routes/SupportRoutes");
+const supportRoutes = require("./api/Routes/SupportRoutes");
 
 app.use(cors()); // cross-origin request handler
 app.use(bodyParser.json()); // support json encoded bodies
@@ -24,12 +24,12 @@ mongoose.connect(
 );
 app.use("/support", supportRoutes);
 
-const postRoute = require('./api/routes/postRoute');
+const postRoute = require('./api/Routes/postRoute');
 
 // Serve the static files
 app.use(express.static(__dirname + "/affordly/build/"));
 
-const payment = require("./API/Routes/payment");
+const payment = require("./api/Routes/payment");
 
 app.use(cors());
 app.use(bodyParser.json());
