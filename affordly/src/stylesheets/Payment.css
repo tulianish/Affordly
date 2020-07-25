@@ -1,5 +1,5 @@
-/* Created by Anish Tuli, B00843522 (anish.tuli@dal.ca) */
 /* Modified by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
+/* This files contains the styling of payment page. */
 
 
 .loginBox
@@ -26,4 +26,26 @@
 .submitButton
 {
 	margin-top: 4%;
+}
+
+label{
+    float:left;
+}
+
+p {
+    padding-right: 1.5%;
+    padding-left: 1.5%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 3.5%;
+}
+
+.error {
+    color: red;
 }
