@@ -13,7 +13,7 @@ var express = require("express");
 var router = express.Router();
 const payments = require("../Controllers/payment"); //uses the payment controller from Controllers folder 
 
-
+//defining the route
 router.route("/").post((req, res) => {
     payments.payment(req, res);
 });

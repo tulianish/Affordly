@@ -39,7 +39,7 @@ const paymentController = {
 
                 var doc = new PDFDocument(); //started generating pdf containing payee information.
                 doc.pipe(fs.createWriteStream("./public/document/" + unique_id + ".pdf"));
-                doc.fontSize(14).text("Your payment is confirmed!", 200, 90);
+                doc.fontSize(12).text("Your payment is confirmed!", 200, 90);
 
                 doc //printing text on pdf
                     .text("Payment Reference Number: " + unique_id, 130, 120)
@@ -90,7 +90,7 @@ const paymentController = {
                     else {
                         res.send({
                             code: 200,
-                            message: "Payment Successful"
+                            message: "Payment Successful" //message is payment is made
                         });
                     }
                 });

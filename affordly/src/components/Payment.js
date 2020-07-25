@@ -124,7 +124,7 @@ class Payment extends React.Component {
     }
   };
 
-  render() {
+  render() { //rendering the components for frontend of payment page  
     const errors = this.state.errors;
     return (
       <>
@@ -137,12 +137,14 @@ class Payment extends React.Component {
           </div>
 
           <form
+          
+// adding frontend for fields
 
             className="loginBox"
             ref={(form) => (this.form = form)}
             onSubmit={this.reactToSubmit}
-          >
-            <div className="form-group">
+          > 
+            <div className="form-group"> 
               <label for="cardname">Card Holder's Name <span className="mandatory">*</span> </label>
               <input
                 type="text"
@@ -152,13 +154,16 @@ class Payment extends React.Component {
                 onChange={this.reactToChange}
                 required
               />
-              <small id="cardnamehelp" className="form-text text-muted">
+              <small id="cardnamehelp" className="form-text text-muted"> 
                 Type as on your card
               </small>
               {errors.cardname.length > 0 && (
                 <span className="error">{errors.cardname}</span>
               )}
             </div>
+
+{/* adding card number for frontend */}
+
             <div className="form-group">
               <label for="cardnum">Card Number <span className="mandatory">*</span> </label>
               <input
@@ -181,6 +186,8 @@ class Payment extends React.Component {
                 <label for="cardexp">Card Expiry <span className="mandatory">*</span> </label>
                 <select class="input-block-level" name="month" id="month_block" onChange={this.reactToChange} required>
 
+{/* adding months for dropdown menu */}
+
                   <option value="" >Select a Month</option>
                   <option value="jan">January</option>
                   <option value="feb">February</option>
@@ -194,6 +201,8 @@ class Payment extends React.Component {
                   <option value="oct">October</option>
                   <option value="nov">November</option>
                   <option value="dec">December</option>
+
+{/* adding years for dropdown menu */}
 
                 </select>
                 <select class="input-block-level" name="year" id="year_block" onChange={this.reactToChange} required>
@@ -214,6 +223,8 @@ class Payment extends React.Component {
                 </small> */}
               </div>
             </div>
+
+{/* defining class for cvv  */}
 
             <div class="form-group">
               <label for="cvv">CVV <span className="mandatory">*</span> </label>
