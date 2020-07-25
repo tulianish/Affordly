@@ -1,3 +1,12 @@
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ * 
+ */
+
 /* Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
 // This files contains the logic for making the payment and sending the email along with the pdf via email.
 // This pdf and email is generated and sent using pdfkit and nodemailer respectively.
@@ -89,7 +98,7 @@ const paymentController = {
             else {
                 res.send({
                     code: 400,
-                    message: "Payment Failed : Invalid Card"
+                    message: "Payment Failed : Invalid Card" //error message if card details are not valid
                 });
             }
         }

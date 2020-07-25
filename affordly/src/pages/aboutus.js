@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Developed by-
  *
@@ -11,15 +10,12 @@
  * This is the frontend for our About Us page.
  * 
  */
-=======
-// Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
 
-/* 
+ /* 
   Modified by - Tejasvi Vig
   Banner number - B00833705
   Email id - tj252001@dal.ca
 */
->>>>>>> ef98a344373bc12e42887f21f2b3012fafb09661
 
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";

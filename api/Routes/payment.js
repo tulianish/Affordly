@@ -1,5 +1,13 @@
-/* Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ * 
+ */
 
+//  This file contains the logic to route our payment feature logic present in controller
 
 var express = require("express");
 var router = express.Router();

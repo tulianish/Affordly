@@ -1,4 +1,11 @@
-/* Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca) */
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ * 
+ */
 // This file contais the model for payment collection defined in MongoDB
 
 
