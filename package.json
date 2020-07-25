@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/tulianish/CSCI5709-Group2-Project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-validator": "^6.6.0",
     "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
     "nodemailer": "^6.4.10",
     "path": "^0.12.7",
