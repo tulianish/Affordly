@@ -19,6 +19,7 @@ to the desired currency and the final result is displayed to the user
 
 
 import React from 'react'
+import '../stylesheets/CurrencyConverter.css'
 
 class CurrencyConverter extends React.Component {
     constructor() {
@@ -93,9 +94,6 @@ class CurrencyConverter extends React.Component {
       return(
         <div className="form-container">
           <form className='ui mini form'>
-          
-          
-          
             <h3>Convert to: {convertToCurrency}</h3>
             <select value={convertToCurrency} onChange={this.changeConvertToCurrency}>
               {currencyChoice}
