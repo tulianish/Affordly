@@ -1,5 +1,15 @@
-// Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
-
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ *
+ * 
+ * Feature Covered:
+ * This is the frontend for our Raise A Support Ticket page.
+ * 
+ */
 /**
  * Modification details
  *

@@ -1,5 +1,15 @@
-// Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
-
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ *
+ * 
+ * Feature Covered:
+ * This is the frontend for our Home page.
+ * 
+ */
 
 import React from "react";
 import "react-dropdown/style.css";
@@ -65,8 +75,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Cushions</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    A pair of warm blue cushion. Used hardly for 2 weeks. Perfect condition and cozy enough to help you sleep peacefully.  
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -84,8 +93,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Lamp</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                  A brand new lamp available for the cheapest price. Can accomodate 2 bulbs at a time. 
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -101,10 +109,9 @@ class Home extends React.Component {
                   src="https://secure.img1-fg.wfcdn.com/im/06914522/resize-h500-w500%5Ecompr-r85/7080/70801423/Product+Byler+10+-+Light+Sputnik+Sphere+Chandelier.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Fan</Card.Title>
+                  <Card.Title>Bulbs</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Bunch of brand new bulbs available at our store. Free devlivery available on order more than $55.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -124,8 +131,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Mat</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    A light color printed, and warm mat just for $55. Used only for 2 months in the bedroom.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -143,8 +149,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Table</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    A used light weight wooden table available. Can be used for keeping things without any problem. 
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -162,8 +167,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Fridge</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    A brand new fridge available in mint condition. Cheapest price guaranteed. Keeps all your items fresh.
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -183,8 +187,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Chair</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    A brand new warm, and comfortable wooden sofa chair. This is even available in pair.   
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -202,8 +205,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Curtains</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Used curtains available for the reasonable price. Can be gently washed, and used again. 
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -221,8 +223,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>Lamp</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                  An old lamp available for the cheapest price. Looks new, and can accomodate  a single bulb.
                   </Card.Text>
                 </Card.Body>
               </Card>

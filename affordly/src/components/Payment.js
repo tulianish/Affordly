@@ -1,4 +1,20 @@
-// Modified by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
+/**
+ * Modified by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ *
+ * 
+ * Modifications Made:
+ * 
+ * 1. Added (*) in red color to indicate that the fields are mandatory.
+ * 2. Shifted all the fields label to the left to make it look more appealing and sync it with the frontend of other pages used in our project.
+ * 3. Displayed all the frontend validation error messages in red color.
+ * 4. Modified the eroor messages on click of "Pay Now" button to make it more comprehensive.
+ * 5. Added months and years manually in the dropdown menu.
+ * 6. Added logic to extract the details entered by users in the payment form.
+ */
 
 
 /*============================================================
@@ -14,17 +30,20 @@ https://learnetto.com/blog/react-form-validation
 
 ==============================================================*/
 
+// importing necessary packages
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "../stylesheets/Payment.css";
 import "font-awesome/css/font-awesome.min.css";
 import axios from "axios";
 
+
+
 class Payment extends React.Component {
   constructor(props) {
     super(props);
     this.checkValidations = this.checkValidations.bind(this);
-    this.state = {
+    this.state = { //defining state to extract the user details and also for frontedn validation
       cardname: "",
       cardnum: "",
       month: "",
@@ -37,6 +56,7 @@ class Payment extends React.Component {
     };
   }
 
+  //logic for frontend validation
   checkValidations = (errors) => {
     let valid = true;
 
@@ -45,16 +65,16 @@ class Payment extends React.Component {
     Object.values(errors).forEach(
       (value) => value.length > 0 && (valid = false)
     );
-    // console.log(valid);
     return valid;
   };
 
+  //logic to extrcat user entered details while entering in real time
   reactToChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     let errors = this.state.errors;
 
-    switch (name) {
+    switch (name) { //switch case defined for card name - for frontend validation
       case "cardname":
         if (document.getElementById("cardnameField").value === "") {
           errors.cardname = "";
@@ -63,13 +83,13 @@ class Payment extends React.Component {
         errors.cardname =
           value.length < 3 ? "Name must be atleast 3 characters long" : "";
         break;
-      case "cardnum":
+      case "cardnum": //switch case defined for card number - for frontend validation
         if (document.getElementById("cardnumField").value === "") {
           errors.cardnum = "";
           break;
         }
         errors.cardnum =
-          value.length !== 16 ? "Card number must be 16 characters long" : "";
+          value.length !== 16 ? "Card number must be 16 characters long" : ""; //checking if card number is of 16 digits
         break;
       default:
         break;
@@ -78,18 +98,17 @@ class Payment extends React.Component {
     this.setState({ errors, [name]: value });
   };
 
-  reactToSubmit = (event) => {
-    // console.log(this.state.errors);
+  reactToSubmit = (event) => { //logic to store the details entered by user in form_data object
     event.preventDefault();
     if (this.checkValidations(this.state.errors)) {
-      const form_data = {
+      const form_data = { //extracting each details one-by-one
         cardname: this.state.cardname,
         cardnum: this.state.cardnum,
         month: this.state.month,
         year: this.state.year,
         cvv: this.state.cvv
       }
-      axios
+      axios //mentioning the alert message depending on if-else condition
         .post("https://the-affordly.herokuapp.com/payment/", form_data)
         .then((res) => {
           if (res.data.code === 200) {
@@ -98,10 +117,10 @@ class Payment extends React.Component {
             alert("Payment Failed - Invalid Card Details Entered");
           }
         });
-      this.form.reset();
+      this.form.reset(); //refreshing the form upon successful payment
 
     } else {
-      alert("Payment failed");
+      alert("Please Enter Valid Card Details"); //error message if details entered by the user in not valid as per the frontend
     }
   };
 

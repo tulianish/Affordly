@@ -1,7 +1,23 @@
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ *
+ * 
+ * Feature Covered:
+ * 
+ * This is the navbar which is used in our project throughout on each page.
+ */
+
+
 // Modified by Guneet Singh Dhillon
 //   I modified this file to add a Logout button in the Navbar. 
 //   This Logout button is only visible when some is logged in the website.
 //   Likewise, navbar shows Login and SignUp options when no one is logged in. 
+
+
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
