@@ -42,22 +42,7 @@ Make sure you have these installed :
 * Starts the Node server :
 `node server.js`
 
-Node server would start serving at `http://localhost:3001/`
-
-### React
-
-* Navigate inside CSCI5709-Group2-Project/affordly/ directory to install all react dependencies
-
-```
-npm install
-```
-
-* Use the following command to start react
-
-```
-npm start
-```
-React would start serving at `http://localhost:3000/`
+Node server would start serving at `http://localhost:3000/`
 
 ## Architecture
 
