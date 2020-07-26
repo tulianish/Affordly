@@ -126,7 +126,7 @@ Other than this specific feature, below stated files have been developed by me d
     │           ├── incident.css  
     │           ├── navbar.css
 
-    **Backend**
+**Backend**
 
     ├── api
     │   ├── Controllers
@@ -188,8 +188,9 @@ For testing the endpoints, Postman has been used on each of the discussed API.
     bash
     node server.js 
        
-The application will be up on port 3000 on your localhost.
-
+The application will be up on port 3000 on your localhost. 
+Please note: You need to change the backend calls url inside frontend source (affordly/src/) as it is pointing to https://the-affordly.herokuapp.com/ currently.
+             It should point to localhost:3000 now.
 
 ## Additional Features
 
