@@ -2,9 +2,27 @@
 
 const express = require("express");
 const path = require("path");
-const cors = require("cors");
+
 const app = express();
+const cors = require("cors");
 const bodyParser = require("body-parser");
+const supportRoutes = require("./API/Routes/SupportRoutes");
+
+app.use(cors()); // cross-origin request handler
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+// connecting to mongoDB Atlas
+const mongoose = require("mongoose");
+mongoose.connect(
+  "mongodb+srv://affordly:affordly123@cluster0.lzi2l.mongodb.net/affordly?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
+app.use("/support", supportRoutes);
 
 // Serve the static files
 app.use(express.static(__dirname + "/affordly/build/"));

@@ -1,5 +1,4 @@
 Assignment 4
-============
 
 ![Afford.ly](public/images/logo.png)
 

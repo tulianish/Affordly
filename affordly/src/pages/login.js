@@ -1,12 +1,12 @@
 // Developed by PIYUSH PIYUSH (B00844563, piyush@dal.ca)
 
-
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../components/Footer";
 import Header from "../components/navbar";
+import { Redirect } from "react-router-dom";
 import "../stylesheets/login.css";
 import { Col } from "react-bootstrap";
 
@@ -16,15 +16,94 @@ const emailCheck = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
 class Login extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       email: "",
+      // fields added by guneet
+      password:"",
+      login:false,
+      token:null,
+      store:null,
+      redirect:null,
       error: {
         email: "",
       },
     };
   }
+  componentDidMount(){
+    this.storeCollector(); 
+  }
+
+  storeCollector() {
+    console.warn("hello from storecollector")
+    let store = JSON.parse(localStorage.getItem('login'));
+    this.setState({store:store});
+    if(localStorage.getItem('login') !== null){
+      this.setState({login:true})
+    }
+    console.warn(store);
+  }
+
+  
+  async login() {
+    console.warn("Form formData", this.state);
+    fetch("http://the-affordly.herokuapp.com/api/login", {
+      method:"post",
+      body:JSON.stringify(this.state),
+    headers:{
+      'Content-Type':'application/json',
+    }
+    }).then(res => res.json())
+    .then((result) => {
+      console.warn("jatt da token", result.token);
+      if(result.token){
+        localStorage.setItem('login',JSON.stringify({
+          login:true,
+          token:result.token
+        }))
+        this.setState({login:true})
+        this.setState({ redirect: "/" });
+
+      }
+      else {
+        alert('Invalid Credentials');
+      }
+    })
+
+    // redirect to home
+    // history.push
+    if(this.state.token){
+      console.log("redirect ")
+      await this.setState({ redirect: "/" });
+    }
+    
+  }
+  
+  // code in this function will be used by others
+  get_current_user(e) {
+    let string = localStorage.getItem('login');
+    if(string !== null){
+      const token = JSON.parse(string).token;
+      console.warn("pushing ", token);
+      fetch("the-affordly.herokuapp.com/api/current_user", {
+        method:"post",
+        body:JSON.stringify(this.state),
+      headers:{
+        'Content-Type':'application/json',
+        'x-auth-token': token
+      }
+      }).then(res => res.json())
+      .then((result) => {
+        console.warn("result", result);
+      })
+      }
+    else {
+      alert('Please login to access this feature!')
+    }
+  };
+
   validateForm = (errors) => {
     let valid = true;
     if (this.state.email === "") return false;
@@ -33,8 +112,9 @@ class Login extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
+    this.login();
     if (this.validateForm(this.state.error)) {
-      alert("User Has Been Logged In Successfully...");
+      // alert("User Has Been Logged In Successfully...");
       this.form.reset();
     } else {
       alert("Invalid Details Entered...");
@@ -64,6 +144,11 @@ class Login extends React.Component {
   };
   render() {
     const { error } = this.state;
+    // console.log("yahan pe hai ",this.state.redirect);
+    if (this.state.redirect === "/") {
+      // console.log("Insid it");
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div>
         <Header />
@@ -107,10 +192,12 @@ class Login extends React.Component {
                     type="password"
                     placeholder="Enter your password"
                     required
+                    onChange={(event)=>{this.setState({password:event.target.value})}}
                   />
                 </Form.Group>
 
                 <div className="tncbutton">
+                  {/* gg int */}
                   <Button variant="primary" type="submit">
                     Log In
                   </Button>
@@ -120,6 +207,9 @@ class Login extends React.Component {
                   </a>
                   <p id="message">
                     {" "}
+                    {/* <Button onClick={(e)=>{this.get_current_user(e)}} variant="primary" type="submit">
+                    Current User
+                  </Button> */}
                     Not a Registered User?{" "}
                     <a id="clickme" href="/signup">
                       Click Here To Register
