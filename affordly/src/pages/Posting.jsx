@@ -8,6 +8,7 @@
  *
  **/
  // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
+// Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
 
 import React, { Component } from "react";
 import Navbar from "../components/navbar";
@@ -32,7 +33,9 @@ class Posting extends Component {
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
-  .catch(error => window.location.replace("https://the-affordly.herokuapp.com"))
+  .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
+
+  let clickAPI = axios.get("http://35.153.255.72/clicked?post_id="+id)
   }
 
   render() {
@@ -118,7 +121,7 @@ class Posting extends Component {
                       beautiful...
                     </p>
                   </section>
-                  
+
                 </section>
               </section>
             </section>
