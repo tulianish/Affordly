@@ -100,8 +100,7 @@ class Home extends React.Component {
                 <Card.Body>
                   <Card.Title>{value.title}</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    {value.description}
                   </Card.Text>
                 </Card.Body>
               </Card>

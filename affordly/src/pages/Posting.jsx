@@ -65,7 +65,7 @@ class Posting extends Component {
                 {/* caption and description of the product*/}
                 <section className="caption">
                   <h4 className="float-right" style={{ color: "green" }}>
-                    {this.state.post.price}
+                    ${this.state.post.price}.00
                   </h4>
                   <h4 className="float-left" style={{ color: "navy" }}>
                     {this.state.post.title}
