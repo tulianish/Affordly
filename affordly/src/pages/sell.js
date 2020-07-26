@@ -104,11 +104,11 @@ class Sell extends React.Component {
         img: responseData.secure_url
       }
       let postReply = axios.post("https://the-affordly.herokuapp.com/api/createPost", request)
-      .then(res => res.json())
+      .then(res => res)
       .then(result => {
-        console.log(result);
-        alert(result.message)
+        window.location.replace("https://the-affordly.herokuapp.com");
       })
+      .catch()
       this.form.reset();
     })
     .catch(error => console.warn(error));
