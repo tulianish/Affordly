@@ -108,10 +108,10 @@ class Sell extends React.Component {
       .then(result => {
         window.location.replace("https://the-affordly.herokuapp.com");
       })
-      .catch()
+      .catch(error => error)
       this.form.reset();
     })
-    .catch(error => console.warn(error));
+    .catch(error => error);
 
     } else {
       alert("Invalid Details Entered...");

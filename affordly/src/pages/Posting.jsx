@@ -29,7 +29,6 @@ class Posting extends Component {
 
   componentDidMount(){
   let id = window.location.href.split("/",5)[4];
-  console.log(id);
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
@@ -37,7 +36,6 @@ class Posting extends Component {
   }
 
   render() {
-  console.log(this.state.post.title);
     return (
       <>
         <Navbar />

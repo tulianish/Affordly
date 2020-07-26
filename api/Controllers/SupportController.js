@@ -101,7 +101,10 @@ Support Team, Affordly`,
       }
     });
     transporter.close();
-    res.sendStatus(200);
+    res.sendStatus(200).json({
+          success: true,
+          Message: "New Ticket details have been sent to your email.",
+        });;
   },
 
   // generate the ticket entry in database
