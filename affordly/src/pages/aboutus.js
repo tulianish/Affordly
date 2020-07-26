@@ -98,17 +98,12 @@ ensures that users can navigate through key features seamlessly.
             />
             <p className="random_text">
             Our application has several competitors in the market. Some of the top competition that we
-face is from already established companies like Kijiji, Wayfair, used.ca and legto [1][2][3][4].
+face is from already established companies like Kijiji, Wayfair, used.ca and legto.
 We also face competition from the retail sector, Value Village in NS being our biggest
 competitor.
-We believe that our application will be better as we follow an aesthetic and minimalist
-design with focus on the goal we want to achieve. We provide a discussion forum, which is
+We provide a discussion forum, which is
 a first of its kind feature in a website. The discussion forum will allow users to discuss the
-quality of the product and make decisions in general. Apart from that, we also have a
-like/dislike counter (similar to Facebook) This will help determine the quality of the product
-or reputation of the seller in general. In terms of query optimization, we are using Sequelize
-ORM and Django ORM to effectively reduce the query timings by prefetching and caching
-data at application level.
+quality of the product and make decisions in general.
 
             </p>
             <br />
