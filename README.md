@@ -45,7 +45,7 @@ Node server would start serving at `http://localhost:3000/`
 
 ## Architecture
 
-[![Afford.ly Post Microserver](https://github.com/tulianish/AffordlyAPIs/blob/master/demo/PostManagementMicroservice.png)](http://the-affordly.herokuapp.com/sell)
+[![Afford.ly Post Microserver](https://github.com/tulianish/CSCI5709-Group2-Project/blob/anishtuli-postFeature/demo/PostManagementMicroservice.png)](http://the-affordly.herokuapp.com/sell)
 
 ## API Specifications
 
