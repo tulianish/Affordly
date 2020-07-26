@@ -1,3 +1,14 @@
+/**
+ * Developed by-
+ *
+ * Name : Sarabjeet Singh
+ * Banner ID : B00847541
+ * Email ID : sarabjeet.singh@dal.ca
+ *
+ * Feature Covered:
+ * This file is a front-end for map visualization on Posting page.
+ */
+
 import React, { Component } from "react";
 
 // Simple map component which enables the embed map for the posting page.

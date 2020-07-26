@@ -1,3 +1,14 @@
+/**
+ * Developed by-
+ *
+ * Name : Sarabjeet Singh
+ * Banner ID : B00847541
+ * Email ID : sarabjeet.singh@dal.ca
+ *
+ * Feature Covered:
+ * This file is a front-end for app Footer which contains the links for various company and product details.
+ */
+
 import React, { Component } from "react";
 import "../stylesheets/Footer.css";
 import "font-awesome/css/font-awesome.min.css";
