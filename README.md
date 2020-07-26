@@ -106,43 +106,43 @@ Other than this specific feature, below stated files have been developed by me d
 
 **frontend**
 
-|── affordly
-│   ├── build
-│   │   └── static
-│   │       ├── css
-│   │       ├── js
-│   │       └── media
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── public
-│   └── src
-│       ├── components
-│          ├── Footer.jsx
-│           └── navbar.js
-│       ├── pages
-│           ├── incident.js 
-│       └── stylesheets
-│           ├── Footer.css
-│           ├── incident.css  
-│           ├── navbar.css
+    |── affordly
+    │   ├── build
+    │   │   └── static
+    │   │       ├── css
+    │   │       ├── js
+    │   │       └── media
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   ├── public
+    │   └── src
+    │       ├── components
+    │          ├── Footer.jsx
+    │           └── navbar.js
+    │       ├── pages
+    │           ├── incident.js 
+    │       └── stylesheets
+    │           ├── Footer.css
+    │           ├── incident.css  
+    │           ├── navbar.css
 
-**Backend**
+    **Backend**
 
-├── api
-│   ├── Controllers
-│   │   ├── SupportController.js
-│   ├── Models
-│   │   ├── SupportModel.js
-│   └── Routes
-│       ├── SupportRoutes.js
-├── package-lock.json
-├── package.json
-├── public
-│   ├── document
-│   │   └── SupportTicket_64b0d0f3-aba6-431a-929e-d097c97d9706.pdf
-│   └── images
-│       └── logo.png
-└── server.js 
+    ├── api
+    │   ├── Controllers
+    │   │   ├── SupportController.js
+    │   ├── Models
+    │   │   ├── SupportModel.js
+    │   └── Routes
+    │       ├── SupportRoutes.js
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── document
+    │   │   └── SupportTicket_64b0d0f3-aba6-431a-929e-d097c97d9706.pdf
+    │   └── images
+    │       └── logo.png
+    └── server.js 
 
 ## Integration and Overall Flow
 
