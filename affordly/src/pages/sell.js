@@ -76,7 +76,7 @@ class Sell extends React.Component {
           })
           .then(res => res.json())
           .then((result) => {
-            this.setState({email : result.email});  //Sets the 
+            this.setState({email : result.email});  //Sets the email from local storage token
           })
           }
         else {
@@ -103,8 +103,12 @@ class Sell extends React.Component {
         email : this.state.email,   //Use session to fetch current logged in user
         img: responseData.secure_url
       }
-      let postReply = axios.post("https://the-affordly.herokuapp.com/api/createPost", request);
-      alert("Item posted successfully...");
+      let postReply = axios.post("https://the-affordly.herokuapp.com/api/createPost", request)
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+        alert(result.message)
+      })
       this.form.reset();
     })
     .catch(error => console.warn(error));
@@ -119,7 +123,6 @@ class Sell extends React.Component {
     const name = element.target.name;
     const value = element.target.value;
 
-    // console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
       case "title":
@@ -167,6 +170,28 @@ class Sell extends React.Component {
       [name]: value,
     });
   };
+
+  componentDidMount() {
+    let string = localStorage.getItem('login');
+        if(string !== null){
+          const token = JSON.parse(string).token;
+          fetch("https://the-affordly.herokuapp.com/api/current_user", { //
+            method:"post",
+            body:JSON.stringify(this.state),
+          headers:{
+            'Content-Type':'application/json',
+            'x-auth-token': token
+          }
+          })
+          .then(res => res.json())
+          .then((result) => {
+            this.setState({email : result.email});  //Sets the email
+          })
+          }
+        else {
+          alert("Your post will only be approved if you are logged in");
+        }
+  }
 
   render() {
     const error = this.state.error;
