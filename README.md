@@ -129,3 +129,5 @@ Deployed using [Heroku](https://heroku.com/) at [Afford.ly](http://the-affordly.
 [9]"Postman Introduction", Postman Learning Center, 2020. [Online]. Available: https://learning.postman.com/docs/getting-started/introduction/. [Accessed: 23- Jul- 2020].<br/>
 [10]"Connect to a Cluster — MongoDB Atlas", Docs.atlas.mongodb.com, 2020. [Online]. Available: https://docs.atlas.mongodb.com/connect-to-cluster/. [Accessed: 23- Jul- 2020].<br/>
 [11]"Upload API Reference | Cloudinary", Cloudinary.com, 2020. [Online]. Available: https://cloudinary.com/documentation/image_upload_api_reference. [Accessed: 23- Jul- 2020].<br/>
+[12] Dal.brightspace.com. 2020. “A1_Tuli_Anish”, submitted to Brightspace on 23rd May. [online] Available at : https://dal.brightspace.com/d2l/common/viewFile.d2lfile/Database/MjIzNjQ5OQ/A1_Tuli_Anish.pdf?ou=124056 [Accessed 22 June 2020].<br/>
+[13] Dal.brightspace.com. 2020. “A2_Tuli_Anish”, submitted to Brightspace on 15th June. [online] Available at : https://dal.brightspace.com/d2l/common/viewFile.d2lfile/Database/MjI3NjM5OA/A2_Tuli_Anish.txt?ou=124056 [Accessed 22 June 2020].<br/>
