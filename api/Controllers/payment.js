@@ -63,7 +63,7 @@ const paymentController = {
                 //adding email details along with attachments, text, subject.
                 const mailOptions = {
                     from: "payment-confirmation@affordly.com",
-                    to: "piyush@dal.ca",
+                    to: "aadeshshah@dal.ca",
                     subject: "Afford-ly Payment Confirmation - " + unique_id,
                     text: "Greetings " + cardname + ", \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Please find attached payment confirmation file.",
                     html: "",
