@@ -1,3 +1,5 @@
+ // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
+
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -51,7 +53,7 @@ class Sell extends React.Component {
       let string = localStorage.getItem('login');
         if(string !== null){
           const token = JSON.parse(string).token;
-          fetch("http://the-affordly.herokuapp.com:3000/api/current_user", { //
+          fetch("https://the-affordly.herokuapp.com/api/current_user", { //
             method:"post",
             body:JSON.stringify(this.state),
           headers:{
@@ -61,7 +63,7 @@ class Sell extends React.Component {
           })
           .then(res => res.json())
           .then((result) => {
-            this.setState({email : result.email});  //Sets the 
+            this.setState({email : result.email});  //Sets the email from local storage token
           })
           }
         else {
@@ -88,11 +90,15 @@ class Sell extends React.Component {
         email : this.state.email,   //Use session to fetch current logged in user
         img: responseData.secure_url
       }
-      let postReply = axios.post("http://the-affordly.herokuapp.com:3000/api/createPost", request);
-      alert("Item posted successfully...");
+      let postReply = axios.post("https://the-affordly.herokuapp.com/api/createPost", request)
+      .then(res => res)
+      .then(result => {
+        window.location.replace("https://the-affordly.herokuapp.com");
+      })
+      .catch(error => error)
       this.form.reset();
     })
-    .catch(error => console.warn(error));
+    .catch(error => error);
 
     } else {
       alert("Invalid Details Entered...");
@@ -104,7 +110,6 @@ class Sell extends React.Component {
     const name = element.target.name;
     const value = element.target.value;
 
-    // console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
       case "title":
@@ -152,6 +157,28 @@ class Sell extends React.Component {
       [name]: value,
     });
   };
+
+  componentDidMount() {
+    let string = localStorage.getItem('login');
+        if(string !== null){
+          const token = JSON.parse(string).token;
+          fetch("https://the-affordly.herokuapp.com/api/current_user", { //
+            method:"post",
+            body:JSON.stringify(this.state),
+          headers:{
+            'Content-Type':'application/json',
+            'x-auth-token': token
+          }
+          })
+          .then(res => res.json())
+          .then((result) => {
+            this.setState({email : result.email});  //Sets the email
+          })
+          }
+        else {
+          alert("Your post will only be approved if you are logged in");
+        }
+  }
 
   render() {
     const error = this.state.error;
