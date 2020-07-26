@@ -11,7 +11,8 @@
  * 
  */
 
-
+// Modified by Guneet Singh Dhillon (B00843346, guneet@dal.ca)
+//    I wrote login, storeCollector and get_current user functions to connect the backend login API to React frontend.
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -44,23 +45,27 @@ class Login extends React.Component {
       },
     };
   }
+
+  // This combination of componentDidMount and storeCollector function is for maintaining log in state after refresh
   componentDidMount(){
     this.storeCollector(); 
   }
 
   storeCollector() {
-    console.warn("hello from storecollector")
+    // console.warn("hello from storecollector")
     let store = JSON.parse(localStorage.getItem('login'));
     this.setState({store:store});
     if(localStorage.getItem('login') !== null){
       this.setState({login:true})
     }
-    console.warn(store);
+    // console.warn(store);
   }
 
-  
+  // this login function calls the backend login API (also coded by me) with email and password of user
+  // and stores the JWT returned in the localStorage to establish a session.
+  // Reference for this section of code : 2020. [Online]. Available: https://www.youtube.com/watch?v=I3PC8pV1SBM. [Accessed: 25- Jul- 2020].  
   async login() {
-    console.warn("Form formData", this.state);
+    // console.warn("Form formData", this.state);
     fetch("https://the-affordly.herokuapp.com/api/login", {
       method:"post",
       body:JSON.stringify(this.state),
@@ -69,7 +74,7 @@ class Login extends React.Component {
     }
     }).then(res => res.json())
     .then((result) => {
-      console.warn("jatt da token", result.token);
+      // console.warn("jatt da token", result.token);
       if(result.token){
         localStorage.setItem('login',JSON.stringify({
           login:true,
@@ -87,18 +92,19 @@ class Login extends React.Component {
     // redirect to home
     // history.push
     if(this.state.token){
-      console.log("redirect ")
+      // console.log("redirect ")
       await this.setState({ redirect: "/" });
     }
     
   }
   
-  // code in this function will be used by others
+  // I wrote this dummy function to test the middleware, protected routes and current login session. 
+  // Reference for this section of code : 2020. [Online]. Available: https://www.youtube.com/watch?v=I3PC8pV1SBM. [Accessed: 25- Jul- 2020].
   get_current_user(e) {
     let string = localStorage.getItem('login');
     if(string !== null){
       const token = JSON.parse(string).token;
-      console.warn("pushing ", token);
+      // console.warn("pushing ", token);
       fetch("https://the-affordly.herokuapp.com/api/current_user", {
         method:"post",
         body:JSON.stringify(this.state),
@@ -108,11 +114,13 @@ class Login extends React.Component {
       }
       }).then(res => res.json())
       .then((result) => {
-        console.warn("result", result);
+        // console.warn("result", result);
+        // teammates code goes here
       })
       }
     else {
-      alert('Please login to access this feature!')
+      // alert('Please login to access this feature!')
+      // teammates code
     }
   };
 
@@ -136,7 +144,7 @@ class Login extends React.Component {
     element.preventDefault();
     const name = element.target.name;
     const value = element.target.value;
-    console.log("inside " + name + value);
+    // console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
       case "email":

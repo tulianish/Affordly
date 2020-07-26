@@ -1,3 +1,5 @@
+// Developed by Guneet Singh Dhillon (B00843346, guneet@dal.ca)
+// This is the User model for user and session management
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({

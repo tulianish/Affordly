@@ -11,7 +11,8 @@
  * 
  */
 
-
+// Modified by Guneet Singh Dhillon (B00843346, guneet@dal.ca)
+//    I wrote register function to connect the backend signup API to React frontend.
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -50,9 +51,13 @@ class Signup extends React.Component {
       },
     };
   }
+
+  // this register function calls the backend login API (also coded by me) with all the details of user
+  // after success, it redirects user to the login screen
+  // Reference for this section of code : 2020. [Online]. Available: https://www.youtube.com/watch?v=I3PC8pV1SBM. [Accessed: 25- Jul- 2020].
   register(event) {
     event.preventDefault();
-    console.warn("Form formData", this.state);
+    // console.warn("Form formData", this.state);
     fetch("https://the-affordly.herokuapp.com/api/user", {
       method:"post",
       body:JSON.stringify(this.state),
@@ -61,7 +66,7 @@ class Signup extends React.Component {
     }
     }).then(res => res.json())
     .then((result) => {
-      console.warn("jatt da token", result);
+      // console.warn("jatt da token", result);
       if(result.msg === "Registration successful") {
         alert("You have successfully sighned up!");
         this.setState({ redirect: "/login" });
@@ -88,7 +93,7 @@ class Signup extends React.Component {
     this.register(event);
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
-      alert("User Has Been Registered Successfully...");
+      // alert("User Has Been Registered Successfully...");
       this.form.reset();
     } else {
       alert("Invalid Details Entered...");
@@ -101,7 +106,7 @@ class Signup extends React.Component {
     element.preventDefault();
     const name = element.target.name;
     const value = element.target.value;
-    console.log("inside " + name + value);
+    // console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
       case "email":

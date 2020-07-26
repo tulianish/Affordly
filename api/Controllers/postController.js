@@ -31,6 +31,7 @@ async function create(postParams, res){
 			newPost.email = postParams.email;
 			newPost.isActive = true;
 			newPost.img = postParams.img;
+			newPost.clicks = 0;
 		await newPost.save();
 		return newPost;	
 	}

@@ -16,7 +16,8 @@ var postSchema = new mongoose.Schema({
 	dateCreated : { type: Date, default: Date.now},	//Defaulting to current time
 	email : String,
 	isActive : Boolean,
-	img: String	//Link to the image stored
+	img: String,	//Link to the image stored
+	clicks: Number
 });
 
 postSchema.set('toJSON', { virtuals: true });

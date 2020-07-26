@@ -12,7 +12,7 @@
  */
 
 
-// Modified by Guneet Singh Dhillon
+// Modified by Guneet Singh Dhillon B00843346 guneet@dal.ca
 //   I modified this file to add a Logout button in the Navbar. 
 //   This Logout button is only visible when some is logged in the website.
 //   Likewise, navbar shows Login and SignUp options when no one is logged in. 
@@ -33,10 +33,11 @@ class Header extends React.Component {
     };
   }
 
+  // This function will clear the JWT stored in local storage of browser and login session will end.
   async logout() {
     localStorage.clear();
     await this.setState({ redirect: "/" });
-    console.warn("State after setting the redirect", this.state);
+    // console.warn("State after setting the redirect", this.state);
     
     // redirect to home
   }
