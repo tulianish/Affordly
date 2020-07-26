@@ -9,7 +9,6 @@ Assignment 4 - Anish Tuli (B00843522)
 
 - [Installation](#installation)
     - [Node](#Node)
-    - [React](#React)
 - [Architecture](#architecture)
 - [API Specifications](#api-specifications)
 - [Validations](#validations)
