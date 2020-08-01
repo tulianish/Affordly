@@ -32,6 +32,8 @@ mongoose.connect(
 app.use("/support", supportRoutes);
 
 const postRoute = require('./api/Routes/postRoute');
+const commentRoute = require('./api/Routes/commentRoute');
+
 const current_user = require('./api/Routes/current_user');
 const login = require('./api/Routes/login');
 const user = require('./api/Routes/user');
@@ -39,6 +41,7 @@ app.use("/api/current_user", current_user);
 app.use("/api/login", login);
 app.use("/api/user", user);
 app.use("/api", postRoute);
+app.use("/api/comment", commentRoute);
 
 
 // Serve the static files
