@@ -1,4 +1,5 @@
 // Created by Anish Tuli (B00843522, anish.tuli@dal.ca)
+//Parent component that houses CommentGroup and AddCommentBox
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
@@ -17,7 +18,7 @@ class App extends Component {
     };
   }
 
-  postComment(comment) {
+  postComment(comment) {	//Function that adds the comment to the state
     this.setState({
       comments: [comment, ...this.state.comments]
     });
@@ -26,14 +27,10 @@ class App extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    if (!this.isFormValid()) {
-      this.setState({ error: "All fields are required." });
-      return;
-    }
     this.setState({ error: "" });
 
     let {comment} = this.state.comments;
-    fetch("http://localhost:3001/api/comment/postComment", {
+    fetch("https://the-affordly.herokuapp.com/api/comment/postComment", {	//Posts the comment
       method: "post",
       body: comment
     })
@@ -57,12 +54,8 @@ class App extends Component {
       });
   }
 
-  isFormValid() {
-    return this.state.comment.message !== "";
-  }
-
   componentDidMount() {
-    fetch("http://localhost:3001/api/comment/")
+    fetch("http://the-affordly.herokuapp.com/api/comment/")	//Fetches comments
     .then(res => res.json())
     .then(res => {
       this.setState({
@@ -77,7 +70,7 @@ class App extends Component {
       <div className="main-box container bg-light shadow">
         <div className="row">
           <div className="col-4  pt-3 border-right">
-            <h6>Please enter post details</h6>
+            <h6>Please enter message for new discussion</h6>
              <AddCommentBox postComment={this.postComment} />
           </div>
           <div className="col-8  pt-3 bg-white">

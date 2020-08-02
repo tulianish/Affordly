@@ -1,4 +1,5 @@
 // Created by Anish Tuli (B00843522, anish.tuli@dal.ca)
+// It is responsible for displaying all the comments
 
 import React from "react";
 import EachComment from "./EachComment";
@@ -18,7 +19,7 @@ export default function CommentGroup(props) {
         </div>
       ) : null}
 
-      {props.comments.map((comment, index) => (
+      {props.comments.map((comment, index) => (   // For each comments in the database, a view is created
         <EachComment key={index} comment={comment} />
       ))}
     </div>

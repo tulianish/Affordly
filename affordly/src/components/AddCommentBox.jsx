@@ -1,4 +1,5 @@
 // Created by Anish Tuli (B00843522, anish.tuli@dal.ca)
+// Responsible for posting comments
 
 import React, { Component } from "react";
 
@@ -7,7 +8,7 @@ export default class addCommentBox extends Component {
     super(props);
     this.state = {
       error: "",
-      username : "",
+      username : "",  //Defaults to logged in user later
       comment: {
         name: "",
         message: ""
@@ -20,9 +21,6 @@ export default class addCommentBox extends Component {
 
   reactToChange = event => {
     const { value, name } = event.target;
-
-    this.setState({error : ""});
-    console.log(this.state.error);
     this.setState({
       ...this.state,
       comment: {
@@ -34,7 +32,7 @@ export default class addCommentBox extends Component {
 
   componentDidMount()
   {
-    let string = localStorage.getItem('login');
+    let string = localStorage.getItem('login'); //Check for login
         if(string !== null){
           const token = JSON.parse(string).token;
           fetch("https://the-affordly.herokuapp.com/api/current_user", {
@@ -48,10 +46,10 @@ export default class addCommentBox extends Component {
           .then(res => res.json())
           .then((result) => {
             if(result.msg==='Token is not valid!'){
-              alert("Please login to access this feature");
+              alert("Please login again to access this feature");
               window.location.replace('/login');
             }
-            this.setState({username : result.first_name});  //Sets the email from local storage token
+            this.setState({username : result.first_name});  //Sets the username from API response
           })
           }
         else {
@@ -64,7 +62,7 @@ export default class addCommentBox extends Component {
 
     let comment = this.state.comment;
     comment.name = this.state.username;
-    fetch("http://localhost:3001/api/comment/postComment", {
+    fetch("https://the-affordly.herokuapp.com/api/comment/postComment", {  //Post a comment api
       method: "post",
       body: JSON.stringify(comment),
       headers:{
@@ -90,7 +88,7 @@ export default class addCommentBox extends Component {
       });
   }
 
-  renderError() {
+  displayError() { //
     return this.state.error ? (
       <div className="alert alert-danger">{this.state.error}</div>
     ) : null;
@@ -121,7 +119,7 @@ export default class addCommentBox extends Component {
             />
           </div>
 
-          {this.renderError()}
+          {this.displayError()}
 
           <div className="form-group">
             <button className="btn btn-primary">
