@@ -50,6 +50,10 @@ export default class CommentForm extends Component {
           })
           .then(res => res.json())
           .then((result) => {
+            if(result.msg=='Token is not valid!'){
+              alert("Please login to access this feature");
+              window.location.replace('/login');
+            }
             this.setState({username : result.first_name});  //Sets the email from local storage token
           })
           }

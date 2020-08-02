@@ -6,11 +6,12 @@ export default function Comment(props) {
   const { name, message, dateCreated } = props.comment;
   var today = new Date();
   var commentDate = new Date(dateCreated);
-  var d = today.getDate()-commentDate.getDate()
-  var h = Math.floor( parseInt(today - commentDate)/ 1000 / 60 / 60);
-  var m = today.getMinutes()-commentDate.getMinutes();
-  var s = Math.floor( parseInt(today - commentDate)/1000);
-  console.log(m);
+  var diff = today-commentDate
+  console.log(diff);
+  var d = today.getDate()-commentDate.getDate();
+  var h = Math.floor(diff/(1000*60*60));
+  var m = Math.floor(diff/(1000*60));
+  var s = Math.floor(diff/(1000));
   var time = "";
   if (isNaN(s))
   {
@@ -27,7 +28,7 @@ export default function Comment(props) {
   time = h + (h > 1 ? " hours ago" : " hour ago");
   }
   else {
-  time = d + (d > 1 ? " days ago" : " day ago");
+  time = diff + (diff > 1 ? " days ago" : " day ago");
   }
   return (
     <div className="media mb-3">
@@ -35,14 +36,15 @@ export default function Comment(props) {
         className="mr-3 bg-light rounded"
         width="48"
         height="48"
-        src={`https://api.adorable.io/avatars/48/${name.toLowerCase()}@adorable.io.png`}
+        src={`https://ui-avatars.com/api/?name=`+name}
         alt={name}
       />
 
       <div className="media-body p-2 shadow-sm rounded bg-light border">
         <small className="float-right text-muted">{time}</small>
         <h6 className="float-left mt-0 mb-1 text-muted">{name}</h6>
-        {message}
+        <br/>
+        <h5 className="float-left" >{message}</h5>
       </div>
     </div>
   );

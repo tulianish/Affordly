@@ -92,7 +92,7 @@ class App extends Component {
       <div className="main-box container bg-light shadow">
         <div className="row">
           <div className="col-4  pt-3 border-right">
-            <h6>Say something about React</h6>
+            <h6>Please enter post details</h6>
              <CommentForm addComment={this.addComment} />
           </div>
           <div className="col-8  pt-3 bg-white">
