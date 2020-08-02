@@ -204,12 +204,12 @@ class Sell extends React.Component {
             <h2 className="heading"> Sell an Item </h2>
             <p className="heading"> Please post an ad here and relax.</p>
 
-            <div class="fields">
+            <div className="fields">
               <Form
                 onSubmit={this.handleSubmit}
                 ref={(form) => (this.form = form)}
               >
-                <Form.Group controlId="formGridTitle">
+                <Form.Group controlid="formGridTitle">
                   <Form.Label className="form_lab">
                     {" "}
                     Title <span className="mandatory">*</span>{" "}
@@ -231,7 +231,7 @@ class Sell extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlid="exampleForm.ControlTextarea1">
                   <Form.Label className="form_lab">
                     Description <span className="mandatory">*</span>{" "}
                   </Form.Label>
@@ -251,7 +251,7 @@ class Sell extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group controlId="formGridCategory">
+                <Form.Group controlid="formGridCategory">
                   <Form.Label className="form_lab">
                     Select A Category <span className="mandatory">*</span>{" "}
                   </Form.Label>
@@ -269,7 +269,7 @@ class Sell extends React.Component {
                 </Form.Group>
 
                 <Form.Row>
-                  <Form.Group as={Col} controlId="formGridPrice">
+                  <Form.Group as={Col} controlid="formGridPrice">
                     <Form.Label className="form_lab">
                       {" "}
                       Set A Price <span className="mandatory">*</span>{" "}
@@ -295,7 +295,7 @@ class Sell extends React.Component {
                     )}
                   </Form.Group>
 
-                  <Form.Group as={Col} controlId="formGridContact">
+                  <Form.Group as={Col} controlid="formGridContact">
                     <Form.Label className="form_lab">
                       {" "}
                       Contact Number <span className="mandatory">*</span>{" "}
@@ -319,7 +319,7 @@ class Sell extends React.Component {
                   </Form.Group>
                 </Form.Row>
 
-                <Form.Group controlId="formGridAddress">
+                <Form.Group controlid="formGridAddress">
                   <Form.Label className="form_lab">
                     Address <span className="mandatory">*</span>{" "}
                   </Form.Label>
@@ -334,7 +334,7 @@ class Sell extends React.Component {
                 </Form.Group>
 
                 <Form.Row>
-                  <Form.Group as={Col} controlId="formGridCity">
+                  <Form.Group as={Col} controlid="formGridCity">
                     <Form.Label className="form_lab">
                       City <span className="mandatory">*</span>{" "}
                     </Form.Label>
@@ -351,7 +351,7 @@ class Sell extends React.Component {
                     </Form.Control>
                   </Form.Group>
 
-                  <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Group as={Col} controlid="formGridZip">
                     <Form.Label className="form_lab">
                       Zip <span className="mandatory">*</span>{" "}
                     </Form.Label>

@@ -2,12 +2,11 @@
 
 import React from "react";
 
-export default function Comment(props) {
+export default function EachComment(props) {
   const { name, message, dateCreated } = props.comment;
   var today = new Date();
   var commentDate = new Date(dateCreated);
   var diff = today-commentDate
-  console.log(diff);
   var d = today.getDate()-commentDate.getDate();
   var h = Math.floor(diff/(1000*60*60));
   var m = Math.floor(diff/(1000*60));
@@ -28,7 +27,7 @@ export default function Comment(props) {
   time = h + (h > 1 ? " hours ago" : " hour ago");
   }
   else {
-  time = diff + (diff > 1 ? " days ago" : " day ago");
+  time = d + (d > 1 ? " days ago" : " day ago");
   }
   return (
     <div className="media mb-3">
@@ -40,11 +39,11 @@ export default function Comment(props) {
         alt={name}
       />
 
-      <div className="media-body p-2 shadow-sm rounded bg-light border">
+      <div className=" overflow-auto media-body p-2 shadow-sm rounded bg-light border">
         <small className="float-right text-muted">{time}</small>
         <h6 className="float-left mt-0 mb-1 text-muted">{name}</h6>
         <br/>
-        <h5 className="float-left" >{message}</h5>
+        <h6 className="text-left text-break">{message}</h6>
       </div>
     </div>
   );

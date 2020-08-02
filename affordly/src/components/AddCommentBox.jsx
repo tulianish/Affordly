@@ -2,11 +2,10 @@
 
 import React, { Component } from "react";
 
-export default class CommentForm extends Component {
+export default class addCommentBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       error: "",
       username : "",
       comment: {
@@ -15,17 +14,15 @@ export default class CommentForm extends Component {
       }
     };
 
-    // bind context to methods
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.reactToChange = this.reactToChange.bind(this);
+    this.reactToSubmit = this.reactToSubmit.bind(this);
   }
 
-  /**
-   * Handle form input field changes & update the state
-   */
-  handleFieldChange = event => {
+  reactToChange = event => {
     const { value, name } = event.target;
 
+    this.setState({error : ""});
+    console.log(this.state.error);
     this.setState({
       ...this.state,
       comment: {
@@ -40,7 +37,7 @@ export default class CommentForm extends Component {
     let string = localStorage.getItem('login');
         if(string !== null){
           const token = JSON.parse(string).token;
-          fetch("https://the-affordly.herokuapp.com/api/current_user", { //
+          fetch("https://the-affordly.herokuapp.com/api/current_user", {
             method:"post",
             body:JSON.stringify(this.state),
           headers:{
@@ -50,7 +47,7 @@ export default class CommentForm extends Component {
           })
           .then(res => res.json())
           .then((result) => {
-            if(result.msg=='Token is not valid!'){
+            if(result.msg==='Token is not valid!'){
               alert("Please login to access this feature");
               window.location.replace('/login');
             }
@@ -58,25 +55,13 @@ export default class CommentForm extends Component {
           })
           }
         else {
-          alert("Please login to access this feature");
           window.location.replace('/login');
         }
   }
 
-  /**
-   * Form submit handler
-   */
-  onSubmit(e) {
-    // prevent default form submission
+  reactToSubmit(e) {
     e.preventDefault();
 
-    if (!this.isFormValid()) {
-      this.setState({ error: "All fields are required." });
-      return;
-    }
-
-
-    // persist the comments on server
     let comment = this.state.comment;
     comment.name = this.state.username;
     fetch("http://localhost:3001/api/comment/postComment", {
@@ -89,32 +74,20 @@ export default class CommentForm extends Component {
       .then(res => res.json())
       .then(res => {
         if (res.error) {
-          this.setState({ loading: false, error: res.error });
+          this.setState({ error: res.error });
         } else {
-          // add time return from api and push comment to parent state
-          comment.time = res.time;
-          this.props.addComment(comment);
-
-          // clear the message box
+          this.setState({ error : ""})
+          this.props.postComment(comment);
           this.setState({
-            loading: false,
             comment: { ...comment, message: "" }
           });
         }
       })
       .catch(err => {
         this.setState({
-          error: "Something went wrong while submitting form.",
-          loading: false
+          error: "Unable to post comments"
         });
       });
-  }
-
-  /**
-   * Simple validation
-   */
-  isFormValid() {
-    return this.state.comment.comment !== "";
   }
 
   renderError() {
@@ -126,10 +99,10 @@ export default class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form method="post" onSubmit={this.onSubmit}>
+        <form method="post" onSubmit={this.reactToSubmit}>
           <div className="form-group">
             <input
-              onChange={this.handleFieldChange}
+              onChange={this.reactToChange}
               value={this.state.username}
               className="form-control"
               name="name"
@@ -139,7 +112,7 @@ export default class CommentForm extends Component {
 
           <div className="form-group">
             <textarea
-              onChange={this.handleFieldChange}
+              onChange={this.reactToChange}
               value={this.state.comment.message}
               className="form-control"
               placeholder=" Your Message"
@@ -151,7 +124,7 @@ export default class CommentForm extends Component {
           {this.renderError()}
 
           <div className="form-group">
-            <button disabled={this.state.loading} className="btn btn-primary">
+            <button className="btn btn-primary">
               Post Discussion &#10148;
             </button>
           </div>

@@ -75,21 +75,6 @@ class Footer extends Component {
                 One stop shop to buy and sell items. Affordly is where you can
                 afford and enjoy at the same time.
               </p>
-
-              <form className="input-group">
-                <input
-                  type="text"
-                  className="form-control form-control-sm"
-                  placeholder="Your email"
-                  aria-label="Your email"
-                  aria-describedby="basic-addon2"
-                />
-                <div className="input-group-append">
-                  <button className="btn btn-sm btn-dark my-0" type="button">
-                    Subscribe
-                  </button>
-                </div>
-              </form>
             </section>
 
             <section className="col-md-3 col-lg-2 col-xl-3 mx-auto mb-4">
@@ -121,10 +106,10 @@ class Footer extends Component {
                 style={{ width: 60 + "px" }}
               />
               <p>
-                <i className="fa fa-home mr-3"></i> Halifax, NS B3J 2K9, CANADA
+                <i className="fa fa-home mr-3"></i> Halifax, NS B3J 2K9, Canada
               </p>
               <p>
-                <i className="fa fa-envelope mr-3"></i> affordly@gmail.com
+                <i className="fa fa-envelope mr-3"></i> affordly123@gmail.com
               </p>
               <p>
                 <i className="fa fa-phone mr-3"></i> + 01 123 456 789

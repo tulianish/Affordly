@@ -11,7 +11,7 @@ import Login from "./pages/login";
 import Careers from "./pages/Careers";
 import Payment from "./pages/Payment";
 import Posting from "./pages/Posting";
-import Discussion from "./pages/discussionForum";
+import Discussion from "./pages/DiscussionForum";
 import RaiseASupportTicket from "./pages/incident";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
