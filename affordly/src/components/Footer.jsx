@@ -108,7 +108,7 @@ class Footer extends Component {
                 <a href="#!">Privacy Policies</a>
               </p>
               <p>
-                <a href="#!">Terms &amp; Conditions</a>
+                <a href="/discussion">Discussion Forum</a>
               </p>
               <p>
                 <a href="/careers">Career</a>

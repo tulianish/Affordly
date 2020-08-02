@@ -90,6 +90,9 @@ class Header extends React.Component {
                 <Nav.Link active href="/sell">
                   Sell
                 </Nav.Link>
+                <Nav.Link active href="/discussion">
+                  Discussion Forum
+                </Nav.Link>
                 <Nav.Link active to="/" onClick={(e)=>{this.logout(e)}}>
                   Logout
                 </Nav.Link>
