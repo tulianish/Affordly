@@ -5,6 +5,9 @@ import React from "react";
 import "./App.css";
 import Signup from "./pages/signup";
 import Sell from "./pages/sell";
+import Forgot_password from "./pages/forgot_password";
+import Create_password from "./pages/create_password";
+
 import Home from "./pages/home";
 import AboutUs from "./pages/aboutus";
 import Login from "./pages/login";
@@ -27,6 +30,8 @@ function App() {
           <Route path="/careers" component={Careers} />
           <Route path="/payment" component={Payment} />
           <Route path="/incident" component={RaiseASupportTicket} />
+          <Route path="/forgot_password" component={Forgot_password} />
+          <Route path="/create_password" component={Create_password} />
           <Route
             path="/posting/:id"
             exact

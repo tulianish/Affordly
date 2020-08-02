@@ -45,6 +45,11 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    // extra field added to implement the password recovery feature
+    token: {
+        type: String,
+        default: ""
     }
 })
 

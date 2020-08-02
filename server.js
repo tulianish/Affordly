@@ -14,6 +14,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const supportRoutes = require("./api/Routes/SupportRoutes");
+const forgot_password = require("./api/Routes/forgot_password");
 
 app.use(cors()); // cross-origin request handler
 app.use(bodyParser.json()); // support json encoded bodies
@@ -38,7 +39,9 @@ const user = require('./api/Routes/user');
 app.use("/api/current_user", current_user);
 app.use("/api/login", login);
 app.use("/api/user", user);
+app.use("/api/forgot_password", forgot_password);
 app.use("/api", postRoute);
+
 
 
 // Serve the static files

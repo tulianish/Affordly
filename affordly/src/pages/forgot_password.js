@@ -1,18 +1,16 @@
 /**
  * Developed by-
  *
- * Name : PIYUSH PIYUSH
- * Banner ID : B00844563
- * Email ID : piyush@dal.ca
+ * Name : Guneet Singh Dhillon
+ * Banner ID : B00843346
+ * Email ID : guneet@dal.ca
  *
  * 
  * Feature Covered:
- * This is the frontend for our Log In page.
+ * This is the frontend of Forgot password page
  * 
  */
 
-// Modified by Guneet Singh Dhillon (B00843346, guneet@dal.ca)
-//    I wrote login, storeCollector and get_current user functions to connect the backend login API to React frontend.
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -28,7 +26,7 @@ import { Col } from "react-bootstrap";
 const emailCheck = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
-class Login extends React.Component {
+class Forgot_password extends React.Component {
 
   constructor(props) {
     super(props);
@@ -97,32 +95,6 @@ class Login extends React.Component {
     }
     
   }
-  
-  // I wrote this dummy function to test the middleware, protected routes and current login session. 
-  // Reference for this section of code : 2020. [Online]. Available: https://www.youtube.com/watch?v=I3PC8pV1SBM. [Accessed: 25- Jul- 2020].
-  get_current_user(e) {
-    let string = localStorage.getItem('login');
-    if(string !== null){
-      const token = JSON.parse(string).token;
-      // console.warn("pushing ", token);
-      fetch("https://the-affordly.herokuapp.com/api/current_user", {
-        method:"post",
-        body:JSON.stringify(this.state),
-      headers:{
-        'Content-Type':'application/json',
-        'x-auth-token': token
-      }
-      }).then(res => res.json())
-      .then((result) => {
-        // console.warn("result", result);
-        // teammates code goes here
-      })
-      }
-    else {
-      // alert('Please login to access this feature!')
-      // teammates code
-    }
-  };
 
   validateForm = (errors) => {
     let valid = true;
@@ -174,10 +146,10 @@ class Login extends React.Component {
         <Header />
         <div className="container my_container">
           <div className="jumbotron box_layout">
-            <h2 style={{ textAlign: "center" }}> Log In</h2>
+            <h2 style={{ textAlign: "center" }}> Reset Password</h2>
             <p style={{ textAlign: "center" }}>
               {" "}
-              Please enter your details to start shopping.
+              Please enter your registered email to get the password reset link.
             </p>
 
             <div className="fields">
@@ -204,37 +176,12 @@ class Login extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label className="form_lab">
-                    Password <span className="mandatory">*</span>{" "}
-                  </Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                    onChange={(event)=>{this.setState({password:event.target.value})}}
-                  />
-                </Form.Group>
 
                 <div className="tncbutton">
                   {/* gg int */}
                   <Button variant="primary" type="submit">
-                    Log In
+                    Submit Email
                   </Button>
-                  <a id="forgot" href="/forgot_password">
-                    {" "}
-                    Forgot Password?{" "}
-                  </a>
-                  <p id="message">
-                    {" "}
-                    {/* <Button onClick={(e)=>{this.get_current_user(e)}} variant="primary" type="submit">
-                    Current User
-                  </Button> */}
-                    Not a Registered User?{" "}
-                    <a id="clickme" href="/signup">
-                      Click Here To Register
-                    </a>{" "}
-                  </p>
                 </div>
               </Form>
             </div>
@@ -246,4 +193,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Forgot_password;

@@ -28,7 +28,7 @@ import { Col } from "react-bootstrap";
 const emailCheck = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
-class Login extends React.Component {
+class Create_password extends React.Component {
 
   constructor(props) {
     super(props);
@@ -174,10 +174,10 @@ class Login extends React.Component {
         <Header />
         <div className="container my_container">
           <div className="jumbotron box_layout">
-            <h2 style={{ textAlign: "center" }}> Log In</h2>
+            <h2 style={{ textAlign: "center" }}> Create password</h2>
             <p style={{ textAlign: "center" }}>
               {" "}
-              Please enter your details to start shopping.
+              Please create a new password
             </p>
 
             <div className="fields">
@@ -185,28 +185,10 @@ class Login extends React.Component {
                 onSubmit={this.handleSubmit}
                 ref={(form) => (this.form = form)}
               >
-                <Form.Group as={Col} controlId="formGridEmail">
-                  <Form.Label className="form_lab">
-                    {" "}
-                    E-mail Address <span className="mandatory">*</span>{" "}
-                  </Form.Label>
-                  <Form.Control
-                    id="mail"
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email address"
-                    required
-                    onChange={this.handleOnChange}
-                  />
-
-                  {error.email.length > 0 && (
-                    <span className=" spn">{error.email}</span>
-                  )}
-                </Form.Group>
-
+                
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label className="form_lab">
-                    Password <span className="mandatory">*</span>{" "}
+                    New Password <span className="mandatory">*</span>{" "}
                   </Form.Label>
                   <Form.Control
                     type="password"
@@ -216,25 +198,22 @@ class Login extends React.Component {
                   />
                 </Form.Group>
 
+                <Form.Group as={Col} controlId="formGridPassword">
+                  <Form.Label className="form_lab">
+                    Confirm Password <span className="mandatory">*</span>{" "}
+                  </Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Re enter your password"
+                    required
+                    onChange={(event)=>{this.setState({password:event.target.value})}}
+                  />
+                </Form.Group>
+
                 <div className="tncbutton">
-                  {/* gg int */}
                   <Button variant="primary" type="submit">
-                    Log In
+                    Submit
                   </Button>
-                  <a id="forgot" href="/forgot_password">
-                    {" "}
-                    Forgot Password?{" "}
-                  </a>
-                  <p id="message">
-                    {" "}
-                    {/* <Button onClick={(e)=>{this.get_current_user(e)}} variant="primary" type="submit">
-                    Current User
-                  </Button> */}
-                    Not a Registered User?{" "}
-                    <a id="clickme" href="/signup">
-                      Click Here To Register
-                    </a>{" "}
-                  </p>
                 </div>
               </Form>
             </div>
@@ -246,4 +225,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Create_password;
