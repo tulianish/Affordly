@@ -27,7 +27,7 @@ const shareController = {
         let unique_id = uuidv4(); //generating a unique ID for sending email to the user.
         console.log (req.body)
             email = req.body.email;
-            message = req.body.msg;
+            message = req.body.message;
 
             //matching if the card details entered by the user is valid or not.
             if (message) {

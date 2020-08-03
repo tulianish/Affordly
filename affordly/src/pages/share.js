@@ -32,6 +32,7 @@ class Share extends React.Component {
     super(props);
     this.state = {
       email: "",
+      message: "",
       error: {
         email: "",
       }
@@ -51,9 +52,37 @@ class Share extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
-      alert('Congrats! Posting has been shared successfully...');
-      this.form.reset();
-    } else {
+      const form_data = { //extracting each details one-by-one
+        email: this.state.email,
+        message: this.state.message
+      }
+      console.log(form_data.email)
+      console.log(form_data.message)
+      // alert('Congrats! Posting has been shared successfully...');
+      axios //mentioning the alert message depending on if-else condition
+        .post("http://localhost:3000/share?id=" + window.location.href.split("/", 5)[4], form_data)
+        .then((res) => {
+          if (res.data.code === 200) {
+            console.log(this.state.post_id)
+
+            alert("Payment Successful - Payment Confirmation Email Sent");
+            this.form.reset();
+
+
+          } else if (res.data.code === 400) {
+            alert("Payment Failed - Invalid Card Details Entered");
+            this.form.reset(); //refreshing the form upon failed payment
+          }
+
+          else {
+            alert("Please Enter Valid Card Details"); //error message if details entered by the user in not valid as per the frontend
+            this.form.reset(); //refreshing the form upon failed payment
+          }
+        });
+
+    }
+
+    else {
       alert('Invalid Details Entered...')
     }
   }
@@ -63,7 +92,6 @@ class Share extends React.Component {
     element.preventDefault();
     const name = element.target.name;
     const value = element.target.value;
-    console.log("inside " + name + value);
     let error = this.state.error;
     switch (name) {
       case "email":
@@ -107,16 +135,17 @@ class Share extends React.Component {
                 </Form.Group>
 
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label className="form_lab">Custom Message</Form.Label>
-                    <Form.Control
-                      id="bio"
-                      name="msg"
-                      as="textarea"
-                      rows="3"
-                      placeholder="Add a custom message"
-                      onChange={this.onChange}
-                    />
-                  </Form.Group>
+                  <Form.Label className="form_lab">Custom Message</Form.Label>
+                  <Form.Control
+                    id="bio"
+                    name="message"
+                    as="textarea"
+                    type="text"
+                    rows="3"
+                    placeholder="Add a custom message"
+                    onChange={this.handleOnChange}
+                  />
+                </Form.Group>
 
                 <div className="tncbutton">
 

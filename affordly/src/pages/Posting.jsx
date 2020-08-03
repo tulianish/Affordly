@@ -86,12 +86,18 @@ class Posting extends Component {
                     <button className="btn btn-outline-primary float-left">
                       <i className="fa fa-thumbs-up">Like</i>{" "}
                     </button>
+                    
+                    <a
+                    href={"/share/"+this.state.post_id}>
                     <button
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
                       <i className="fa fa-share-alt">Share</i>{" "}
                     </button>
+                    </a>
+                    
+                    
                     <a
                       href={"/payment/"+this.state.post_id}
                       className="btn btn-outline-primary float-left"
@@ -99,6 +105,7 @@ class Posting extends Component {
                     >
                       <i className="fa fa-shopping-cart">Buy</i>{" "}
                     </a>
+
                   </section>
                   <section className="col-md-6">
                     <button className="btn btn-outline-success btn-md float-right">
