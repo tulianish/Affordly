@@ -24,12 +24,14 @@ class Posting extends Component {
     super(props);
 
     this.state = {
-      post : []
+      post : [],
+      post_id: ""
     }
   }
 
   componentDidMount(){
   let id = window.location.href.split("/",5)[4];
+  this.setState({post_id: id})
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
@@ -91,7 +93,7 @@ class Posting extends Component {
                       <i className="fa fa-share-alt">Share</i>{" "}
                     </button>
                     <a
-                      href="/payment"
+                      href={"/payment/"+this.state.post_id}
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
