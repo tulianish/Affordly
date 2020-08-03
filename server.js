@@ -35,10 +35,12 @@ const postRoute = require('./api/Routes/postRoute');
 const current_user = require('./api/Routes/current_user');
 const login = require('./api/Routes/login');
 const user = require('./api/Routes/user');
+const feedback = require('./api/Routes/feedback');
 app.use("/api/current_user", current_user);
 app.use("/api/login", login);
 app.use("/api/user", user);
 app.use("/api", postRoute);
+app.use("/feedback", feedback);
 
 
 // Serve the static files
