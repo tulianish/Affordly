@@ -28,16 +28,18 @@ const shareController = {
         console.log (req.body)
             email = req.body.email;
             message = req.body.message;
+            id = req.query.id
+            post_link = "https://the-affordly.herokuapp.com/posting/"+id
 
             //matching if the card details entered by the user is valid or not.
             if (message) {
 
                 //adding email details along with attachments, text, subject.
                 const mailOptions = {
-                    from: "payment-confirmation@affordly.com",
+                    from: "share-confirmation@affordly.com",
                     to: email,
-                    subject: "Afford-ly Payment Confirmation - " + unique_id,
-                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Custom Message - " + messsage + "Please use the link - " + link + "to explore more options. \n \n \n Regards, \n Team Afford",
+                    subject: "Afford-ly Post Share - " + unique_id,
+                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n Custom Message - " + message + "\n Please use the link - " + post_link + " to explore more options. \n \n Regards, \n Team Afford-ly",
                     html: "",
                 }
 
@@ -56,7 +58,7 @@ const shareController = {
                     else {
                         res.send({
                             code: 200,
-                            message: "Payment Successful" //message is payment is made
+                            message: "Shared Successful" //message is payment is made
                         });
                     }
                 });
@@ -68,7 +70,7 @@ const shareController = {
                     from: "payment-confirmation@affordly.com",
                     to: email,
                     subject: "Afford-ly Payment Confirmation - " + unique_id,
-                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Please use the link - " + link + "to explore more options. \n \n \n Regards, \n Team Afford",
+                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Please use the link - " + post_link + "to explore more options. \n \n \n Regards, \n Team Afford",
                     html: "",
                 }
 
@@ -87,7 +89,7 @@ const shareController = {
                     else {
                         res.send({
                             code: 200,
-                            message: "Payment Successful" //message is payment is made
+                            message: "Shared Successfully" //message is payment is made
                         });
                     }
                 });

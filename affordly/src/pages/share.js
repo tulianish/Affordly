@@ -50,6 +50,11 @@ class Share extends React.Component {
 
 
   handleSubmit = (event) => {
+
+    let id = window.location.href.split("/", 5)[4]
+
+    let post_link = "https://the-affordly.herokuapp.com/posting/" + id
+    console.log(post_link)
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
       const form_data = { //extracting each details one-by-one
@@ -65,17 +70,16 @@ class Share extends React.Component {
           if (res.data.code === 200) {
             console.log(this.state.post_id)
 
-            alert("Payment Successful - Payment Confirmation Email Sent");
-            this.form.reset();
-
+            alert("Shared Successful");
+            window.location.replace(post_link);
 
           } else if (res.data.code === 400) {
-            alert("Payment Failed - Invalid Card Details Entered");
+            alert("Share Failed - Invalid Details Entered");
             this.form.reset(); //refreshing the form upon failed payment
           }
 
           else {
-            alert("Please Enter Valid Card Details"); //error message if details entered by the user in not valid as per the frontend
+            alert("Please Enter Valid Details"); //error message if details entered by the user in not valid as per the frontend
             this.form.reset(); //refreshing the form upon failed payment
           }
         });
@@ -134,7 +138,7 @@ class Share extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="form_lab">Custom Message</Form.Label>
                   <Form.Control
                     id="bio"
