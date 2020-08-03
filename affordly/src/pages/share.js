@@ -37,6 +37,8 @@ class Share extends React.Component {
       }
     }
   }
+
+
   validateForm = (errors) => {
     let valid = true;
     if (this.state.email === "") return false;
@@ -44,6 +46,8 @@ class Share extends React.Component {
       (val) => val.length > 0 && (valid = false));
     return valid;
   }
+
+
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.validateForm(this.state.error)) {
@@ -53,6 +57,8 @@ class Share extends React.Component {
       alert('Invalid Details Entered...')
     }
   }
+
+
   handleOnChange = (element) => {
     element.preventDefault();
     const name = element.target.name;
@@ -75,6 +81,8 @@ class Share extends React.Component {
       [name]: value
     });
   };
+
+
   render() {
     const { error } = this.state;
     return (
@@ -98,18 +106,24 @@ class Share extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label className="form_lab" >Custom Message <span className="mandatory">*</span> </Form.Label>
-                  <Form.Control type="password" placeholder="Would you like to enter a custom message?" required />
-                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Label className="form_lab">Custom Message</Form.Label>
+                    <Form.Control
+                      id="bio"
+                      name="msg"
+                      as="textarea"
+                      rows="3"
+                      placeholder="Add a custom message"
+                      onChange={this.onChange}
+                    />
+                  </Form.Group>
 
                 <div className="tncbutton">
 
                   <Button variant="primary" type="submit">
-                    Log In
+                    Share
                   </Button>
-                  <a id="forgot" href="javascript:void(0)"> Forgot Password? </a>
-                  <p id="message"> Not a Registered User? <a id="clickme" href="/signup" >Click Here To Register</a> </p>
+
                 </div>
 
               </Form>
@@ -125,4 +139,4 @@ class Share extends React.Component {
   }
 }
 
-export default Login;
+export default Share;
