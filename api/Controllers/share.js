@@ -33,7 +33,7 @@ const shareController = {
                     from: "share-confirmation@affordly.com",
                     to: email,
                     subject: "Afford-ly Post Share - " + unique_id,
-                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n Custom Message - " + message + "\n Please use the link - " + post_link + " to explore more options. \n \n Regards, \n Team Afford-ly",
+                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n Custom Message - " + message + "\n Please use the link - " + post_link + " to explore more options. \n \n Regards, \n Team Afford.ly",
                     html: "",
                 }
 
@@ -64,7 +64,7 @@ const shareController = {
                     from: "payment-confirmation@affordly.com",
                     to: email,
                     subject: "Afford-ly Post Share - " + unique_id,
-                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Please use the link - " + post_link + "to explore more options. \n \n \n Regards, \n Team Afford",
+                    text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Please use the link - " + post_link + " to explore more options. \n \n \n Regards, \n Team Afford.ly",
                     html: "",
                 }
 
