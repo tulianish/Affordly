@@ -1,4 +1,20 @@
 
+/*
+
+Contribution : Tejasvi Vig
+ 
+Name : Tejasvi Vig
+Banner ID : B008337057
+Email id : tj252001@dal.ca
+
+Feature Name: Feedback
+
+Feature Details: 
+
+This file manages the internal endpoint based routing after /api 
+ and calls appropriate functions of the controller to perform functions.
+*/
+
 const express = require('express');
 const router = express.Router();
 const Feedback = require('../Models/feedback');

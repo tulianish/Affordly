@@ -10,6 +10,22 @@
 // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
 // Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
 
+/*
+
+Contribution : Tejasvi Vig
+ 
+Name : Tejasvi Vig
+Banner ID : B008337057
+Email id : tj252001@dal.ca
+
+Feature Name: Feedback
+
+Feature Details: 
+
+This file contains the front end code for the implementation of feedback feature provided to the user in the form of comments. 
+User can comment for a particular post and that comment is displayed to the user on the posting page as soon as he submits the comment.
+*/
+
 import React, { Component } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
