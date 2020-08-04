@@ -43,7 +43,7 @@ router.post('/', [
             }
         };
         // create and return a json web token which expires in 1800 seconds, i.e. half hour
-        jwt.sign(payload, "affordly_secret_token", { expiresIn: 1800 }, (err, token) => {
+        jwt.sign(payload, "affordly_secret_token", { expiresIn: 18000 }, (err, token) => {
             if(err){
                 throw err;
             }
