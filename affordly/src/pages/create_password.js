@@ -65,32 +65,39 @@ class Create_password extends React.Component {
 
 
   handleSubmit = (event) => {
-    event.preventDefault();
-    // Code of API call to create password goes here
-    fetch("https://the-affordly.herokuapp.com/api/create_password", {
-      method:"post",
-      body:JSON.stringify(this.state),
-    headers:{
-      'Content-Type':'application/json',
+    let password = this.state.password;
+    let confirm_password = this.state.password;
+    if(password === confirm_password) {
+      event.preventDefault();
+      // Code of API call to create password goes here
+      fetch("https://the-affordly.herokuapp.com/api/create_password", {
+        method:"post",
+        body:JSON.stringify(this.state),
+      headers:{
+        'Content-Type':'application/json',
+      }
+      }).then(res => res.json())
+      .then((result) => {
+        if(result.success){
+          this.setState({ redirect: "/login" });
+          // console.log("after success", this.state.redirect);
+        }
+        else {
+          alert('Something went wrong, please try again.');
+        }
+      })
     }
-    }).then(res => res.json())
-    .then((result) => {
-      if(result.success){
-        this.setState({ redirect: "/login" });
-        // console.log("after success", this.state.redirect);
-      }
-      else {
-        alert('Something went wrong, please try again.');
-      }
-    })
-
-
-    if (this.validateForm(this.state.error)) {
-      // alert("User Has Been Logged In Successfully...");
+    else {
+      alert("Passwords do not match. Please try again.");
       this.form.reset();
-    } else {
-      alert("Invalid Details Entered...");
     }
+
+    // if (this.validateForm(this.state.error)) {
+    //   // alert("User Has Been Logged In Successfully...");
+    //   this.form.reset();
+    // } else {
+    //   alert("Invalid Details Entered...");
+    // }
   };
 
   render() {
