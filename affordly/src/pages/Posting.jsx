@@ -203,7 +203,7 @@ render() {
                  this.addComment(e)
                }}>
                  <section className="col-md-17">
-                  <textarea type="text" placeholder="PLease leave a comment for the product" rows="4" cols="60"/>
+                  <textarea type="text" placeholder="Please leave a comment for the product" rows="4" cols="60"/>
                   <button className="btn btn-outline-success btn-md float-right">
                       Add a comment
                   </button>
