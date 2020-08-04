@@ -54,7 +54,7 @@ class Forgot_password extends React.Component {
     event.preventDefault();
 
     // Code of API call to generate a forgot password request goes here
-    fetch("http://localhost:3000/api/forgot_password", {
+    fetch("https://the-affordly.herokuapp.com/api/forgot_password", {
       method:"post",
       body:JSON.stringify(this.state),
     headers:{

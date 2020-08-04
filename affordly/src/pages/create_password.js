@@ -67,7 +67,7 @@ class Create_password extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     // Code of API call to create password goes here
-    fetch("http://localhost:3000/api/create_password", {
+    fetch("https://the-affordly.herokuapp.com/api/create_password", {
       method:"post",
       body:JSON.stringify(this.state),
     headers:{

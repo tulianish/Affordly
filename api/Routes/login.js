@@ -27,13 +27,13 @@ router.post('/', [
         // if email is not present in db, return error 
         let user = await User.findOne({ email: email });
         if(!user) {
-            return res.status(400).json({ "error":"user ni hai"});
+            return res.status(400).json({ "error":"No user"});
         }
 
         // if passwords do not match, return error
         const isCompare = await bcryptjs.compare(password, user.password);
         if(isCompare === false){
-            return res.status(400).json({ "error":"password galt hai"});
+            return res.status(400).json({ "error":"Wrong Password"});
         }
 
 
