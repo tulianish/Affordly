@@ -100,15 +100,16 @@ class CurrencyConverter extends React.Component {
             <select value={convertToCurrency} onChange={this.changeConvertToCurrency}>
               {currencyChoice}
             </select>
-          
+            <br /><br />
            <h3>Amount:</h3>
              <input type='number' 
                     id='base-amount' 
                     defaultValue={baseAmount} 
                     onChange={this.changeBaseAmount}>
             </input>                             
-         </form>                       
-         <h2 id='result-text'>{baseAmount} CAD is equal to {result} {convertToCurrency}</h2>
+         </form>      
+         <br/>                 
+         <h4 id='result-text'>{baseAmount} CAD is equal to {result} {convertToCurrency}</h4>
        </div>
       );
     }
