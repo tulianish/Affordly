@@ -5,8 +5,8 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const check = require('express-validator/check').check;
-const validationResult = require('express-validator/check').validationResult;
+const check = require('express-validator').check;
+const validationResult = require('express-validator').validationResult;
 const bcryptjs = require('bcryptjs');
 const User = require('../Models/User');
 
@@ -27,13 +27,13 @@ router.post('/', [
         // if email is not present in db, return error 
         let user = await User.findOne({ email: email });
         if(!user) {
-            return res.status(400).json({ "error":"user ni hai"});
+            return res.status(400).json({ "error":"No user"});
         }
 
         // if passwords do not match, return error
         const isCompare = await bcryptjs.compare(password, user.password);
         if(isCompare === false){
-            return res.status(400).json({ "error":"password galt hai"});
+            return res.status(400).json({ "error":"Wrong Password"});
         }
 
 

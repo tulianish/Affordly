@@ -197,7 +197,7 @@ class Signup extends React.Component {
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
-                  <Form.Group controlId="formGridEmail">
+                  <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label className="form_lab">
                       {" "}
                       E-mail Address <span className="mandatory">*</span>{" "}
@@ -215,7 +215,7 @@ class Signup extends React.Component {
                     )}
                   </Form.Group>
 
-                  <Form.Group controlId="formGridGender">
+                  <Form.Group as={Col} controlId="formGridGender">
                     <Form.Label className="form_lab">Gender </Form.Label>
                     <Form.Control 
                       name="gender"
@@ -229,8 +229,10 @@ class Signup extends React.Component {
                       <option>Choose not to respond</option>
                     </Form.Control>
                   </Form.Group>
+                  </Form.Row>
 
-                  <Form.Group controlId="formGridPassword">
+                  <Form.Row>
+                  <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label className="form_lab">
                       Password <span className="mandatory">*</span>{" "}
                     </Form.Label>
@@ -247,7 +249,7 @@ class Signup extends React.Component {
                     <span className=" spn">{error.password}</span>
                   )}
 
-                  <Form.Group controlId="formGridConfirmPassword">
+                  <Form.Group as={Col} controlId="formGridConfirmPassword">
                     <Form.Label className="form_lab">
                       Confirm Password <span className="mandatory">*</span>{" "}
                     </Form.Label>
@@ -263,8 +265,9 @@ class Signup extends React.Component {
                   {error.confirm.length > 0 && (
                     <span className=" spn">{error.confirm}</span>
                   )}
-
-                  <Form.Group controlId="formGridAddress1">
+                  </Form.Row>
+                  <Form.Row>
+                  <Form.Group as={Col} controlId="formGridAddress1">
                     <Form.Label className="form_lab">
                       Address <span className="mandatory">*</span>{" "}
                     </Form.Label>
@@ -276,7 +279,20 @@ class Signup extends React.Component {
                       onChange={this.onChange}
                     />
                   </Form.Group>
+                  
+                  <Form.Group as={Col} controlId="formGridZip">
+                      <Form.Label className="form_lab">
+                        Zip <span className="mandatory">*</span>{" "}
+                      </Form.Label>
+                      <Form.Control 
+                        name="zip"
+                        placeholder="E.g. B2K 3H8" 
+                        required
+                        onChange={this.onChange} 
+                      />
+                  </Form.Group>
 
+                  </Form.Row>
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridState">
                       <Form.Label className="form_lab">
@@ -319,20 +335,10 @@ class Signup extends React.Component {
                       </Form.Control>
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridZip">
-                      <Form.Label className="form_lab">
-                        Zip <span className="mandatory">*</span>{" "}
-                      </Form.Label>
-                      <Form.Control 
-                        name="zip"
-                        placeholder="E.g. B2K 3H8" 
-                        required
-                        onChange={this.onChange} 
-                      />
-                    </Form.Group>
+                    
                   </Form.Row>
-
-                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Row>
+                  <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
                     <Form.Label className="form_lab">User Bio</Form.Label>
                     <Form.Control
                       id="bio"
@@ -343,7 +349,8 @@ class Signup extends React.Component {
                       onChange={this.onChange}
                     />
                   </Form.Group>
-
+                  </Form.Row>
+                  
                   <div className="tncbutton">
                     <Form.Group controlId="termsCondition">
                       <Form.Check
@@ -379,7 +386,7 @@ class Signup extends React.Component {
                       </a>{" "}
                     </p>
                   </div>
-                </Form.Row>
+
                 </Form>
               </div>
             </div>

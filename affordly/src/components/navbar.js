@@ -23,7 +23,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../stylesheets/navbar.css";
-import { Redirect } from "react-router-dom";
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -34,12 +34,11 @@ class Header extends React.Component {
   }
 
   // This function will clear the JWT stored in local storage of browser and login session will end.
-  async logout() {
+  async logout(element) {
+    element.preventDefault();
     localStorage.clear();
     await this.setState({ redirect: "/" });
-    // console.warn("State after setting the redirect", this.state);
-    
-    // redirect to home
+    window.location.replace("/");
   }
 
   render()
@@ -90,6 +89,8 @@ class Header extends React.Component {
                 <Nav.Link active href="/sell">
                   Sell
                 </Nav.Link>
+
+                <Nav.Link active href="/" onClick={(element)=>{this.logout(element)}}>
                 <Nav.Link active href="/discussion">
                   Discussion Forum
                 </Nav.Link>
