@@ -1,0 +1,71 @@
+/**
+ * Developed by-
+ *
+ * Name : PIYUSH PIYUSH
+ * Banner ID : B00844563
+ * Email ID : piyush@dal.ca
+ * 
+ */
+
+.fields {
+    border: 3.5px solid white;
+    border-radius: 0.4em;
+    box-shadow: 5px 10px 18px #888888;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+.my_container {
+    text-align: left;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-top: 3.5%;
+}
+
+.tncbutton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+#message {
+    margin-top: 1%;
+}
+
+
+.mandatory {
+    color: red;
+    
+}
+
+#bioBox{
+    font-size: smaller;
+    font-variant: all-small-caps;
+}
+
+#clickme {
+    color: blue;
+}
+
+.box_layout {
+    margin-top: 3%;
+    border: 2px solid black;
+    border-radius: 0.4em;
+    box-shadow: 5px 10px 18px #888888; 
+    padding: 1%;  
+}
+
+.form_lab {
+    float: left;
+}
+
+.spn {
+  color: red;
+}
