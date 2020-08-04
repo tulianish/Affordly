@@ -50,6 +50,7 @@ class Home extends React.Component {
 
     }
   searchKeyword(e){
+    if(this.state.keyword != ""){
     axios.get("https://affordly-flask.herokuapp.com/search?keyword="+this.state.keyword)
   .then(posts => posts.data)
   .then(data => {
@@ -59,7 +60,7 @@ class Home extends React.Component {
      else{
     this.setState({posts:data, error:false})}
   });
-  }
+  }}
 
   handleOnChange = (element) => {
     element.preventDefault();

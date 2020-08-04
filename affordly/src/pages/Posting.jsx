@@ -74,7 +74,7 @@ class Posting extends Component {
     this.setState({ comments: feedback })
       })
         
-  axios.get("http://35.153.255.72/clicked?post_id="+id)
+  axios.get("https://affordly-flask.herokuapp.com/clicked?post_id="+id)
 
 
 
