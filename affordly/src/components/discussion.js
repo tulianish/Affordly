@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://the-affordly.herokuapp.com/api/comment/")	//Fetches comments
+    fetch("https://the-affordly.herokuapp.com/api/comment/")	//Fetches comments
     .then(res => res.json())
     .then(res => {
       this.setState({
