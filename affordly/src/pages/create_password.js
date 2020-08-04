@@ -40,7 +40,7 @@ class Create_password extends React.Component {
   async componentDidMount(){
     let slugParam=this.props.match.params.token;
     // console.log("slug param ", slugParam); 
-    var creds = jwt_decode(slugParam);
+    // var creds = jwt_decode(slugParam);
     // console.log("creds ", creds);
     try {
       const decoded = jwt.verify(slugParam, "aalokhaalo");
