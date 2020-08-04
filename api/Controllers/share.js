@@ -15,12 +15,7 @@
 var express = require("express");
 var router = express.Router();
 const { v1: uuidv4 } = require('uuid');
-// const PDFDocument = require("pdfkit");
-// const fs = require("fs");
 const nodemailer = require("nodemailer");
-// const path = require("path");
-// const Payment = require("../Models/payment");
-
 
 const shareController = {
     share(req, res) {

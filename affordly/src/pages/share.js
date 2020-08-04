@@ -65,7 +65,7 @@ class Share extends React.Component {
       console.log(form_data.message)
       // alert('Congrats! Posting has been shared successfully...');
       axios //mentioning the alert message depending on if-else condition
-        .post("http://localhost:3000/share?id=" + window.location.href.split("/", 5)[4], form_data)
+        .post("https://the-affordly.herokuapp.com/share?id=" + window.location.href.split("/", 5)[4], form_data)
         .then((res) => {
           if (res.data.code === 200) {
             console.log(this.state.post_id)
@@ -91,7 +91,7 @@ class Share extends React.Component {
     }
   }
 
-
+//adding on chnage function
   handleOnChange = (element) => {
     element.preventDefault();
     const name = element.target.name;
@@ -114,7 +114,7 @@ class Share extends React.Component {
     });
   };
 
-
+//frontend for share page
   render() {
     const { error } = this.state;
     return (

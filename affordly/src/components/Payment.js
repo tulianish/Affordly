@@ -170,7 +170,7 @@ class Payment extends React.Component {
       
       console.log("PRICE : " + this.state.product_price);
       axios //mentioning the alert message depending on if-else condition
-        .post("http://localhost:3000/payment", form_data)
+        .post("http://the-affordly.herokuapp.com/payment", form_data)
         .then((res) => {
           if (res.data.code === 200) {
             console.log(this.state.post_id)
@@ -197,7 +197,6 @@ class Payment extends React.Component {
 
   render() { //rendering the components for frontend of payment page  
     const errors = this.state.errors;
-    // console.log(this.state.email, this.state.fname, this.state.lname, this.state)
     return (
       <>
         <div className="container">
