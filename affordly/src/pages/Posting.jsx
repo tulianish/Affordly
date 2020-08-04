@@ -62,7 +62,7 @@ class Posting extends Component {
       .then(data => this.setState({ post: data[0] }))
       .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
       console.log("hello")
-    axios.get("http://localhost:3000/feedback/getfeedback?id="+id)
+    axios.get("https://the-affordly.herokuapp.com/feedback/getfeedback?id="+id)
       .then(feedbackdata => feedbackdata.data)
       .then(feedback => {
         this.setState({ comments: feedback })
@@ -114,7 +114,7 @@ addComment = (e) => {
 
   this.state.comments.push(comment)
   
-  fetch("http://localhost:3000/feedback/addfeedback" , {
+  fetch("http://the-affordly.herokuapp.com/feedback/addfeedback" , {
       method: "post",
       body:JSON.stringify(comment),
       headers:{
