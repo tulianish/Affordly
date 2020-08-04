@@ -91,7 +91,7 @@ class Posting extends Component {
     .then(res => res.json())
     .then((response) => {
       if(response.msg==='Token is not valid!'){
-        alert("Please login again to access this feature");
+        //alert("Please login again to access this feature");
       }
       this.setState({username : response.first_name});  //Sets the username from API response
     })
