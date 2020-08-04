@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         };
         // create and return a json web token which expires in 1800 seconds, i.e. half hour
         var token_fp = jwt.sign(payload, "aalokhaalo", { expiresIn: "10m" });
-        const reset_link = "https://the-affordly.herokuapp.com/api/create_password/"+token_fp;
+        const reset_link = "https://the-affordly.herokuapp.com/create_password/"+token_fp;
         // console.log("link check", reset_link);
         // await user.save();
         // const token_fp = user.token;
