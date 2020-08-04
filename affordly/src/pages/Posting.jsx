@@ -58,7 +58,8 @@ class Posting extends Component {
   }
 
   componentDidMount() {
-    let id = window.location.href.split("/",5)[4];
+  
+  let id = window.location.href.split("/",5)[4];
   this.setState({post_id: id});
   this.setState({postId:id});
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
@@ -129,6 +130,7 @@ addComment = (e) => {
   .then(res => {
     this.setState({istrue: "hello"})
   })
+  document.getElementById('comment').value = "";
 }
 
 render() {
@@ -203,7 +205,7 @@ render() {
                  this.addComment(e)
                }}>
                  <section className="col-md-17">
-                  <textarea type="text" placeholder="Please leave a comment for the product" rows="4" cols="60"/>
+                  <textarea type="text" placeholder="Please leave a comment for the product" rows="4" cols="60" id="comment"/>
                   <button className="btn btn-outline-success btn-md float-right">
                       Add a comment
                   </button>
