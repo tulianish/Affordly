@@ -135,7 +135,7 @@ class Payment extends React.Component {
     let id = window.location.href.split("/", 5)[4]
     console.log(id)
     this.setState({post_id: id})
-    axios.get ("http://the-affordly.herokuapp.com/api/post?id=" + id)
+    axios.get ("https://the-affordly.herokuapp.com/api/post?id=" + id)
     .then((product_details) => {
       console.log(product_details);
     this.setState({ product_price: product_details.data[0].price, 
@@ -150,7 +150,6 @@ class Payment extends React.Component {
 
   reactToSubmit = (event) => { //logic to store the details entered by user in form_data object
     event.preventDefault();
-    console.log("STATE: "+ this.state)
     if (this.checkValidations(this.state.errors)) {
       const form_data = { //extracting each details one-by-one
         cardname: this.state.cardname,
@@ -172,13 +171,13 @@ class Payment extends React.Component {
       
       console.log("PRICE : " + this.state.product_price);
       axios //mentioning the alert message depending on if-else condition
-        .post("http://the-affordly.herokuapp.com/payment", form_data)
+        .post("https://the-affordly.herokuapp.com/payment", form_data)
         .then((res) => {
           if (res.data.code === 200) {
             console.log(this.state.post_id)
 
             alert("Payment Successful - Payment Confirmation Email Sent");
-            axios.put("http://the-affordly.herokuapp.com/api/post?id=" + this.state.post_id)
+            axios.put("https://the-affordly.herokuapp.com/api/post?id=" + this.state.post_id)
             .then((output) => {
               console.log(output)
             })

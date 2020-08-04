@@ -64,7 +64,7 @@ const shareController = {
                 const mailOptions = {
                     from: "payment-confirmation@affordly.com",
                     to: email,
-                    subject: "Afford-ly Payment Confirmation - " + unique_id,
+                    subject: "Afford-ly Post Share - " + unique_id,
                     text: "Greetings,  \n \n \n Your friend shared this post with you. \n\n Please use the link - " + post_link + "to explore more options. \n \n \n Regards, \n Team Afford",
                     html: "",
                 }
