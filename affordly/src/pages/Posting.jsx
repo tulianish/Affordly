@@ -7,8 +7,25 @@
  *
  *
  **/
- // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
+// Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
 // Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
+// Modified by Piyush Piyush (B00844563, piyush@dal.ca)
+
+/*
+
+Contribution : Tejasvi Vig
+ 
+Name : Tejasvi Vig
+Banner ID : B008337057
+Email id : tj252001@dal.ca
+
+Feature Name: Feedback
+
+Feature Details: 
+
+This file contains the front end code for the implementation of feedback feature provided to the user in the form of comments. 
+User can comment for a particular post and that comment is displayed to the user on the posting page as soon as he submits the comment.
+*/
 
 import React, { Component } from "react";
 import Navbar from "../components/navbar";
@@ -16,29 +33,105 @@ import Footer from "../components/Footer";
 import Map from "../components/Map";
 import "../stylesheets/Posting.css";
 import "font-awesome/css/font-awesome.min.css";
-import CurrencyConverter from '../components/CurrencyConverter'
-import axios from 'axios';
+import CurrencyConverter from "../components/CurrencyConverter";
+import axios from "axios";
 
 class Posting extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      post : []
+
+      post: [],
+        post_id:"",
+      comments: [],
+      username : "",
+      postId: "",
+      comment:{
+        postid: "",
+        comment: "",
+        user: ""
+      },
+      istrue: ""
     }
+    this.addComment = this.addComment.bind(this);
   }
 
-  componentDidMount(){
-  let id = window.location.href.split("/",5)[4];
+  componentDidMount() {
+    let id = window.location.href.split("/",5)[4];
+  this.setState({post_id: id});
+  this.setState({postId:id});
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
+  axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
   .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
 
-  let clickAPI = axios.get("http://35.153.255.72/clicked?post_id="+id)
+   axios.get("https://the-affordly.herokuapp.com/feedback/getfeedback?id="+id)
+   .then(feedbackdata => feedbackdata.data)
+   .then(feedback => {
+    this.setState({ comments: feedback })
+      })
+        
+  axios.get("http://35.153.255.72/clicked?post_id="+id)
+
+
+
+    let string = localStorage.getItem('login'); //Check for login
+  if(string !== null){
+    const token = JSON.parse(string).token;
+    fetch("https://the-affordly.herokuapp.com/api/current_user", {
+      method:"post",
+      body:JSON.stringify(this.state),
+    headers:{
+      'Content-Type':'application/json',
+      'x-auth-token': token
+    }
+    })
+    .then(res => res.json())
+    .then((response) => {
+      if(response.msg==='Token is not valid!'){
+        //alert("Please login again to access this feature");
+      }
+      this.setState({username : response.first_name});  //Sets the username from API response
+    })
+    }
+  else {
+    //window.location.replace('/login');
+  }
+  }
+        
+  
+addComment = (e) => {
+  if(this.state.username == ""){
+    window.location.replace('/login');
   }
 
-  render() {
+  let receivedcomment = e.target[0].value;
+  
+  let comment = {
+  postid : this.state.postId,
+  comment : receivedcomment,
+  user : this.state.username,
+
+  }
+
+  this.state.comments.push(comment)
+  
+  fetch("http://the-affordly.herokuapp.com/feedback/addfeedback" , {
+      method: "post",
+      body:JSON.stringify(comment),
+      headers:{
+        Accept : "application/json",
+        "Content-Type" : "application/json"
+      }
+}).then(res => res.json)
+  .then(res => {
+    this.setState({istrue: "hello"})
+  })
+}
+
+render() {
     return (
       <>
         <Navbar />
@@ -48,17 +141,17 @@ class Posting extends Component {
               <h4 style={{ color: "navy" }} variant="success">
                 Article Location
               </h4>
-              <Map />
+              <Map address={this.state.post.address} />
             </section>
             <section className="col-md-6 desc">
               <section className="img-thumbnail img-fluid">
                 {/* image of the product*/}
                 <figure>
                   <img
-                    clasName="img-responsive"
+                    className="img-responsive"
                     alt="item images"
-                    style={{ width: "50%", height: "50%" }}
-                    src= {this.state.post.img}
+                    style={{ width: "80%", height: "50%" }}
+                    src={this.state.post.img}
                   />
                 </figure>
 
@@ -72,8 +165,8 @@ class Posting extends Component {
                   </h4>
                   <hr />
                   <section style={{ marginTop: "8%" }}>
-                    <CurrencyConverter />
-                    </section>
+                    <CurrencyConverter value={this.state.post.price}/>
+                  </section>
                 </section>
               </section>
 
@@ -81,182 +174,70 @@ class Posting extends Component {
               <section className="card card-body bg-light">
                 <section className="row">
                   <section className="col-md-6">
-                    <button className="btn btn-outline-primary float-left">
-                      <i className="fa fa-thumbs-up">Like</i>{" "}
-                    </button>
+                    
+                    <a
+                    href={"/share/"+this.state.post_id}>
                     <button
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
                       <i className="fa fa-share-alt">Share</i>{" "}
                     </button>
+                    </a>
+                    
+                    
                     <a
-                      href="/payment"
+                      href={"/payment/"+this.state.post_id}
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
                       <i className="fa fa-shopping-cart">Buy</i>{" "}
                     </a>
+
                   </section>
-                  <section className="col-md-6">
-                    <button className="btn btn-outline-success btn-md float-right">
-                      {" "}
-                      Add a comment{" "}
-                    </button>
-                  </section>
+                  
                 </section>
                 <hr />
-                <section className="row">
-                  <section className="col-md-6">
-                    <strong className="float-left"> Sarabjeet </strong>
+               <form onSubmit={(e) => {
+                  e.preventDefault();
+                 this.addComment(e)
+               }}>
+                 <section className="col-md-17">
+                  <textarea type="text" placeholder="Please leave a comment for the product" rows="4" cols="60"/>
+                  <button className="btn btn-outline-success btn-md float-right">
+                      Add a comment
+                  </button>
                   </section>
-                  <section className="col-md-6">
-                    <span class="float-right"> 10 days ago </span>
-                  </section>
-                </section>
-                <section className="row">
-                  <section className="col-md-12">
-                    <p className="float-left">
-                      I am interested in buying this item. It looks really
-                      beautiful...
-                    </p>
-                  </section>
+                </form>
+                <hr />
+                
 
-                </section>
+                {this.state.comments.map((value) => {
+                  return (
+                    <>
+                      <section className="row">
+                      </section>
+                      <section className="row">
+                        <section className="col-md-12">
+                        
+                           <div className="overflow-auto media-body p-2 shadow-sm rounded bg-light border">
+                           <h6 className="float-left mt-0 mb-1 text-muted">{value.user}</h6> 
+                           <br/>
+                           <h6 className="text-left text-break">{value.comment}</h6>
+                           </div>
+                          
+                        </section>
+                      </section>
+                      <hr/>
+                    </>
+                  )
+                })}
               </section>
             </section>
           </section>
-          {/* Pagination */}
-          {/* <section className="row justify-content-center">
-            <nav aria-label="Page navigation example">
-              <ul className="pagination">
-                {this.props.match.params.id === "0" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/0">
-                      1
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/0">
-                      1
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "1" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/1">
-                      2
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/1">
-                      2
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "2" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/2">
-                      3
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/2">
-                      3
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "3" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/3">
-                      4
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/3">
-                      4
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "4" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/4">
-                      5
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/4">
-                      5
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "5" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/5">
-                      6
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/5">
-                      6
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "6" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/6">
-                      7
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/6">
-                      7
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "7" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/7">
-                      8
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/7">
-                      8
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "8" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/8">
-                      9
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/8">
-                      9
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </nav>
-          </section> */}
-        </section>
-        <Footer />
-      </>
+          </section>
+          <Footer />
+        </>
     );
   }
 }

@@ -26,13 +26,22 @@ const Payment = require("../Models/payment");
 const paymentController = {
     payment(req, res) {
         let unique_id = uuidv4(); //generating a unique ID for storing the unique pdf name and unique payment consirmation reference number.
-
         Payment.find({}, function (err, data) { //extracting valid card details from the database
             cardname = (data[0].cardname);
             cardnum = (data[0].cardnum);
             month = (data[0].month);
             year = (data[0].year);
             cvv = (data[0].cvv);
+            email = req.body.email;
+            fname = req.body.fname;
+            lname = req.body.lname;
+            product_price = req.body.product_price
+            product_city = req.body.product_city
+            product_zip = req.body.product_zip
+            product_address = req.body.product_address
+            product_name = req.body.product_name
+            product_contactNumber = req.body.product_contactNumber
+            product_email = req.body.product_email
 
             //matching if the card details entered by the user is valid or not.
             if (req.body.cardname == cardname && req.body.cardnum == cardnum && req.body.month == month && req.body.year == year && req.body.cvv == cvv) {
@@ -48,12 +57,15 @@ const paymentController = {
                 doc
                     .fontSize(9)
                     .font("Helvetica-Bold")
-                    .text("Buyer's Name: " + cardname, 220, 240)
-                    .text("Buyer's Email: " + "piyush46749@gmail.com", 220, 260)
+                    .text("Buyer's Name: " + fname + " " + lname , 220, 240)
+                    .text("Buyer's Email: " + email, 220, 260)
                     .text("Card Number: " + "**** **** **** 4567", 220, 280)
-                    .text("Expiry: " + "04 / 2024", 220, 300)
-                    .text("Price: $" + "55.00", 220, 320)
-                    .text("Item Location:" + "1333 South Park St., Halifax, NS (B3J 2K9)", 220, 340);
+                    .text("Expiry: " + month + " / " + year, 220, 300)
+                    .text("Price: $" + product_price, 220, 320)
+                    .text("Item Location: " + product_address + ", " + product_city + ", " + product_zip, 220, 340)
+                    .text("Seller's Contact Number: " + product_contactNumber, 220, 360)
+                    .text("Seller's Email Address: " + product_email, 220, 380);
+
 
                 //adding images to the pdf (logo and confirmed images)
                 doc.image(__dirname + "/../../public/images/confirmed.png", 210, 150, { width: 170, height: 70 });
@@ -63,9 +75,9 @@ const paymentController = {
                 //adding email details along with attachments, text, subject.
                 const mailOptions = {
                     from: "payment-confirmation@affordly.com",
-                    to: "aadeshshah@dal.ca",
+                    to: email,
                     subject: "Afford-ly Payment Confirmation - " + unique_id,
-                    text: "Greetings " + cardname + ", \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Please find attached payment confirmation file.",
+                    text: "Greetings " + fname + " " + lname + "," + " \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Thanks for buying " + product_name + " for only $" + product_price + ". \n \n Please find attached payment confirmation file. \n \n \n Regards, \n Team Afford.ly",
                     html: "",
                     attachments: [
                         {

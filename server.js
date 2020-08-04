@@ -34,25 +34,30 @@ mongoose.connect(
 app.use("/support", supportRoutes);
 
 const postRoute = require('./api/Routes/postRoute');
+const commentRoute = require('./api/Routes/commentRoute');
+
 const current_user = require('./api/Routes/current_user');
 const login = require('./api/Routes/login');
 const user = require('./api/Routes/user');
+const feedback = require('./api/Routes/feedback');
+const payment = require("./api/Routes/payment");
+const share = require("./api/Routes/share");
 app.use("/api/current_user", current_user);
 app.use("/api/login", login);
 app.use("/api/user", user);
 app.use("/api/create_password", create_password);
 app.use("/api/forgot_password", forgot_password);
 app.use("/api", postRoute);
-
+app.use("/feedback", feedback);
+app.use("/api/comment", commentRoute);
 
 
 // Serve the static files
 app.use(express.static(__dirname + "/affordly/build/"));
 
-const payment = require("./api/Routes/payment");
-
 
 app.use("/payment", payment);
+app.use("/share", share);
 
 app.get("/*", (req, res) => {
   //defining the path for the static files
