@@ -55,7 +55,8 @@ class Home extends React.Component {
   .then(data => {
     if(data.message)
     {this.setState({error:true})}
-    this.setState({posts:data, error:false})
+    else{
+    this.setState({posts:data, error:false})}
   });
   }
 
@@ -64,7 +65,7 @@ class Home extends React.Component {
     const name = element.target.name;
     const value = element.target.value;
     this.setState({
-      "keyword": value
+      "keyword": value,
     });
   };
   render() {
