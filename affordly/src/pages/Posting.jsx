@@ -11,6 +11,22 @@
 // Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
 // Modified by Piyush Piyush (B00844563, piyush@dal.ca)
 
+/*
+
+Contribution : Tejasvi Vig
+ 
+Name : Tejasvi Vig
+Banner ID : B008337057
+Email id : tj252001@dal.ca
+
+Feature Name: Feedback
+
+Feature Details: 
+
+This file contains the front end code for the implementation of feedback feature provided to the user in the form of comments. 
+User can comment for a particular post and that comment is displayed to the user on the posting page as soon as he submits the comment.
+*/
+
 import React, { Component } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
@@ -25,25 +41,97 @@ class Posting extends Component {
     super(props);
 
     this.state = {
-      post : [],
-      post_id: ""
+
+      post: [],
+        post_id:"",
+      comments: [],
+      username : "",
+      postId: "",
+      comment:{
+        postid: "",
+        comment: "",
+        user: ""
+      },
+      istrue: ""
     }
+    this.addComment = this.addComment.bind(this);
   }
 
-  componentDidMount(){
-  let id = window.location.href.split("/",5)[4];
-  this.setState({post_id: id})
+  componentDidMount() {
+    let id = window.location.href.split("/",5)[4];
+  this.setState({post_id: id});
+  this.setState({postId:id});
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
   .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
 
+   axios.get("https://the-affordly.herokuapp.com/feedback/getfeedback?id="+id)
+   .then(feedbackdata => feedbackdata.data)
+   .then(feedback => {
+    this.setState({ comments: feedback })
+      })
+        
   axios.get("http://35.153.255.72/clicked?post_id="+id)
+
+
+
+    let string = localStorage.getItem('login'); //Check for login
+  if(string !== null){
+    const token = JSON.parse(string).token;
+    fetch("https://the-affordly.herokuapp.com/api/current_user", {
+      method:"post",
+      body:JSON.stringify(this.state),
+    headers:{
+      'Content-Type':'application/json',
+      'x-auth-token': token
+    }
+    })
+    .then(res => res.json())
+    .then((response) => {
+      if(response.msg==='Token is not valid!'){
+        alert("Please login again to access this feature");
+      }
+      this.setState({username : response.first_name});  //Sets the username from API response
+    })
+    }
+  else {
+    //window.location.replace('/login');
+  }
+  }
+        
+  
+addComment = (e) => {
+  if(this.state.username == ""){
+    window.location.replace('/login');
   }
 
-  render() {
-    console.log("addres from posting " + this.state.post.address);
+  let receivedcomment = e.target[0].value;
+  
+  let comment = {
+  postid : this.state.postId,
+  comment : receivedcomment,
+  user : this.state.username,
+
+  }
+
+  this.state.comments.push(comment)
+  
+  fetch("http://the-affordly.herokuapp.com/feedback/addfeedback" , {
+      method: "post",
+      body:JSON.stringify(comment),
+      headers:{
+        Accept : "application/json",
+        "Content-Type" : "application/json"
+      }
+}).then(res => res.json)
+  .then(res => {
+    this.setState({istrue: "hello"})
+  })
+}
+
+render() {
     return (
       <>
         <Navbar />
@@ -86,9 +174,6 @@ class Posting extends Component {
               <section className="card card-body bg-light">
                 <section className="row">
                   <section className="col-md-6">
-                    <button className="btn btn-outline-primary float-left">
-                      <i className="fa fa-thumbs-up">Like</i>{" "}
-                    </button>
                     
                     <a
                     href={"/share/"+this.state.post_id}>
@@ -110,36 +195,49 @@ class Posting extends Component {
                     </a>
 
                   </section>
-                  <section className="col-md-6">
-                    <button className="btn btn-outline-success btn-md float-right">
-                      {" "}
-                      Add a comment{" "}
-                    </button>
-                  </section>
+                  
                 </section>
                 <hr />
-                <section className="row">
-                  <section className="col-md-6">
-                    <strong className="float-left"> Sarabjeet </strong>
+               <form onSubmit={(e) => {
+                  e.preventDefault();
+                 this.addComment(e)
+               }}>
+                 <section className="col-md-17">
+                  <textarea type="text" placeholder="PLease leave a comment for the product" rows="4" cols="60"/>
+                  <button className="btn btn-outline-success btn-md float-right">
+                      Add a comment
+                  </button>
                   </section>
-                  <section className="col-md-6">
-                    <span className="float-right"> 10 days ago </span>
-                  </section>
-                </section>
-                <section className="row">
-                  <section className="col-md-12">
-                    <p className="float-left">
-                      I am interested in buying this item. It looks really
-                      beautiful...
-                    </p>
-                  </section>
-                </section>
+                </form>
+                <hr />
+                
+
+                {this.state.comments.map((value) => {
+                  return (
+                    <>
+                      <section className="row">
+                      </section>
+                      <section className="row">
+                        <section className="col-md-12">
+                        
+                           <div className="overflow-auto media-body p-2 shadow-sm rounded bg-light border">
+                           <h6 className="float-left mt-0 mb-1 text-muted">{value.user}</h6> 
+                           <br/>
+                           <h6 className="text-left text-break">{value.comment}</h6>
+                           </div>
+                          
+                        </section>
+                      </section>
+                      <hr/>
+                    </>
+                  )
+                })}
               </section>
             </section>
           </section>
-        </section>
-        <Footer />
-      </>
+          </section>
+          <Footer />
+        </>
     );
   }
 }
