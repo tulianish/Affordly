@@ -8,4 +8,5 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     Post: require('../Models/postModel'),
+    Comment: require('../Models/commentModel'),
 };
