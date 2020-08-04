@@ -55,7 +55,8 @@ class Home extends React.Component {
   .then(data => {
     if(data.message)
     {this.setState({error:true})}
-    this.setState({posts:data, error:false})
+     else{
+    this.setState({posts:data, error:false})}
   });
   }
 
