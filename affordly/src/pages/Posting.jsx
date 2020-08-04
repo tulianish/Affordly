@@ -7,7 +7,7 @@
  *
  *
  **/
- // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
+// Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
 // Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
 // Modified by Piyush Piyush (B00844563, piyush@dal.ca)
 
@@ -17,8 +17,8 @@ import Footer from "../components/Footer";
 import Map from "../components/Map";
 import "../stylesheets/Posting.css";
 import "font-awesome/css/font-awesome.min.css";
-import CurrencyConverter from '../components/CurrencyConverter'
-import axios from 'axios';
+import CurrencyConverter from "../components/CurrencyConverter";
+import axios from "axios";
 
 class Posting extends Component {
   constructor(props) {
@@ -43,6 +43,7 @@ class Posting extends Component {
   }
 
   render() {
+    console.log("addres from posting " + this.state.post.address);
     return (
       <>
         <Navbar />
@@ -52,17 +53,17 @@ class Posting extends Component {
               <h4 style={{ color: "navy" }} variant="success">
                 Article Location
               </h4>
-              <Map />
+              <Map address={this.state.post.address} />
             </section>
             <section className="col-md-6 desc">
               <section className="img-thumbnail img-fluid">
                 {/* image of the product*/}
                 <figure>
                   <img
-                    clasName="img-responsive"
+                    className="img-responsive"
                     alt="item images"
                     style={{ width: "50%", height: "50%" }}
-                    src= {this.state.post.img}
+                    src={this.state.post.img}
                   />
                 </figure>
 
@@ -77,7 +78,7 @@ class Posting extends Component {
                   <hr />
                   <section style={{ marginTop: "8%" }}>
                     <CurrencyConverter />
-                    </section>
+                  </section>
                 </section>
               </section>
 
@@ -122,7 +123,7 @@ class Posting extends Component {
                     <strong className="float-left"> Sarabjeet </strong>
                   </section>
                   <section className="col-md-6">
-                    <span class="float-right"> 10 days ago </span>
+                    <span className="float-right"> 10 days ago </span>
                   </section>
                 </section>
                 <section className="row">
@@ -132,7 +133,6 @@ class Posting extends Component {
                       beautiful...
                     </p>
                   </section>
-
                 </section>
               </section>
             </section>
