@@ -33,7 +33,7 @@ class Home extends React.Component {
       trending : [],
       keyword: "",
       searchResult: [],
-      error: "",
+      error: false,
     }
   }
 
@@ -54,8 +54,8 @@ class Home extends React.Component {
   .then(posts => posts.data)
   .then(data => {
     if(data.message)
-    {this.setState({error:"No results found"})}
-    this.setState({posts:data, error:""})
+    {this.setState({error:true})}
+    this.setState({posts:data, error:false})
   });
   }
 
