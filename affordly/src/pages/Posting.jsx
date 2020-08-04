@@ -118,7 +118,7 @@ addComment = (e) => {
 
   this.state.comments.push(comment)
   
-  fetch("http://the-affordly.herokuapp.com/feedback/addfeedback" , {
+  fetch("https://the-affordly.herokuapp.com/feedback/addfeedback" , {
       method: "post",
       body:JSON.stringify(comment),
       headers:{
