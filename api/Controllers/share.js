@@ -20,7 +20,6 @@ const nodemailer = require("nodemailer");
 const shareController = {
     share(req, res) {
         let unique_id = uuidv4(); //generating a unique ID for sending email to the user.
-        console.log (req.body)
             email = req.body.email;
             message = req.body.message;
             id = req.query.id

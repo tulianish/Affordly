@@ -111,7 +111,7 @@ class Payment extends React.Component {
     this.setState({ errors, [name]: value });
   };
 
-
+//defining call to fetch details for current users
   componentDidMount() {
     let string = localStorage.getItem('login');
     if (string !== null) {
@@ -133,11 +133,9 @@ class Payment extends React.Component {
       window.location.replace("/login");
     }
     let id = window.location.href.split("/", 5)[4]
-    console.log(id)
     this.setState({post_id: id})
-    axios.get ("https://the-affordly.herokuapp.com/api/post?id=" + id)
+    axios.get ("https://the-affordly.herokuapp.com/api/post?id=" + id) //getting details of post
     .then((product_details) => {
-      console.log(product_details);
     this.setState({ product_price: product_details.data[0].price, 
       product_city: product_details.data[0].city,
       product_zip: product_details.data[0].zip,
@@ -169,17 +167,14 @@ class Payment extends React.Component {
         product_email: this.state.product_email,
       } 
       
-      console.log("PRICE : " + this.state.product_price);
       axios //mentioning the alert message depending on if-else condition
         .post("https://the-affordly.herokuapp.com/payment", form_data)
         .then((res) => {
           if (res.data.code === 200) {
-            console.log(this.state.post_id)
 
             alert("Payment Successful - Payment Confirmation Email Sent");
             axios.put("https://the-affordly.herokuapp.com/api/post?id=" + this.state.post_id)
             .then((output) => {
-              console.log(output)
             })
             window.location.replace("/");
           } else if (res.data.code === 400) {

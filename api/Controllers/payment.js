@@ -26,7 +26,6 @@ const Payment = require("../Models/payment");
 const paymentController = {
     payment(req, res) {
         let unique_id = uuidv4(); //generating a unique ID for storing the unique pdf name and unique payment consirmation reference number.
-        console.log (req.body)
         Payment.find({}, function (err, data) { //extracting valid card details from the database
             cardname = (data[0].cardname);
             cardnum = (data[0].cardnum);
