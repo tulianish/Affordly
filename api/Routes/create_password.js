@@ -2,12 +2,12 @@ const nodemailer = require("nodemailer");
 const User = require("../Models/User");
 const express = require('express');
 const router = express.Router();
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
 
 
 router.post('/', async (req, res) => {
     console.log('inside forgot pass', req.body);
-    const { email } = req.body;
+    const { email, password } = req.body;
     try {
         let user = await User.findOne({ email: email });
         console.log("user ", user);
@@ -19,27 +19,23 @@ router.post('/', async (req, res) => {
             }
         });
 
-        console.log('2');
-        const payload = {
-            user: {
-                email: user.email
-            }
-        };
-        // create and return a json web token which expires in 1800 seconds, i.e. half hour
-        var token_fp = jwt.sign(payload, "aalokhaalo", { expiresIn: "58m" });
-        const reset_link = "http:localhost:3001/create_password/"+token_fp;
-        console.log("link check", reset_link);
+        const salt = await bcrypt.genSalt(9);
+        coded_pass = await bcrypt.hash(password, salt);
+        console.log("coded pass ", coded_pass);
+        user.password = coded_pass;
+        await user.save();
+
+
         // await user.save();
         // const token_fp = user.token;
         var mailOptions = {
             from: "affordly123@gmail.com",
             to: req.body.email,
-            subject: 'Affordly - Password Reset Request',
-            html: `<h3>Hello, <br>Please click the link below to reset your password.</h3>
-            <a href="${reset_link}"><p>${reset_link}</p></a>
-            <p><h3>For security reasons, this link will expire in 10 minutes. If the link is not working, please copy it and paste it in your browser.</h3></p>
-            <p><h3>Please ignore this email if you did not request help with your password – your current password will remain unchanged.</h3></p>
-            <h3>Thank you</h3>
+            subject: 'Affordly - Password Reset Successful',
+            html: `<h3>Hello, <br>You password has been successfully updated.</h3>
+    
+            <p><h3>Thank you for using Affordly.</h3></p>
+            
             <h3>Regards</h3>
             <h3>Affordly</h3>`
         };
@@ -52,7 +48,7 @@ router.post('/', async (req, res) => {
                 console.log("Email sent: ", info.response);
                 return res.status(200).json({
                     success: true,
-                    Message: "Reset link has been sent to your email.",
+                    Message: "Password changed successfully.",
                 });
             }
           });

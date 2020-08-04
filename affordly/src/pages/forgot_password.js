@@ -45,19 +45,11 @@ class Forgot_password extends React.Component {
   }
 
   // This combination of componentDidMount and storeCollector function is for maintaining log in state after refresh
-  componentDidMount(){
-    this.storeCollector(); 
-  }
+  // componentDidMount(){
+  //   this.storeCollector(); 
+  // }
 
-  storeCollector() {
-    // console.warn("hello from storecollector")
-    let store = JSON.parse(localStorage.getItem('login'));
-    this.setState({store:store});
-    if(localStorage.getItem('login') !== null){
-      this.setState({login:true})
-    }
-    // console.warn(store);
-  }
+
 
   // this login function calls the backend login API (also coded by me) with email and password of user
   // and stores the JWT returned in the localStorage to establish a session.
@@ -104,7 +96,24 @@ class Forgot_password extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.login();
+
+    // Code of API call to generate a forgot password request goes here
+    fetch("http://localhost:3000/api/forgot_password", {
+      method:"post",
+      body:JSON.stringify(this.state),
+    headers:{
+      'Content-Type':'application/json',
+    }
+    }).then(res => res.json())
+    .then((result) => {
+      if(result.success){
+        alert("If your email is registered, you will receive a link to reset the password.")
+      }
+      else {
+        alert('Something went wrong, please try again.');
+      }
+    })
+
     if (this.validateForm(this.state.error)) {
       // alert("User Has Been Logged In Successfully...");
       this.form.reset();

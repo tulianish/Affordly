@@ -1,5 +1,5 @@
 /**
- * Developed by-
+ * Front End Designed and Developed by-
  *
  * Name : PIYUSH PIYUSH
  * Banner ID : B00844563
@@ -13,6 +13,7 @@
 
 // Modified by Guneet Singh Dhillon (B00843346, guneet@dal.ca)
 //    I wrote login, storeCollector and get_current user functions to connect the backend login API to React frontend.
+
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -20,8 +21,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../components/Footer";
 import Header from "../components/navbar";
 import { Redirect } from "react-router-dom";
+import jwt_decode from 'jwt-decode';
 import "../stylesheets/login.css";
 import { Col } from "react-bootstrap";
+import { NotificationManager, NotificationContainer } from "react-notifications";
+import jwt from "jsonwebtoken";
 
 // this code for the validation is referred from https://dev.to/oluwadareseyi/build-dynamic-forms-and-perform-validation-using-react-hooks-with-no-external-package-3i5
 
@@ -36,30 +40,33 @@ class Create_password extends React.Component {
       email: "",
       // fields added by guneet
       password:"",
-      login:false,
-      token:null,
-      store:null,
-      redirect:null,
+      confim_password:"",
+      token:"",
       error: {
-        email: "",
+        password: "",
       },
     };
   }
 
   // This combination of componentDidMount and storeCollector function is for maintaining log in state after refresh
-  componentDidMount(){
-    this.storeCollector(); 
+  async componentDidMount(){
+    let slugParam=this.props.match.params.token;
+    console.log("slug param ", slugParam); 
+    var creds = jwt_decode(slugParam);
+    console.log("creds ", creds);
+    try {
+      const decoded = jwt.verify(slugParam, "aalokhaalo");
+      let email = decoded.user.email;
+      console.log("decoded ems ", email);
+      await this.setState({email:email});
+      
+    } catch(e) {
+        console.log(e.message);
+        console.log("token has expired.");
+    }
+    
   }
 
-  storeCollector() {
-    // console.warn("hello from storecollector")
-    let store = JSON.parse(localStorage.getItem('login'));
-    this.setState({store:store});
-    if(localStorage.getItem('login') !== null){
-      this.setState({login:true})
-    }
-    // console.warn(store);
-  }
 
   // this login function calls the backend login API (also coded by me) with email and password of user
   // and stores the JWT returned in the localStorage to establish a session.
@@ -132,7 +139,25 @@ class Create_password extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.login();
+    
+    // Code of API call to create password goes here
+    fetch("http://localhost:3000/api/create_password", {
+      method:"post",
+      body:JSON.stringify(this.state),
+    headers:{
+      'Content-Type':'application/json',
+    }
+    }).then(res => res.json())
+    .then((result) => {
+      if(result.success){
+        this.setState({ redirect: "/login" });
+      }
+      else {
+        alert('Something went wrong, please try again.');
+      }
+    })
+
+
     if (this.validateForm(this.state.error)) {
       // alert("User Has Been Logged In Successfully...");
       this.form.reset();
@@ -140,28 +165,7 @@ class Create_password extends React.Component {
       alert("Invalid Details Entered...");
     }
   };
-  handleOnChange = (element) => {
-    element.preventDefault();
-    const name = element.target.name;
-    const value = element.target.value;
-    // console.log("inside " + name + value);
-    let error = this.state.error;
-    switch (name) {
-      case "email":
-        if (document.getElementById("mail").value === "") {
-          error.email = "";
-          break;
-        }
-        error.email = emailCheck.test(value) ? "" : "Invalid Email Address";
-        break;
-      default:
-        break;
-    }
-    this.setState({
-      error,
-      [name]: value,
-    });
-  };
+
   render() {
     const { error } = this.state;
     // console.log("yahan pe hai ",this.state.redirect);
@@ -206,7 +210,7 @@ class Create_password extends React.Component {
                     type="password"
                     placeholder="Re enter your password"
                     required
-                    onChange={(event)=>{this.setState({password:event.target.value})}}
+                    onChange={(event)=>{this.setState({confirm_password:event.target.value})}}
                   />
                 </Form.Group>
 
