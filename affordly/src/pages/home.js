@@ -26,11 +26,14 @@ import axios from 'axios';
 class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.handleOnChange=this.handleOnChange.bind(this);
+    this.searchKeyword=this.searchKeyword.bind(this);
     this.state = {
       posts : [],
-      trending1 : [],
-      trending2: [],
-      trending3 : []
+      trending : [],
+      keyword: "",
+      searchResult: [],
+      error: "",
     }
   }
 
@@ -39,15 +42,33 @@ class Home extends React.Component {
   .then(actPosts => actPosts)
   .then(data => this.setState({posts:data.data}));
 
-  axios.get("http://35.153.255.72/trending")
+  axios.get("https://affordly-flask.herokuapp.com/trending")
   .then(trendPost => trendPost.data)
   .then(data => {
-    console.log(data);
-    this.setState({trending1:data[0],trending2:data[1],trending3:data[2]})
+    this.setState({trending:data})
   });
-    }
 
+    }
+  searchKeyword(e){
+    axios.get("https://affordly-flask.herokuapp.com/search?keyword="+this.state.keyword)
+  .then(posts => posts.data)
+  .then(data => {
+    if(data.message)
+    {this.setState({error:"No results found"})}
+    this.setState({posts:data})
+  });
+  }
+
+  handleOnChange = (element) => {
+    element.preventDefault();
+    const name = element.target.name;
+    const value = element.target.value;
+    this.setState({
+      "keyword": value
+    });
+  };
   render() {
+    let error=this.state.error;
     return (
       <div className="home">
         <Header />
@@ -55,41 +76,40 @@ class Home extends React.Component {
         <div className="container ">
           <div className="ctr">
             <Carousel>
-              <Carousel.Item>
-                <a href={"/posting/"+this.state.trending1.id}><img className="d-block w-100" src={this.state.trending1.image} alt="First slide" /></a>
+            {this.state.trending.map((value) => {
+              return (
+                <Carousel.Item>
+                <a href={"/posting/"+value.id}><img className="d-block w-100" src={value.image} alt="First slide" /></a>
                 <Carousel.Caption>
                   <h2>Trendings</h2>
                   <p>Sell items on just a click.</p>
                 </Carousel.Caption>
               </Carousel.Item>
-              <Carousel.Item>
-                <a href={"/posting/"+this.state.trending2.id}><img className="d-block w-100" src={this.state.trending2.image} alt="Second slide" /></a>
-                <Carousel.Caption>
-                  <h2>Trendings</h2>
-                  <p>Buy items as you need.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <a href={"/posting/"+this.state.trending3.id}><img className="d-block w-100" src={this.state.trending3.image} alt="Third slide" /></a>
-                <Carousel.Caption>
-                  <h2>Trendings</h2>
-                  <p>Items in your reach.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
+              )
+            })}
+              
             </Carousel>
           </div>
 
           <div className="search_bar">
             <input
+              name="keyword"
               className="search_field"
               type="text"
               placeholder="Search an item..."
+              onChange={this.handleOnChange}
             />
-            <div className="btn btn-primary search_button"> Search </div>
+            <div className="btn btn-primary search_button" onClick={this.searchKeyword}> Search  </div>
           </div>
 
           <div className="row">
-          {this.state.posts.map((value) => {  //Renders all the active posts
+          {error ? (
+            <section className="container alert alert-danger" role="alert">
+              No results found
+            </section>
+          ) :     
+          
+               this.state.posts.map((value) => {  //Renders all the active posts
               return(
             <div className="col-md-4 crd">
               <Card style={{ width: "21" }}>
