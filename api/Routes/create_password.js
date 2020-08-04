@@ -1,3 +1,11 @@
+/*
+ * File developed by Guneet Singh Dhillon (guneet@dal.ca, B00843346) 
+ * 
+ * Feature:
+ * This API is the back end of creating a new password and is a part of password recovery feature
+ * 
+ */
+
 const nodemailer = require("nodemailer");
 const User = require("../Models/User");
 const express = require('express');
@@ -6,11 +14,11 @@ const bcrypt = require('bcryptjs');
 
 
 router.post('/', async (req, res) => {
-    console.log('inside forgot pass', req.body);
+    // console.log('inside forgot pass', req.body);
     const { email, password } = req.body;
     try {
         let user = await User.findOne({ email: email });
-        console.log("user ", user);
+        // console.log("user ", user);
         var transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {

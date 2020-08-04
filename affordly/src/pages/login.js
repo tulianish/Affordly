@@ -185,7 +185,8 @@ class Login extends React.Component {
                 onSubmit={this.handleSubmit}
                 ref={(form) => (this.form = form)}
               >
-                <Form.Group as={Col} controlId="formGridEmail">
+                {/* removed controlId="formGridEmail" from <Form.Group> */}
+                <Form.Group as={Col} >
                   <Form.Label className="form_lab">
                     {" "}
                     E-mail Address <span className="mandatory">*</span>{" "}
@@ -204,7 +205,7 @@ class Login extends React.Component {
                   )}
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Group as={Col} >
                   <Form.Label className="form_lab">
                     Password <span className="mandatory">*</span>{" "}
                   </Form.Label>

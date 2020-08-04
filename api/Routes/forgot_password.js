@@ -1,3 +1,12 @@
+/*
+ * File developed by Guneet Singh Dhillon (guneet@dal.ca, B00843346) 
+ * 
+ * Feature:
+ * This API is the back end of creating a password reset request and is a part of password recovery feature
+ * 
+ */
+
+
 const nodemailer = require("nodemailer");
 const User = require("../Models/User");
 const express = require('express');
@@ -6,11 +15,11 @@ const jwt = require("jsonwebtoken");
 
 
 router.post('/', async (req, res) => {
-    console.log('inside forgot pass', req.body);
+    // console.log('inside forgot pass', req.body);
     const { email } = req.body;
     try {
         let user = await User.findOne({ email: email });
-        console.log("user ", user);
+        // console.log("user ", user);
         var transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -19,16 +28,16 @@ router.post('/', async (req, res) => {
             }
         });
 
-        console.log('2');
+        // console.log('2');
         const payload = {
             user: {
                 email: user.email
             }
         };
         // create and return a json web token which expires in 1800 seconds, i.e. half hour
-        var token_fp = jwt.sign(payload, "aalokhaalo", { expiresIn: "58m" });
+        var token_fp = jwt.sign(payload, "aalokhaalo", { expiresIn: "10m" });
         const reset_link = "http:localhost:3001/create_password/"+token_fp;
-        console.log("link check", reset_link);
+        // console.log("link check", reset_link);
         // await user.save();
         // const token_fp = user.token;
         var mailOptions = {

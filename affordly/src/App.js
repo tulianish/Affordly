@@ -15,6 +15,7 @@ import Careers from "./pages/Careers";
 import Payment from "./pages/Payment";
 import Posting from "./pages/Posting";
 import RaiseASupportTicket from "./pages/incident";
+import Reset_link_sent from "./pages/reset_link_sent";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/incident" component={RaiseASupportTicket} />
           <Route path="/forgot_password" component={Forgot_password} />
           <Route path="/create_password/:token" component={Create_password} />
+          <Route path="/reset_link_sent" component={Reset_link_sent} />
           <Route
             path="/posting/:id"
             exact

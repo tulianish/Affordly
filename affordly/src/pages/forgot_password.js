@@ -1,13 +1,9 @@
-/**
- * Developed by-
- *
- * Name : Guneet Singh Dhillon
- * Banner ID : B00843346
- * Email ID : guneet@dal.ca
- *
+/*
+ * File developed by Guneet Singh Dhillon (guneet@dal.ca, B00843346) using the Login.js template 
+ * which was originally developed by Piyush (piyus@dal.ca, B00844563)
  * 
- * Feature Covered:
- * This is the frontend of Forgot password page
+ * Feature:
+ * This page is the front end of creating a password reset request and is a part of password recovery feature
  * 
  */
 
@@ -21,11 +17,11 @@ import { Redirect } from "react-router-dom";
 import "../stylesheets/login.css";
 import { Col } from "react-bootstrap";
 
-// this code for the validation is referred from https://dev.to/oluwadareseyi/build-dynamic-forms-and-perform-validation-using-react-hooks-with-no-external-package-3i5
 
 const emailCheck = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
+
 class Forgot_password extends React.Component {
 
   constructor(props) {
@@ -44,49 +40,8 @@ class Forgot_password extends React.Component {
     };
   }
 
-  // This combination of componentDidMount and storeCollector function is for maintaining log in state after refresh
-  // componentDidMount(){
-  //   this.storeCollector(); 
-  // }
 
-
-
-  // this login function calls the backend login API (also coded by me) with email and password of user
-  // and stores the JWT returned in the localStorage to establish a session.
-  // Reference for this section of code : 2020. [Online]. Available: https://www.youtube.com/watch?v=I3PC8pV1SBM. [Accessed: 25- Jul- 2020].  
-  async login() {
-    // console.warn("Form formData", this.state);
-    fetch("https://the-affordly.herokuapp.com/api/login", {
-      method:"post",
-      body:JSON.stringify(this.state),
-    headers:{
-      'Content-Type':'application/json',
-    }
-    }).then(res => res.json())
-    .then((result) => {
-      // console.warn("jatt da token", result.token);
-      if(result.token){
-        localStorage.setItem('login',JSON.stringify({
-          login:true,
-          token:result.token
-        }))
-        this.setState({login:true})
-        this.setState({ redirect: "/" });
-
-      }
-      else {
-        alert('Invalid Credentials');
-      }
-    })
-
-    // redirect to home
-    // history.push
-    if(this.state.token){
-      // console.log("redirect ")
-      await this.setState({ redirect: "/" });
-    }
-    
-  }
+// the code for the validation is referred from https://dev.to/oluwadareseyi/build-dynamic-forms-and-perform-validation-using-react-hooks-with-no-external-package-3i5
 
   validateForm = (errors) => {
     let valid = true;
@@ -94,6 +49,7 @@ class Forgot_password extends React.Component {
     Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
     return valid;
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -108,6 +64,7 @@ class Forgot_password extends React.Component {
     .then((result) => {
       if(result.success){
         alert("If your email is registered, you will receive a link to reset the password.")
+        this.setState({ redirect: "/reset_link_sent" });
       }
       else {
         alert('Something went wrong, please try again.');
@@ -121,6 +78,7 @@ class Forgot_password extends React.Component {
       alert("Invalid Details Entered...");
     }
   };
+  
   handleOnChange = (element) => {
     element.preventDefault();
     const name = element.target.name;
@@ -145,9 +103,7 @@ class Forgot_password extends React.Component {
   };
   render() {
     const { error } = this.state;
-    // console.log("yahan pe hai ",this.state.redirect);
-    if (this.state.redirect === "/") {
-      // console.log("Insid it");
+    if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
     return (
@@ -166,7 +122,8 @@ class Forgot_password extends React.Component {
                 onSubmit={this.handleSubmit}
                 ref={(form) => (this.form = form)}
               >
-                <Form.Group as={Col} controlId="formGridEmail">
+                {/* removed controlId="formGridEmail" from <Form.Group> */}
+                <Form.Group as={Col} >
                   <Form.Label className="form_lab">
                     {" "}
                     E-mail Address <span className="mandatory">*</span>{" "}
@@ -185,9 +142,7 @@ class Forgot_password extends React.Component {
                   )}
                 </Form.Group>
 
-
                 <div className="tncbutton">
-                  {/* gg int */}
                   <Button variant="primary" type="submit">
                     Submit Email
                   </Button>
