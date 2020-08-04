@@ -12,7 +12,7 @@ import Careers from "./pages/Careers";
 import Payment from "./pages/Payment";
 import Posting from "./pages/Posting";
 import Share from "./pages/share";
-
+import Discussion from "./pages/DiscussionForum";
 import RaiseASupportTicket from "./pages/incident";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -31,6 +31,7 @@ function App() {
           <Route path="/careers" component={Careers} />
           <Route path="/share" component={Share} />
           <Route path="/incident" component={RaiseASupportTicket} />
+          <Route path="/discussion" component={Discussion} />
           <Route
             path="/posting/:id"
             exact

@@ -34,11 +34,12 @@ class Posting extends Component {
   let id = window.location.href.split("/",5)[4];
   this.setState({post_id: id})
   let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
+  axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
   .then(curPost => curPost.data)
   .then(data => this.setState({post:data[0]}))
   .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
 
-  let clickAPI = axios.get("http://35.153.255.72/clicked?post_id="+id)
+  axios.get("http://35.153.255.72/clicked?post_id="+id)
   }
 
   render() {
@@ -136,134 +137,6 @@ class Posting extends Component {
               </section>
             </section>
           </section>
-          {/* Pagination */}
-          {/* <section className="row justify-content-center">
-            <nav aria-label="Page navigation example">
-              <ul className="pagination">
-                {this.props.match.params.id === "0" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/0">
-                      1
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/0">
-                      1
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "1" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/1">
-                      2
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/1">
-                      2
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "2" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/2">
-                      3
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/2">
-                      3
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "3" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/3">
-                      4
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/3">
-                      4
-                    </a>
-                  </li>
-                )}
-
-                {this.props.match.params.id === "4" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/4">
-                      5
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/4">
-                      5
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "5" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/5">
-                      6
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/5">
-                      6
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "6" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/6">
-                      7
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/6">
-                      7
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "7" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/7">
-                      8
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/7">
-                      8
-                    </a>
-                  </li>
-                )}
-                {this.props.match.params.id === "8" ? (
-                  <li className="page-item active">
-                    <a className="page-link" href="/posting/8">
-                      9
-                    </a>
-                  </li>
-                ) : (
-                  <li className="page-item">
-                    <a className="page-link" href="/posting/8">
-                      9
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </nav>
-          </section> */}
         </section>
         <Footer />
       </>
