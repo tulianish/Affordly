@@ -75,11 +75,16 @@ class Posting extends Component {
     })
     }
   else {
-    window.location.replace('/login');
+    //window.location.replace('/login');
   }
   }
 
 addComment = (e) => {
+
+  if(this.state.username == ""){
+    window.location.replace('/login');
+  }
+
   let receivedcomment = e.target[0].value;
   
   let comment = {
@@ -188,15 +193,18 @@ render() {
                       </section>
                       <section className="row">
                         <section className="col-md-12">
-                         <strong> <p className="float-left">
-                           <div>{value.user}</div> <div>{value.comment}</div>
-                          </p> </strong>
+                        
+                           <div className="overflow-auto media-body p-2 shadow-sm rounded bg-light border">
+                           <h6 className="float-left mt-0 mb-1 text-muted">{value.user}</h6> 
+                           <br/>
+                           <h6 className="text-left text-break">{value.comment}</h6>
+                           </div>
+                          
                         </section>
                       </section>
                       <hr/>
                     </>
                   )
-
                 })}
               </section>
             </section>
