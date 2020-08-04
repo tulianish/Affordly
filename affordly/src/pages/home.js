@@ -35,11 +35,11 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-  let allPosts = axios.get("https://the-affordly.herokuapp.com/api/activePosts")
+  axios.get("https://the-affordly.herokuapp.com/api/activePosts")
   .then(actPosts => actPosts)
   .then(data => this.setState({posts:data.data}));
 
-  let trendingPosts = axios.get("http://35.153.255.72/trending")
+  axios.get("http://35.153.255.72/trending")
   .then(trendPost => trendPost.data)
   .then(data => {
     console.log(data);

@@ -9,6 +9,7 @@
  **/
 // Modified by Anish Tuli (B00843522, anish.tuli@dal.ca)
 // Modified by Rahul Anand (B00841310, rahul.anand@dal.ca)
+// Modified by Piyush Piyush (B00844563, piyush@dal.ca)
 
 /*
 
@@ -32,15 +33,17 @@ import Footer from "../components/Footer";
 import Map from "../components/Map";
 import "../stylesheets/Posting.css";
 import "font-awesome/css/font-awesome.min.css";
-import CurrencyConverter from '../components/CurrencyConverter'
-import axios from 'axios';
+import CurrencyConverter from "../components/CurrencyConverter";
+import axios from "axios";
 
 class Posting extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+
       post: [],
+        post_id:"",
       comments: [],
       username : "",
       postId: "",
@@ -55,21 +58,24 @@ class Posting extends Component {
   }
 
   componentDidMount() {
-    let id = window.location.href.split("/", 5)[4];
-    this.setState({postId:id});
-    let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id=" + id)
-      .then(curPost => curPost.data)
-      .then(data => this.setState({ post: data[0] }))
-      .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
-      console.log("hello")
-    axios.get("https://the-affordly.herokuapp.com/feedback/getfeedback?id="+id)
-      .then(feedbackdata => feedbackdata.data)
-      .then(feedback => {
-        this.setState({ comments: feedback })
-      })
-    // .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
+    let id = window.location.href.split("/",5)[4];
+  this.setState({post_id: id});
+  this.setState({postId:id});
+  let currentPost = axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
+  axios.get("https://the-affordly.herokuapp.com/api/post?id="+id)
+  .then(curPost => curPost.data)
+  .then(data => this.setState({post:data[0]}))
+  .catch(error => window.location.replace("https://the-affordly.herokuapp.com"));
 
-    let clickAPI = axios.get("http://35.153.255.72/clicked?post_id=" + id)
+   axios.get("https://the-affordly.herokuapp.com/feedback/getfeedback?id="+id)
+   .then(feedbackdata => feedbackdata.data)
+   .then(feedback => {
+    this.setState({ comments: feedback })
+      })
+        
+  axios.get("http://35.153.255.72/clicked?post_id="+id)
+
+
 
     let string = localStorage.getItem('login'); //Check for login
   if(string !== null){
@@ -94,9 +100,9 @@ class Posting extends Component {
     //window.location.replace('/login');
   }
   }
-
+        
+  
 addComment = (e) => {
-
   if(this.state.username == ""){
     window.location.replace('/login');
   }
@@ -107,10 +113,8 @@ addComment = (e) => {
   postid : this.state.postId,
   comment : receivedcomment,
   user : this.state.username,
-  }
-  
 
-  console.log(comment);
+  }
 
   this.state.comments.push(comment)
   
@@ -127,7 +131,6 @@ addComment = (e) => {
   })
 }
 
-
 render() {
     return (
       <>
@@ -138,14 +141,14 @@ render() {
               <h4 style={{ color: "navy" }} variant="success">
                 Article Location
               </h4>
-              <Map />
+              <Map address={this.state.post.address} />
             </section>
             <section className="col-md-6 desc">
               <section className="img-thumbnail img-fluid">
                 {/* image of the product*/}
                 <figure>
                   <img
-                    clasName="img-responsive"
+                    className="img-responsive"
                     alt="item images"
                     style={{ width: "50%", height: "50%" }}
                     src={this.state.post.img}
@@ -171,19 +174,26 @@ render() {
               <section className="card card-body bg-light">
                 <section className="row">
                   <section className="col-md-6">
+                    
+                    <a
+                    href={"/share/"+this.state.post_id}>
                     <button
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
                       <i className="fa fa-share-alt">Share</i>{" "}
                     </button>
+                    </a>
+                    
+                    
                     <a
-                      href="/payment"
+                      href={"/payment/"+this.state.post_id}
                       className="btn btn-outline-primary float-left"
                       style={{ marginLeft: "5px" }}
                     >
                       <i className="fa fa-shopping-cart">Buy</i>{" "}
                     </a>
+
                   </section>
                   
                 </section>
@@ -227,7 +237,7 @@ render() {
           </section>
           </section>
           <Footer />
-      </>
+        </>
     );
   }
 }
