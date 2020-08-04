@@ -150,7 +150,7 @@ render() {
                   <img
                     className="img-responsive"
                     alt="item images"
-                    style={{ width: "50%", height: "50%" }}
+                    style={{ width: "80%", height: "50%" }}
                     src={this.state.post.img}
                   />
                 </figure>
@@ -165,7 +165,7 @@ render() {
                   </h4>
                   <hr />
                   <section style={{ marginTop: "8%" }}>
-                    <CurrencyConverter />
+                    <CurrencyConverter value={this.state.post.price}/>
                   </section>
                 </section>
               </section>

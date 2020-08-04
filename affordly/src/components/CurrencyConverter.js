@@ -22,8 +22,8 @@ import React from 'react'
 import '../stylesheets/CurrencyConverter.css'
 
 class CurrencyConverter extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       
       this.state = {
         baseCurrency:'CAD',
@@ -96,20 +96,19 @@ class CurrencyConverter extends React.Component {
       return(
         <div className="form-container">
           <form className='ui mini form'>
-            <h3>Convert to: {convertToCurrency}</h3>
+            <span>Convert to: </span>
             <select value={convertToCurrency} onChange={this.changeConvertToCurrency}>
               {currencyChoice}
             </select>
-            <br /><br />
-           <h3>Amount:</h3>
-             <input type='number' 
+            
+             <input type='hidden' 
                     id='base-amount' 
-                    defaultValue={baseAmount} 
-                    onChange={this.changeBaseAmount}>
+                    defaultValue={this.props.value} 
+                    readOnly>
             </input>                             
          </form>      
          <br/>                 
-         <h4 id='result-text'>{baseAmount} CAD is equal to {result} {convertToCurrency}</h4>
+         <h4 id='result-text'><span>${this.props.value}</span> is equal to <span style={{color : "green"}}>{result} {convertToCurrency}</span></h4>
        </div>
       );
     }

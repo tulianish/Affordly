@@ -12,7 +12,7 @@ import Careers from "./pages/Careers";
 import Payment from "./pages/Payment";
 import Posting from "./pages/Posting";
 import Share from "./pages/share";
-import Discussion from "./pages/DiscussionForum";
+import Discussion from "./pages/discussionForum";
 import RaiseASupportTicket from "./pages/incident";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 

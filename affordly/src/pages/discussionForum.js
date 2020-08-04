@@ -2,7 +2,7 @@
 
 import React from "react";
 import NavigationBar from "../components/navbar";
-import Discussion from "../components/Discussion";
+import Discussion from "../components/discussion";
 import Footer from "../components/Footer";
 
 function discussionForum() {
