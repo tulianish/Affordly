@@ -55,7 +55,7 @@ class Home extends React.Component {
   .then(data => {
     if(data.message)
     {this.setState({error:"No results found"})}
-    this.setState({posts:data})
+    this.setState({posts:data, error:""})
   });
   }
 
