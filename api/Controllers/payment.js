@@ -77,7 +77,7 @@ const paymentController = {
                     from: "payment-confirmation@affordly.com",
                     to: email,
                     subject: "Afford-ly Payment Confirmation - " + unique_id,
-                    text: "Greetings " + fname + " " + lname + "," + " \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Thanks for buying " + product_name + " for only $" + product_price + ". \n \n Please find attached payment confirmation file. \n \n \n Regards, \n Team Afford.ly",
+                    text: "Greetings " + fname + " " + lname + "," + " \n \n \n Afford-ly makes sure that your debit, and credit information is kept secure, and encrypted. \n \n Thanks for buying " + product_name + " for only $" + product_price + ". \n \n Please find attached payment confirmation file. \n \n \n Regards, \n Team Afford-ly",
                     html: "",
                     attachments: [
                         {
