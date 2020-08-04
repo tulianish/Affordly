@@ -34,12 +34,11 @@ class Header extends React.Component {
   }
 
   // This function will clear the JWT stored in local storage of browser and login session will end.
-  async logout() {
+  async logout(element) {
+    element.preventDefault();
     localStorage.clear();
     await this.setState({ redirect: "/" });
-    // console.warn("State after setting the redirect", this.state);
-    
-    // redirect to home
+    window.location.replace("/");
   }
 
   render()
@@ -90,7 +89,7 @@ class Header extends React.Component {
                 <Nav.Link active href="/sell">
                   Sell
                 </Nav.Link>
-                <Nav.Link active to="/" onClick={(e)=>{this.logout(e)}}>
+                <Nav.Link active href="/" onClick={(element)=>{this.logout(element)}}>
                   Logout
                 </Nav.Link>
               </Nav>
