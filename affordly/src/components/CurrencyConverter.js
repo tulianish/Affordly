@@ -35,7 +35,7 @@ class CurrencyConverter extends React.Component {
       
       this.changeBaseCurrency = this.changeBaseCurrency.bind(this);
       this.changeConvertToCurrency = this.changeConvertToCurrency.bind(this);
-      this.changeBaseAmount = this.changeBaseAmount.bind(this);
+    //  this.changeBaseAmount = this.changeBaseAmount.bind(this);
       this.getConvertedCurrency = this.getConvertedCurrency.bind(this);
       this.callAPI = this.callAPI.bind(this);
     }
@@ -71,13 +71,13 @@ class CurrencyConverter extends React.Component {
       });
     }
     
-    changeBaseAmount(e) {
-    if(e.target.value >= 0) {
+    /*changeBaseAmount(e) {
+    
      this.setState({
-       baseAmount: e.target.value
-     });
-    }
-    }
+       baseAmount: this.props.value
+     })
+    
+    }*/
     
     getConvertedCurrency(baseAmount,convertToCurrency,rates) {
         return Number.parseFloat(baseAmount * rates[convertToCurrency]).toFixed(3);
@@ -90,7 +90,7 @@ class CurrencyConverter extends React.Component {
         <option key={currency} value={currency}> {currency} </option>      
       );
                                             
-      const result = this.getConvertedCurrency(baseAmount, convertToCurrency, rates);
+      const result = this.getConvertedCurrency(this.props.value, convertToCurrency, rates);
       
       
       return(
